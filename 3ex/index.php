@@ -62,7 +62,7 @@ $db = new PDO('mysql:host=localhost;dbname=u16346', $user , $pass, array(PDO::AT
 try {
   $stmt = $db->prepare("INSERT INTO users SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
   $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
-  /*$usr_id = $db->lastInsertId();
+  $usr_id = $db->lastInsertId();
   $pwr = $db->prepare("INSERT INTO powers SET usr_id = ?, superpowers = ?");
   $pwr -> execute(array($usr_id, $superpowers));*/
 }
