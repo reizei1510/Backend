@@ -34,11 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 else {
     if (empty($_POST['name'])) {
-        setcookie('name_error', 'empty', 0);
+        setcookie('name_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else if (!preg_match("/^[A-Z][a-z]+$/", $_POST['name'])){
-        setcookie('name_error', 'incorrect', 0);
+        setcookie('name_error', 'incorrect', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else {
@@ -47,11 +47,11 @@ else {
     }
     
     if (empty($_POST['email'])) {
-        setcookie('email_error', 'empty', 0);
+        setcookie('email_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
       }
     else if (!preg_match("/^[A-Za-z0-9][A-Za-z0-9_\-.]+@[A-Za-z0-9][A-Za-z0-9_\-.]+\.[A-Za-z]+$/",$_POST['email'])){
-        setcookie('email_error', 'incorrect', 0);
+        setcookie('email_error', 'incorrect', time() + 24 * 60 *60);
         $errors = TRUE;
     } 
     else {
@@ -60,11 +60,11 @@ else {
     }
 
     if (empty($_POST['birthday'])) {
-        setcookie('birthday_error', 'empty', 0);
+        setcookie('birthday_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else if ($_POST['birthday'] > date('Y-m-d')) {
-        setcookie('birthday_error', 'incorrect', 0);
+        setcookie('birthday_error', 'incorrect', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else {
@@ -73,7 +73,7 @@ else {
     }
 
     if (empty($_POST['gender'])) {
-        setcookie('gender_error', 'empty', 0);
+        setcookie('gender_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else {
@@ -82,7 +82,7 @@ else {
     }
 
     if (empty($_POST['limbs'])) {
-        setcookie('limbs_error', 'empty', 0);
+        setcookie('limbs_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else {
@@ -91,7 +91,7 @@ else {
     }
     
     if (empty($_POST['superpowers'])) {
-        setcookie('superpowers_error', 'empty', 0);
+        setcookie('superpowers_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else {
@@ -100,7 +100,7 @@ else {
     }
     
     if (empty($_POST['biography'])) {
-        setcookie('biography_error', 'empty', 0);
+        setcookie('biography_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else {
@@ -109,7 +109,7 @@ else {
     }      
     
     if (empty($_POST['contract'])) {
-        setcookie('contract_error', 'empty', 0);
+        setcookie('contract_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
     }
     else {
@@ -142,7 +142,7 @@ else {
         $pwrs -> execute(array($usr_id, $superpowers));
     }
     catch(PDOException $e){
-        setcookie('save_error', '$e->getMessage()', 0);
+        setcookie('save_error', '$e->getMessage()', time() + 24 * 60 *60);
         header('Location: index.php');
         exit();
     }
