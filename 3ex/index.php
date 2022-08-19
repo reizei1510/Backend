@@ -11,31 +11,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 $errors = FALSE;
 if (empty($_POST['name'])) {
-    print('Введите имя.<br/>');
+    echo "<script type='text/javascript'>alert('Введите имя.');</script>";
     $errors = TRUE;
 }
-if (empty($_POST['email'])) {
-    print('Введите email.<br/>');
+else if (empty($_POST['email'])) {
+    echo "<script type='text/javascript'>alert('Введите email.');</script>";
     $errors = TRUE;
 }
-if (empty($_POST['birthday'])) {
-    print('Введите дату рождения.<br/>');
+else if (empty($_POST['birthday'])) {
+    echo "<script type='text/javascript'>alert('Введите дату рождения.');</script>";
     $errors = TRUE;
 }
-if (empty($_POST['gender'])) {
-    print('Выберите пол.<br/>');
+else if (empty($_POST['gender'])) {
+    echo "<script type='text/javascript'>alert('Выберите пол.');</script>";
     $errors = TRUE;
 }
-if (empty($_POST['limbs'])) {
-    print('Выберите количество конечностей.<br/>');
+else if (empty($_POST['limbs'])) {
+    echo "<script type='text/javascript'>alert('Выберите количество конечностей.');</script>";
     $errors = TRUE;
 }
-if (empty($_POST['biography'])) {
-    print('Расскажите о себе.<br/>');
+else if (empty($_POST['biography'])) {
+    echo "<script type='text/javascript'>alert('Расскажаите о себе.');</script>";
     $errors = TRUE;
 }
-if (empty($_POST['contract'])) {
-    print('Ознакомьтесь с контрактом.<br/>');
+else if (empty($_POST['contract'])) {
+    echo "<script type='text/javascript'>alert('Ознакомьтесь с контрактом.');</script>";
     $errors = TRUE;
 }
 
