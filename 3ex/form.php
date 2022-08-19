@@ -42,26 +42,26 @@
 	    <div class="point">
                 Пол:<br />
                 <label>
-                    <input type="radio" checked="checked" name="gender" value="Значение1" />Мужской
+                    <input type="radio" checked="checked" name="gender" value="Male" />Мужской
                 </label>
                 <label>
-                    <input type="radio" name="gender" value="Значение1" />Женский
+                    <input type="radio" name="gender" value="Female" />Женский
                 </label>
                 <label>
-                    <input type="radio" name="gender" value="Значение2" />Другое
+                    <input type="radio" name="gender" value="other" />Другое
                 </label>
 	    </div><br />
 
 	    <div class="point">
                 Количество конечностей:<br />
                 <label>
-                    <input type="radio" checked="checked" name="limbs" value="Значение1" />0
+                    <input type="radio" checked="checked" name="limbs" value="0" />0
                 </label>
                 <label>
-                    <input type="radio" name="limbs" value="Значение2" />4
+                    <input type="radio" name="limbs" value="4" />4
                 </label>
                 <label>
-                    <input type="radio" name="limbs" value="Значение2" />Другое
+                    <input type="radio" name="limbs" value="other" />Другое
                 </label>
 	    </div><br />
       
@@ -69,10 +69,10 @@
                 <label>
                     Сверхспособность:<br />
                     <select name="superpowers[]" multiple="multiple">
-                        <option value="Значение0" selected="selected">(нет)</option>
-                        <option value="Значение1">Бессмертие</option>
-                        <option value="Значение2">Прохождение сквозь стены</option>
-                        <option value="Значение3">Левитация</option>
+                        <option value="none" selected="selected">(нет)</option>
+                        <option value="Immortality">Бессмертие</option>
+                        <option value="Immateriality">Прохождение сквозь стены</option>
+                        <option value="Levitation">Левитация</option>
                     </select>
                 </label>
 	    </div><br />
