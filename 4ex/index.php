@@ -9,41 +9,80 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit();
 }
 
-if (empty($_POST['name'])) {
-    echo "<script type='text/javascript'>alert('Введите имя.');</script>";
-    include('form.php');
-    exit();
-}
-else if (empty($_POST['email'])) {
-    echo "<script type='text/javascript'>alert('Введите email.');</script>";
-    include('form.php');
-    exit();
-}
-if (empty($_POST['gender'])) {
-    echo "<script type='text/javascript'>alert('Выберите пол.');</script>";
-    include('form.php');
-    exit();
-}
-if (empty($_POST['limbs'])) {
-    echo "<script type='text/javascript'>alert('Выберите количество конечностей.');</script>";
-    include('form.php');
-    exit();
-}
-if (empty($_POST['superpowers'])) {
-    echo "<script type='text/javascript'>alert('Выберите суперспособности.');</script>";
-    include('form.php');
-    exit();
-}
-else if (empty($_POST['biography'])) {
-    echo "<script type='text/javascript'>alert('Расскажите о себе.');</script>";
-    include('form.php');
-    exit();
-}
-else if (empty($_POST['contract'])) {
-    echo "<script type='text/javascript'>alert('Примите соглашение.');</script>";
-    include('form.php');
-    exit();
-}
+
+
+
+
+
+
+else {
+    if (empty($_POST['name'])) {
+        setcookie('name_empty', '');
+        $errors = TRUE;
+    }
+    else if (!preg_match("/^[A-Z][a-z]+$/",$_POST['name'])){
+        setcookie('name_incorrect', '');
+        $errors = TRUE;
+    }
+    else {
+        setcookie('name_value', $_POST['name'], time() + 30 * 24 * 60 * 60);
+    }
+    
+    if (empty($_POST['email'])) {
+        setcookie('email_empty', '');
+        $errors = TRUE;
+      }
+    else if (!preg_match("/^[A-Za-z0-9][A-Za-z0-9_\-.]+@[A-Za-z0-9][A-Za-z0-9_\-.]+\.[A-Za-z]+$/",$_POST['email'])){
+        setcookie('email_incorrect', '');
+        $errors = TRUE;
+    } 
+    else {
+        setcookie('email_value', $_POST['email'], time() + 30 * 24 * 60 * 60);
+    }
+
+    if (empty($_POST['birthday'])) {
+        setcookie('birthday_empty', '');
+        $errors = TRUE;
+    }
+    else if ($_POST['birthday'] > date('Y-m-d')) {
+        setcookie('birthday_incorrect', '');
+        $errors = TRUE;
+    }
+    else {
+        setcookie('birthday_value', $_POST['birthday'], time() + 30 * 24 * 60 * 60);
+    }
+
+    if (empty($_POST['gender'])) {
+        setcookie('gender_empty', '');
+        $errors = TRUE;
+    }
+    else {
+        setcookie('gender_value', $_POST['gender'], time() + 30 * 24 * 60 * 60);
+    }
+
+    if (empty($_POST['limbs'])) {
+        setcookie('limbs_empty', '');
+        $errors = TRUE;
+    }
+    else {
+        setcookie('limbs_value', $_POST['limbs'], time() + 30 * 24 * 60 * 60);
+    }
+    
+    if (empty($_POST['superpowers'])) {
+        setcookie('superpowers_empty', '');
+        $errors = TRUE;
+    }
+    else {
+        setcookie('superpowers_value', $_POST['superpowers'], time() + 30 * 24 * 60 * 60);
+    }
+    
+    if (empty($_POST['biography'])) {
+        setcookie('biography_empty', '');
+        $errors = TRUE;
+    }
+    else {
+        setcookie('biography_value', $_POST['biography'], time() + 30 * 24 * 60 * 60);
+    }
 
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -72,3 +111,4 @@ catch(PDOException $e){
 }
 
 header('Location: ?save=1');
+}
