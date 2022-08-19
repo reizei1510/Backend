@@ -23,7 +23,7 @@
                     <input name="name" <?php if ($errors['name']) { print 'class="error"'; } ?> value="<?php print $values['name']; ?>" /><br />
 		    <div class="error_message <?php if (!$errors['name']) { print 'hidden'; } ?>">
 		        <?php if ($errors['name'] == 'empty') { print 'Введите имя.'; }
-			      else { print 'Имя должно начинаться с заглавной буквы и может содержать только буквы и тире.'; } ?>
+			      else { print 'Имя должно начинаться с заглавной буквы и может содержать только буквы и тире (не первым и не последним  символом).'; } ?>
 		    </div>
             	</label>
 	    </div><br />
@@ -108,7 +108,7 @@
 		
 	    <div class="point">
                 <label>
-                    <input type="checkbox" name="contract" <?php if ($errors['biography']) { print 'class="error"'; } ?> />С контрактом ознакомлен(а)<font color="red">*</font>
+                    <input type="checkbox" name="contract" <?php if ($values['contract']) { print "checked='checked'"; } ?> />С контрактом ознакомлен(а)<font color="red">*</font>
                 </label><br />
 		<div class="error_message <?php if (!$errors['contract']) { print 'hidden'; } ?>">
 		    Примите соглашение.
@@ -117,7 +117,7 @@
 		
 	    <div class="point">
                 <input class="button" type="submit" value="Отправить" /><br />
-		<div class="error_message <?php if ($values['contract']) { print "checked='checked'"; } ?>">
+		<div class="error_message <?php if (!$errors['save']) { print 'hidden'; } ?>">
 		    Ошибка сохранения, попробуйте ещё раз.
 		</div>
 	    </div>
