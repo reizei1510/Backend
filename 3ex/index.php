@@ -55,16 +55,16 @@ $biography = $_POST['biography'];
 
 $user = 'u16346';
 $pass = '34rerfeq5';
-$db = new PDO('mysql:host=localhost;dbname=u16346', $user , $pass, array(PDO::ATTR_PERSISTENT => true));
+$db = new PDO('mysql:host=localhost;dbname=u16346', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 // PDO – PHP Data Objects – это прослойка, которая предлагает универсальный способ работы с несколькими базами данных.
 
 // Подготовленный запрос. Неименованные метки.
 try {
   $stmt = $db->prepare("INSERT INTO users SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
   $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
-  /*$usr_id = $db->lastInsertId();
-  $pwr = $db->prepare("INSERT INTO powers SET usr_id = ?, superpowers = ?");
-  $pwr -> execute(array($usr_id, $superpowers));*/
+  $usr_id = $db->lastInsertId();
+  $pwrs = $db->prepare("INSERT INTO powers SET usr_id = ?, superpowers = ?");
+  $pwrs -> execute(array($usr_id, $superpowers));
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
