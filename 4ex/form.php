@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Задание 3</title>
+    <title>Задание 4</title>
 </head>
 <body>
     <header>
-        <div class="head">Задание 3</div>
+        <div class="head">Задание 4</div>
     </header>
  
     <div class="content">
