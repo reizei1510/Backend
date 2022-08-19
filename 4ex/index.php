@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $errors['biography'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['biography_error'];
     $errors['superpowers'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['superpowers_error'];
     $errors['contract'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['contract_error'];
-    $errors['save'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['save_error'];
+    $errors['save'] = empty($_COOKIE['save_error']) ? false : $_COOKIE['save_error'];
     
     $values = array();
     $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
