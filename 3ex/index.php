@@ -64,8 +64,8 @@ try {
   $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
   $superpowers_id = $db->lastInsertId();
   print($superpowers_id);
-  $superpowers = $db->prepare("INSERT INTO superpowers SET superpowers_id = ?, superpowers = ?");
-  $superpowers -> execute(array($superpowers_id, $superpowers));
+  $powers = $db->prepare("INSERT INTO superpowers SET superpowers_id = ?, superpowers = ?");
+  $powers -> execute(array($superpowers_id, $superpowers));
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
