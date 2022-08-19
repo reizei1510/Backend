@@ -33,6 +33,15 @@ header {
     padding: 15px, 0;
 }
 
+.error_message {
+    color: #FF0000;
+    font-size: 12px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
 .button {
     font-size: 20px;
 }
