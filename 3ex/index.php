@@ -2,9 +2,9 @@
 header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    /*if (!empty($_GET['save'])) {
+    if (!empty($_GET['save'])) {
         echo "<script type='text/javascript'>alert('Спасибо, результаты сохранены.');</script>";
-    }*/
+    }
     include('form.php');
     exit();
 }
@@ -76,5 +76,4 @@ catch(PDOException $e){
   exit();
 }
 
-include('form.php');
-exit();
+header('Location: ?save=1');
