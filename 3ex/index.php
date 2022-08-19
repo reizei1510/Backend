@@ -66,14 +66,10 @@ try {
   $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
   /*$usr_id = $db->lastInsertId();
   $pwr = $db->prepare("INSERT INTO powers SET usr_id = ?, superpowers = ?");
-  $pwr -> execute(array($usr_id, $superpowers));*/
+  $pwr -> execute(array($usr_id, $superpowers));
 }
 catch(PDOException $e){
   print('Error : ' . $e->getMessage());
-  exit();
-}
-catch(PDOException $e){
-  echo "<script type='text/javascript'>alert('Error: ' + $e->getMessage());</script>";
   exit();
 }
 
