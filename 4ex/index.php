@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $values['limbs'] = empty($_COOKIE['limbs_value']) ? '' : $_COOKIE['limbs_value'];
     $values['superpowers'] = empty($_COOKIE['superpowers_value']) ? '' : explode(', ', $_COOKIE['superpowers_value']);
     $values['biography'] = empty($_COOKIE['biography_value']) ? '' : $_COOKIE['biography_value'];
-    $values['contract'] = empty($_COOKIE['contract_error']) ? '' : $_COOKIE['contract_value'];
+    $values['contract'] = empty($_COOKIE['contract_value']) ? '' : $_COOKIE['contract_value'];
     
     include('form.php');
 }
