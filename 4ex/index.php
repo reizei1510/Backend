@@ -34,11 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 else {
     if (empty($_POST['name'])) {
-        setcookie('name_error', 'empty');
+        setcookie('name_error', 'empty', 0);
         $errors = TRUE;
     }
     else if (!preg_match("/^[A-Z][a-z]+$/", $_POST['name'])){
-        setcookie('name_error', 'incorrect');
+        setcookie('name_error', 'incorrect', 0);
         $errors = TRUE;
     }
     else {
@@ -47,11 +47,11 @@ else {
     }
     
     if (empty($_POST['email'])) {
-        setcookie('email_error', 'empty');
+        setcookie('email_error', 'empty', 0);
         $errors = TRUE;
       }
     else if (!preg_match("/^[A-Za-z0-9][A-Za-z0-9_\-.]+@[A-Za-z0-9][A-Za-z0-9_\-.]+\.[A-Za-z]+$/",$_POST['email'])){
-        setcookie('email_error', 'incorrect');
+        setcookie('email_error', 'incorrect', 0);
         $errors = TRUE;
     } 
     else {
@@ -60,11 +60,11 @@ else {
     }
 
     if (empty($_POST['birthday'])) {
-        setcookie('birthday_error', 'empty');
+        setcookie('birthday_error', 'empty', 0);
         $errors = TRUE;
     }
     else if ($_POST['birthday'] > date('Y-m-d')) {
-        setcookie('birthday_error', 'incorrect');
+        setcookie('birthday_error', 'incorrect', 0);
         $errors = TRUE;
     }
     else {
@@ -73,7 +73,7 @@ else {
     }
 
     if (empty($_POST['gender'])) {
-        setcookie('gender_error', 'empty');
+        setcookie('gender_error', 'empty', 0);
         $errors = TRUE;
     }
     else {
@@ -82,7 +82,7 @@ else {
     }
 
     if (empty($_POST['limbs'])) {
-        setcookie('limbs_error', 'empty');
+        setcookie('limbs_error', 'empty', 0);
         $errors = TRUE;
     }
     else {
@@ -91,7 +91,7 @@ else {
     }
     
     if (empty($_POST['superpowers'])) {
-        setcookie('superpowers_error', 'empty');
+        setcookie('superpowers_error', 'empty', 0);
         $errors = TRUE;
     }
     else {
@@ -100,7 +100,7 @@ else {
     }
     
     if (empty($_POST['biography'])) {
-        setcookie('biography_error', 'empty');
+        setcookie('biography_error', 'empty', 0);
         $errors = TRUE;
     }
     else {
@@ -109,7 +109,7 @@ else {
     }      
     
     if (empty($_POST['contract'])) {
-        setcookie('contract_error', 'empty');
+        setcookie('contract_error', 'empty', 0);
         $errors = TRUE;
     }
     else {
