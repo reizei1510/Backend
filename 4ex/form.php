@@ -45,7 +45,7 @@
                     <input name="birthday" type="date" <?php if ($errors['birthday']) { print 'class="error"'; } ?> value="<?php print $values['birthday']; ?>" /><br>
 		    <div class="error_message <?php if (!$errors['birthday']) { print 'hidden'; } ?>">
 		        <?php if ($errors['birthday'] == 'empty') { print 'Введите дату рождения.'; }
-			      else { print 'Дата рождения не может быть позже ' && print date('Y-m-d'); } ?>
+			      else { (print 'Дата рождения не может быть позже ') && (print date('Y-m-d')); } ?>
 		    </div>
                 </label>
 	    </div><br>
