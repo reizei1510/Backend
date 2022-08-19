@@ -99,7 +99,7 @@
 	    <div class="point">
                 <label>
                     Биография:<font color="red">*</font><br />
-                    <textarea name="biography"></textarea>
+                    <textarea name="biography" <?php if ($errors['biography']) { print 'class="error"'; } ?>><?php print $values['biography']; ?></textarea>
                 </label><br />
 		<div class="error_message <?php if (!$errors['biography']) { print 'hidden'; } ?>">
 		    Расскажите о себе.
@@ -108,7 +108,7 @@
 		
 	    <div class="point">
                 <label>
-                    <input type="checkbox" name="contract" />С контрактом ознакомлен(а)<font color="red">*</font>
+                    <input type="checkbox" name="contract" <?php if ($errors['biography']) { print 'class="error"'; } ?> />С контрактом ознакомлен(а)<font color="red">*</font>
                 </label><br />
 		<div class="error_message <?php if (!$errors['contract']) { print 'hidden'; } ?>">
 		    Примите соглашение.
@@ -117,7 +117,7 @@
 		
 	    <div class="point">
                 <input class="button" type="submit" value="Отправить" /><br />
-		<div class="error_message <?php if (!$errors['save']) { print 'hidden'; } ?>">
+		<div class="error_message <?php if ($values['contract']) { print "checked='checked'"; } ?>">
 		    Ошибка сохранения, попробуйте ещё раз.
 		</div>
 	    </div>
