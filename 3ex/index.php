@@ -5,38 +5,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!empty($_GET['save'])) {
         echo "<script type='text/javascript'>alert('Спасибо, результаты сохранены.');</script>";
     }
-    //include('form.php');
-    //exit();
-    header('Location: /');
+    include('form.php');
+    exit();
 }
 
 if (empty($_POST['name'])) {
     echo "<script type='text/javascript'>alert('Введите имя.');</script>";
-    header('Location: /');
+    include('form.php');
+    exit();
 }
 else if (empty($_POST['email'])) {
     echo "<script type='text/javascript'>alert('Введите email.');</script>";
-    header('Location: /');
+    include('form.php');
+    exit();
 }
 else if (empty($_POST['birthday'])) {
     echo "<script type='text/javascript'>alert('Введите дату рождения.');</script>";
-    header('Location: /');
+    include('form.php');
+    exit();
 }
 else if (empty($_POST['gender'])) {
     echo "<script type='text/javascript'>alert('Выберите пол.');</script>";
-    header('Location: /');
+    include('form.php');
+    exit();
 }
 else if (empty($_POST['limbs'])) {
     echo "<script type='text/javascript'>alert('Выберите количество конечностей.');</script>";
-    header('Location: /');
+    include('form.php');
+    exit();
 }
 else if (empty($_POST['biography'])) {
     echo "<script type='text/javascript'>alert('Расскажаите о себе.');</script>";
-    header('Location: /');
+    include('form.php');
+    exit();
 }
 else if (empty($_POST['contract'])) {
     echo "<script type='text/javascript'>alert('Ознакомьтесь с контрактом.');</script>";
-    header('Location: /');
+    include('form.php');
+    exit();
 }
 
 $name = $_POST['name'];
