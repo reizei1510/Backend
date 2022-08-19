@@ -19,28 +19,13 @@ else if (empty($_POST['email'])) {
     include('form.php');
     exit();
 }
-else if (empty($_POST['birthday'])) {
-    echo "<script type='text/javascript'>alert('Введите дату рождения.');</script>";
-    include('form.php');
-    exit();
-}
-else if (empty($_POST['gender'])) {
-    echo "<script type='text/javascript'>alert('Выберите пол.');</script>";
-    include('form.php');
-    exit();
-}
-else if (empty($_POST['limbs'])) {
-    echo "<script type='text/javascript'>alert('Выберите количество конечностей.');</script>";
-    include('form.php');
-    exit();
-}
 else if (empty($_POST['biography'])) {
     echo "<script type='text/javascript'>alert('Расскажаите о себе.');</script>";
     include('form.php');
     exit();
 }
 else if (empty($_POST['contract'])) {
-    echo "<script type='text/javascript'>alert('Ознакомьтесь с контрактом.');</script>";
+    echo "<script type='text/javascript'>alert('Примите соглашение.');</script>";
     include('form.php');
     exit();
 }
@@ -52,8 +37,6 @@ $gender = $_POST['gender'];
 $limbs = $_POST['limbs'];
 $superpowers = implode(',',$_POST['superpowers']); // объединить элементы массива в строку
 $biography = $_POST['biography'];
-
-print($name . $email . $birthday . $gender . $limbs . $superpowers . $biography);
 
 /*$user = 'u16346';
 $pass = '34rerfeq5';
