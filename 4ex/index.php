@@ -11,23 +11,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $errors = array();
     $errors['name'] = empty($_COOKIE['name_error']) ? false : $_COOKIE['name_error'];
     $errors['email'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['email_error'];
-    $errors['birthday'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['birthday_error'];
-    $errors['gender'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['gender_error'];
-    $errors['limbs'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['limbs_error'];
-    $errors['biography'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['biography_error'];
-    $errors['superpowers'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['superpowers_error'];
-    $errors['contract'] = empty($_COOKIE['email_error']) ? false : $_COOKIE['contract_error'];
+    $errors['birthday'] = empty($_COOKIE['birthday_error']) ? false : $_COOKIE['birthday_error'];
+    $errors['gender'] = empty($_COOKIE['gender_error']) ? false : $_COOKIE['gender_error'];
+    $errors['limbs'] = empty($_COOKIE['limbs_error']) ? false : $_COOKIE['limbs_error'];
+    $errors['superpowers'] = empty($_COOKIE['superpowers_error']) ? false : $_COOKIE['superpowers_error'];
+    $errors['biography'] = empty($_COOKIE['biography_error']) ? false : $_COOKIE['biography_error'];
+    $errors['contract'] = empty($_COOKIE['contract_error']) ? false : $_COOKIE['contract_error'];
     $errors['save'] = empty($_COOKIE['save_error']) ? false : $_COOKIE['save_error'];
     
     $values = array();
-    $values['name'] = $_COOKIE['name_value'];
-    $values['email'] = $_COOKIE['email_value'];
-    $values['limbs'] = $_COOKIE['limbs_value'];
-    $values['gender'] = $_COOKIE['gender_value'];
-    $values['biography'] = $_COOKIE['biography_value'];
-    $values['birthday'] = $_COOKIE['birthday_value'];
-    $values['superpowers'] = explode(', ', $_COOKIE['superpowers_value']);
-    $values['contract'] = $_COOKIE['contract_value'];
+    $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
+    $values['email'] = empty($_COOKIE['email_value']) ? '' : $_COOKIE['email_value'];
+    $values['birthday'] = empty($_COOKIE['birthday_value']) ? '' : $_COOKIE['birthday_value'];
+    $values['gender'] = empty($_COOKIE['gender_value']) ? '' : $_COOKIE['gender_value'];
+    $values['limbs'] = empty($_COOKIE['limbs_value']) ? '' : $_COOKIE['limbs_value'];
+    $values['superpowers'] = empty($_COOKIE['superpowers_value']) ? '' : explode(', ', $_COOKIE['superpowers_value']);
+    $values['biography'] = empty($_COOKIE['biography_value']) ? '' : $_COOKIE['biography_value'];
+    $values['contract'] = empty($_COOKIE['contract_error']) ? '' : $_COOKIE['contract_value'];
     
     include('form.php');
 }
