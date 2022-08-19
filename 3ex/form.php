@@ -42,7 +42,7 @@
 	    <div class="point">
                 Пол:<br />
                 <label>
-                    <input type="radio" checked="checked" name="gender" value="Male" />Мужской
+                    <input type="radio" name="gender" value="Male" />Мужской
                 </label>
                 <label>
                     <input type="radio" name="gender" value="Female" />Женский
@@ -55,7 +55,7 @@
 	    <div class="point">
                 Количество конечностей:<br />
                 <label>
-                    <input type="radio" checked="checked" name="limbs" value="0" />0
+                    <input type="radio" name="limbs" value="0" />0
                 </label>
                 <label>
                     <input type="radio" name="limbs" value="4" />4
@@ -69,7 +69,6 @@
                 <label>
                     Сверхспособность:<br />
                     <select name="superpowers[]" multiple="multiple">
-                        <option value="none" selected="selected">(нет)</option>
                         <option value="Immortality">Бессмертие</option>
                         <option value="Immateriality">Прохождение сквозь стены</option>
                         <option value="Levitation">Левитация</option>
