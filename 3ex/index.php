@@ -53,27 +53,28 @@ $limbs = $_POST['limbs'];
 $superpowers = implode(',',$_POST['superpowers']); // объединить элементы массива в строку
 $biography = $_POST['biography'];
 
-$user = 'u16346';
+print($name . $email . $birthday . $gender . $limbs . $superpowers . $biography);
+
+/*$user = 'u16346';
 $pass = '34rerfeq5';
 $db = new PDO('mysql:host=localhost;dbname=u16346', $user , $pass, array(PDO::ATTR_PERSISTENT => true));
 // PDO – PHP Data Objects – это прослойка, которая предлагает универсальный способ работы с несколькими базами данных.
 
-// Подготовленный запрос. Именованные метки.
+// Подготовленный запрос. Неименованные метки.
 try {
-    $stmt = $db->prepare("INSERT INTO form (name, email, birthday, gender, limbs, superpowers, biography) VALUES (:name, :email, :bdate, :gender, :limbs, :superpowers, :bio)");
-    $stmt -> execute([
-      'name' => $name,
-      'email' => $email,
-      'birthday' => $birthday,
-      'gender' => $gender,
-      'limbs' => $limbs,
-      'superpowers' => $superpowers,
-      'biography' => $biography]);
-      echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
-  }
+  $stmt = $db->prepare("INSERT INTO form SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
+  $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
+  $superpowers_id = $db->lastInsertId();
+  $superpowers = $db->prepare("INSERT INTO superpowers SET superpowers_id = ?, superpowers = ?");
+  $superpowers -> execute(array($superpowers_id, $superpowers));
+}
+catch(PDOException $e){
+  print('Error : ' . $e->getMessage());
+  exit();
+}
 catch(PDOException $e){
   echo "<script type='text/javascript'>alert('Error: ' + $e->getMessage());</script>";
   exit();
-}
+}*/
 
 header('Location: ?save=1');
