@@ -2,9 +2,9 @@
 header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-    if (!empty($_GET['save'])) {
+    /*if (!empty($_GET['save'])) {
         echo "<script type='text/javascript'>alert('Спасибо, результаты сохранены.');</script>";
-    }
+    }*/
     include('form.php');
     exit();
 }
@@ -69,10 +69,11 @@ try {
       'limbs' => $limbs,
       'superpowers' => $superpowers,
       'biography' => $biography]);
+      echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
   }
 catch(PDOException $e){
   echo "<script type='text/javascript'>alert('Error: ' + $e->getMessage());</script>";
   exit();
 }
 
-header('Location: ?save=1');
+header('Location: /');
