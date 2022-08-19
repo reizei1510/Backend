@@ -9,37 +9,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     exit();
 }
 
-$errors = FALSE;
 if (empty($_POST['name'])) {
     echo "<script type='text/javascript'>alert('Введите имя.');</script>";
-    $errors = TRUE;
+    exit();
 }
 else if (empty($_POST['email'])) {
     echo "<script type='text/javascript'>alert('Введите email.');</script>";
-    $errors = TRUE;
+    exit();
 }
 else if (empty($_POST['birthday'])) {
     echo "<script type='text/javascript'>alert('Введите дату рождения.');</script>";
-    $errors = TRUE;
+    exit();
 }
 else if (empty($_POST['gender'])) {
     echo "<script type='text/javascript'>alert('Выберите пол.');</script>";
-    $errors = TRUE;
+    exit();
 }
 else if (empty($_POST['limbs'])) {
     echo "<script type='text/javascript'>alert('Выберите количество конечностей.');</script>";
-    $errors = TRUE;
+    exit();
 }
 else if (empty($_POST['biography'])) {
     echo "<script type='text/javascript'>alert('Расскажаите о себе.');</script>";
-    $errors = TRUE;
+    exit();
 }
 else if (empty($_POST['contract'])) {
     echo "<script type='text/javascript'>alert('Ознакомьтесь с контрактом.');</script>";
-    $errors = TRUE;
-}
-
-if ($errors) {
     exit();
 }
 
