@@ -85,7 +85,7 @@
 	    <div class="point">
                 <label>
                     Сверхспособность:<font color="red">*</font><br />
-                    <select name="superpowers[]" multiple="multiple">
+                    <select name="superpowers[]" multiple="multiple" <?php if ($errors['superpowers']) { print 'class="error"'; } ?> >
                         <option value="Immortality" <?php if (in_array("Immortality", $values['superpowers'])) { print "selected='selected'";} ?>>Бессмертие</option>
                         <option value="Immateriality" <?php if (in_array("Immateriality", $values['superpowers'])) { print "selected='selected'";} ?>>Прохождение сквозь стены</option>
                         <option value="Levitation" <?php if (in_array("Levitation", $values['superpowers'])) { print "selected='selected'";} ?>>Левитация</option>
