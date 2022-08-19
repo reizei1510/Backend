@@ -53,13 +53,13 @@
 	    <div class="point">
                 Пол:<font color="red">*</font><br />
                 <label>
-                    <input type="radio" name="gender" value="Male" />Мужской
+                    <input type="radio" name="gender" value="Male" <?php if($values['gender'] == "Male"){ print "checked='checked'"; } ?> />Мужской
                 </label>
                 <label>
-                    <input type="radio" name="gender" value="Female" />Женский
+                    <input type="radio" name="gender" value="Female" <?php if($values['gender'] == "Female"){ print "checked='checked'"; } ?> />Женский
                 </label>
                 <label>
-                    <input type="radio" name="gender" value="other" />Другое
+                    <input type="radio" name="gender" value="other" <?php if($values['gender'] == "other"){ print "checked='checked'"; } ?> />Другое
                 </label><br />
 		<div class="error_message <?php if (!$errors['gender']) { print 'hidden'; } ?>">
 		    Выберите пол.
@@ -69,13 +69,13 @@
 	    <div class="point">
                 Количество конечностей:<font color="red">*</font><br />
                 <label>
-                    <input type="radio" name="limbs" value="2" />2
+                    <input type="radio" name="limbs" value="2" <?php if($values['limbs'] == "2"){ print "checked='checked'"; } ?> />2
                 </label>
                 <label>
-                    <input type="radio" name="limbs" value="4" />4
+                    <input type="radio" name="limbs" value="4" <?php if($values['limbs'] == "4"){ print "checked='checked'"; } ?> />4
                 </label>
                 <label>
-                    <input type="radio" name="limbs" value="other" />Другое
+                    <input type="radio" name="limbs" value="other" <?php if($values['limbs'] == "other"){ print "checked='checked'"; } ?> />Другое
                 </label><br />
 		<div class="error_message <?php if (!$errors['limbs']) { print 'hidden'; } ?>">
 		    Выберите количество конечностей.
@@ -86,9 +86,9 @@
                 <label>
                     Сверхспособность:<font color="red">*</font><br />
                     <select name="superpowers[]" multiple="multiple">
-                        <option value="Immortality">Бессмертие</option>
-                        <option value="Immateriality">Прохождение сквозь стены</option>
-                        <option value="Levitation">Левитация</option>
+                        <option value="Immortality" <?php if (in_array("Immortality", $values['superpowers'])) { print "selected='selected'";} ?>>Бессмертие</option>
+                        <option value="Immateriality" <?php if (in_array("Immateriality", $values['superpowers'])) { print "selected='selected'";} ?>>Прохождение сквозь стены</option>
+                        <option value="Levitation" <?php if (in_array("Levitation", $values['superpowers'])) { print "selected='selected'";} ?>>Левитация</option>
                     </select>
                 </label><br />
 		<div class="error_message <?php if (!$errors['superpowers']) { print 'hidden'; } ?>">
