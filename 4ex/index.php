@@ -42,7 +42,7 @@ else {
     }
     else {
         setcookie('name_value', $_POST['name'], time() + 30 * 24 * 60 * 60);
-        if (!empty($_COOKIE['name_error']) setcookie('name_error', '', 100000);
+        //if (!empty($_COOKIE['name_error']) setcookie('name_error', '', 100000);
     }
     
     if (empty($_POST['email'])) {
@@ -55,7 +55,7 @@ else {
     } 
     else {
         setcookie('email_value', $_POST['email'], time() + 30 * 24 * 60 * 60);
-        if (!empty($_COOKIE['email_error']) setcookie('email_error', '', 100000);
+        //if (!empty($_COOKIE['email_error']) setcookie('email_error', '', 100000);
     }
 
     if (empty($_POST['birthday'])) {
@@ -68,7 +68,7 @@ else {
     }
     else {
         setcookie('birthday_value', $_POST['birthday'], time() + 30 * 24 * 60 * 60);
-        if (!empty($_COOKIE['birthday_error']) setcookie('birthday_error', '', 100000);
+       // if (!empty($_COOKIE['birthday_error']) setcookie('birthday_error', '', 100000);
     }
 
     if (empty($_POST['gender'])) {
@@ -77,7 +77,7 @@ else {
     }
     else {
         setcookie('gender_value', $_POST['gender'], time() + 30 * 24 * 60 * 60);
-        if (!empty($_COOKIE['gender_error']) setcookie('gender_error', '', 100000);
+        //if (!empty($_COOKIE['gender_error']) setcookie('gender_error', '', 100000);
     }
 
     if (empty($_POST['limbs'])) {
@@ -86,7 +86,7 @@ else {
     }
     else {
         setcookie('limbs_value', $_POST['limbs'], time() + 30 * 24 * 60 * 60);
-        if (!empty($_COOKIE['limbs_error']) setcookie('limbs_error', '', 100000);
+       // if (!empty($_COOKIE['limbs_error']) setcookie('limbs_error', '', 100000);
     }
     
     if (empty($_POST['superpowers'])) {
@@ -95,7 +95,7 @@ else {
     }
     else {
         setcookie('superpowers_value', implode(', ', $_POST['superpowers']), time() + 30 * 24 * 60 * 60);
-        if (!empty($_COOKIE['superpowers_error']) setcookie('superpowers_error', '', 100000);
+        //if (!empty($_COOKIE['superpowers_error']) setcookie('superpowers_error', '', 100000);
     }
     
     if (empty($_POST['biography'])) {
@@ -104,7 +104,7 @@ else {
     }
     else {
         setcookie('biography_value', $_POST['biography'], time() + 30 * 24 * 60 * 60);
-        if (!empty($_COOKIE['biography_error']) setcookie('biography_error', '', 100000);
+       // if (!empty($_COOKIE['biography_error']) setcookie('biography_error', '', 100000);
     }      
     
     if (empty($_POST['contract'])) {
@@ -113,7 +113,7 @@ else {
     }
     else {
         setcookie('contract_value', $_POST['contract'], time() + 30 * 24 * 60 * 60);
-        if (!empty($_COOKIE['contract_error']) setcookie('contract_error', '', 100000);
+       // if (!empty($_COOKIE['contract_error']) setcookie('contract_error', '', 100000);
     }
     
     if ($errors) {
