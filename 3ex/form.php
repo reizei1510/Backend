@@ -55,7 +55,7 @@
 	    <div class="point">
                 Количество конечностей:<br />
                 <label>
-                    <input type="radio" name="limbs" value="0" />0
+                    <input type="radio" name="limbs" value="2" />2
                 </label>
                 <label>
                     <input type="radio" name="limbs" value="4" />4
