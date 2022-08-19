@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     if (!empty($_GET['save'])) {
-        print('Спасибо, результаты сохранены.');
+        echo "<script type='text/javascript'>alert('Спасибо, результаты сохранены.');</script>";
     }
     include('form.php');
     exit();
@@ -69,7 +69,7 @@ try {
       'biography' => $biography]);
   }
 catch(PDOException $e){
-  print('Error : ' . $e->getMessage());
+  echo "<script type='text/javascript'>alert('Error: ' + $e->getMessage());</script>";
   exit();
 }
 
