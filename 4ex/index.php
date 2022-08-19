@@ -3,7 +3,7 @@ header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
-    if (!empty($_GET['save'])) {
+    if (!empty($_COOKIE['save'])) {
         echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
         setcookie('save_error', '', 1000000);
     }
@@ -19,6 +19,53 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $errors['contract'] = empty($_COOKIE['contract_error']) ? false : $_COOKIE['contract_error'];
     $errors['save'] = empty($_COOKIE['save_error']) ? false : $_COOKIE['save_error'];
     
+    $messages = array();
+    if ($errors['name']) {
+        setcookie('name_error', '', 100000);
+        $messages['name'] = $errors['name'] == 'empty' ? 'Введите имя.' : 'Имя должно начинаться с заглавной буквы<br>и может содержать только латинские буквы.';
+    }
+    else $messages['name'] = '';
+    if ($errors['email']) {
+        setcookie('email_error', '', 100000);
+        $messages['email'] = $errors['email'] == 'empty' ? 'Введите email.' : 'email должен иметь вид email@example.com.';
+    }
+    else $messages['date'] = '';
+    if ($errors['birthday']) {
+        setcookie('birthday_error', '', 100000);
+        $messages['birthday'] = $errors['birthday'] == 'empty' ? 'Введите дату рождения.' : 'Дата рождения не может быть позже ' && print date('Y-m-d');
+    }
+    else $messages['birthday'] = '';
+    if ($errors['gender']) {
+        setcookie('gender_error', '', 100000);
+        $messages['gender'] = 'Выберите пол.';
+    }
+    else $messages['gender'] = '';
+    if ($errors['limbs']) {
+        setcookie('limbs_error', '', 100000);
+        $messages['limbs'] = 'Выберите количество конечностей.';
+    }
+    else $messages['limbs'] = '';
+    if ($errors['superpowers']) {
+        setcookie('superpowers_error', '', 100000);
+        $messages['superpowers'] = 'Выберите хотя бы одну сверхспособность.';
+    }
+    else $messages['superpowers'] = '';
+    if ($errors['biography']) {
+        setcookie('biography_error', '', 100000);
+        $messages['biography'] = 'Расскажите о себе.';
+    }
+    else $messages['biography'] = '';
+    if ($errors['contract']) {
+        setcookie('contract_error', '', 100000);
+        $messages['contract'] = 'Примите соглашение.';
+    }
+    else $messages['contract'] = '';
+    if ($errors['save']) {
+        setcookie('save_error', '', 100000);
+        $messages['save'] = 'Ошибка сохранения, попробуйте ещё раз.';
+    }
+    else $messages['save'] = '';
+    
     $values = array();
     $values['name'] = empty($_COOKIE['name_value']) ? '' : $_COOKIE['name_value'];
     $values['email'] = empty($_COOKIE['email_value']) ? '' : $_COOKIE['email_value'];
@@ -33,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 }
 
 else {
+    $errors = FALSE;
     if (empty($_POST['name'])) {
         setcookie('name_error', 'empty', time() + 24 * 60 *60);
         $errors = TRUE;
@@ -43,7 +91,6 @@ else {
     }
     else {
         setcookie('name_value', $_POST['name'], time() + 365 * 24 * 60 * 60);
-        setcookie('name_error', '', 100000);
     }
     
     if (empty($_POST['email'])) {
@@ -56,7 +103,6 @@ else {
     } 
     else {
         setcookie('email_value', $_POST['email'], time() + 365 * 24 * 60 * 60);
-        setcookie('email_error', '', 100000);
     }
 
     if (empty($_POST['birthday'])) {
@@ -69,7 +115,6 @@ else {
     }
     else {
         setcookie('birthday_value', $_POST['birthday'], time() + 365 * 24 * 60 * 60);
-        setcookie('birthday_error', '', 100000);
     }
 
     if (empty($_POST['gender'])) {
@@ -78,7 +123,6 @@ else {
     }
     else {
         setcookie('gender_value', $_POST['gender'], time() + 365 * 24 * 60 * 60);
-        setcookie('gender_error', '', 100000);
     }
 
     if (empty($_POST['limbs'])) {
@@ -87,7 +131,6 @@ else {
     }
     else {
         setcookie('limbs_value', $_POST['limbs'], time() + 365 * 24 * 60 * 60);
-        setcookie('limbs_error', '', 100000);
     }
     
     if (empty($_POST['superpowers'])) {
@@ -96,7 +139,6 @@ else {
     }
     else {
         setcookie('superpowers_value', implode(', ', $_POST['superpowers']), time() + 365 * 24 * 60 * 60);
-        setcookie('superpowers_error', '', 100000);
     }
     
     if (empty($_POST['biography'])) {
@@ -105,7 +147,6 @@ else {
     }
     else {
         setcookie('biography_value', $_POST['biography'], time() + 365 * 24 * 60 * 60);
-        setcookie('biography_error', '', 100000);
     }      
     
     if (empty($_POST['contract'])) {
@@ -114,7 +155,6 @@ else {
     }
     else {
         setcookie('contract_value', $_POST['contract'], time() + 365 * 24 * 60 * 60);
-        setcookie('contract_error', '', 100000);
     }
     
     if ($errors) {
@@ -147,5 +187,6 @@ else {
         exit();
     }
     
-    header('Location: ?save=1');
+    setcookie('save', '1');
+    header('Location: index.php');
 }
