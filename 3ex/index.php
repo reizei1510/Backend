@@ -53,7 +53,7 @@ $limbs = $_POST['limbs'];
 $superpowers = implode(',',$_POST['superpowers']); // объединить элементы массива в строку
 $biography = $_POST['biography'];
 
-print($name);
+print($name . $email . $birthday . $gender . $limbs . $superpower . $biography);
 
 /*$user = 'u16346';
 $pass = '34rerfeq5';
