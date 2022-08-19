@@ -19,8 +19,7 @@ else if (empty($_POST['email'])) {
     include('form.php');
     exit();
 }
-
-/*if (empty($_POST['gender'])) {
+if (empty($_POST['gender'])) {
     echo "<script type='text/javascript'>alert('Выберите пол.');</script>";
     include('form.php');
     exit();
@@ -29,8 +28,12 @@ if (empty($_POST['limbs'])) {
     echo "<script type='text/javascript'>alert('Выберите количество конечностей.');</script>";
     include('form.php');
     exit();
-}*/
-
+}
+if (empty($_POST['superpowers'])) {
+    echo "<script type='text/javascript'>alert('Выберите суперспособности.');</script>";
+    include('form.php');
+    exit();
+}
 else if (empty($_POST['biography'])) {
     echo "<script type='text/javascript'>alert('Расскажите о себе.');</script>";
     include('form.php');
