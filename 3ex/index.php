@@ -50,7 +50,9 @@ $email = $_POST['email'];
 $birthday = $_POST['birthday'];
 $gender = $_POST['gender'];
 $limbs = $_POST['limbs'];
-$superpowers = implode(',',$_POST['superpowers']); // объединить элементы массива в строку
+if (is_array($_POST['superpowers']))
+    $superpowers = implode(',',$_POST['superpowers']); // объединить элементы массива в строку
+else $superpowers = '';
 $biography = $_POST['biography'];
 
 print($name);
