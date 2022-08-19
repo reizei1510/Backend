@@ -36,12 +36,10 @@ else {
     if (empty($_POST['name'])) {
         setcookie('name_error', 'empty');
         $errors = TRUE;
-        setcookie('name_value', $_POST['name'], 0);
     }
     else if (!preg_match("/^[A-Z][a-z]+$/", $_POST['name'])){
         setcookie('name_error', 'incorrect');
         $errors = TRUE;
-        setcookie('name_value', $_POST['name'], 0);
     }
     else {
         setcookie('name_value', $_POST['name'], time() + 365 * 24 * 60 * 60);
@@ -51,12 +49,10 @@ else {
     if (empty($_POST['email'])) {
         setcookie('email_error', 'empty');
         $errors = TRUE;
-        setcookie('email_value', $_POST['email'], 0);
       }
     else if (!preg_match("/^[A-Za-z0-9][A-Za-z0-9_\-.]+@[A-Za-z0-9][A-Za-z0-9_\-.]+\.[A-Za-z]+$/",$_POST['email'])){
         setcookie('email_error', 'incorrect');
         $errors = TRUE;
-        setcookie('email_value', $_POST['email'], 0);
     } 
     else {
         setcookie('email_value', $_POST['email'], time() + 365 * 24 * 60 * 60);
@@ -66,12 +62,10 @@ else {
     if (empty($_POST['birthday'])) {
         setcookie('birthday_error', 'empty');
         $errors = TRUE;
-        setcookie('birthday_value', $_POST['birthday'], 0);
     }
     else if ($_POST['birthday'] > date('Y-m-d')) {
         setcookie('birthday_error', 'incorrect');
         $errors = TRUE;
-        setcookie('birthday_value', $_POST['birthday'], 0);
     }
     else {
         setcookie('birthday_value', $_POST['birthday'], time() + 365 * 24 * 60 * 60);
@@ -81,7 +75,6 @@ else {
     if (empty($_POST['gender'])) {
         setcookie('gender_error', 'empty');
         $errors = TRUE;
-        setcookie('gender_value', $_POST['gender'], 0);
     }
     else {
         setcookie('gender_value', $_POST['gender'], time() + 365 * 24 * 60 * 60);
@@ -91,7 +84,6 @@ else {
     if (empty($_POST['limbs'])) {
         setcookie('limbs_error', 'empty');
         $errors = TRUE;
-        setcookie('limbs_value', $_POST['limbs'], 0);
     }
     else {
         setcookie('limbs_value', $_POST['limbs'], time() + 365 * 24 * 60 * 60);
@@ -101,7 +93,6 @@ else {
     if (empty($_POST['superpowers'])) {
         setcookie('superpowers_error', 'empty');
         $errors = TRUE;
-        setcookie('superpowers_value', $_POST['superpowers'], 0);
     }
     else {
         setcookie('superpowers_value', implode(', ', $_POST['superpowers']), time() + 365 * 24 * 60 * 60);
@@ -111,7 +102,6 @@ else {
     if (empty($_POST['biography'])) {
         setcookie('biography_error', 'empty');
         $errors = TRUE;
-        setcookie('biography_value', $_POST['biography'], 0);
     }
     else {
         setcookie('biography_value', $_POST['biography'], time() + 365 * 24 * 60 * 60);
@@ -121,7 +111,6 @@ else {
     if (empty($_POST['contract'])) {
         setcookie('contract_error', 'empty');
         $errors = TRUE;
-        setcookie('contract_value', $_POST['contract'], 0);
     }
     else {
         setcookie('contract_value', $_POST['contract'], time() + 365 * 24 * 60 * 60);
