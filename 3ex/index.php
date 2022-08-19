@@ -76,4 +76,5 @@ catch(PDOException $e){
   exit();
 }
 
-header('Location: /');
+include('form.php');
+exit();
