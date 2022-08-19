@@ -19,39 +19,39 @@
 		
 	    <div class="point">
                 <label>
-                    Имя:<font color="red">*</font><br />
-                    <input name="name" <?php if ($errors['name']) { print 'class="error"'; } ?> value="<?php print $values['name']; ?>" /><br />
+                    Имя:<font color="red">*</font><br>
+                    <input name="name" <?php if ($errors['name']) { print 'class="error"'; } ?> value="<?php print $values['name']; ?>" /><br>
 		    <div class="error_message <?php if (!$errors['name']) { print 'hidden'; } ?>">
 		        <?php if ($errors['name'] == 'empty') { print 'Введите имя.'; }
-			      else { print 'Имя должно начинаться с заглавной буквы и может содержать только латинские буквы.'; } ?>
+			      else { print 'Имя должно начинаться с заглавной буквы<br>и может содержать только латинские буквы.'; } ?>
 		    </div>
             	</label>
-	    </div><br />
+	    </div><br>
 		
 	    <div class="point">
                 <label>
-                    e-mail:<font color="red">*</font><br />
-                    <input name="email" <?php if ($errors['email']) { print 'class="error"'; } ?> value="<?php print $values['email']; ?>" /><br />
+                    e-mail:<font color="red">*</font><br>
+                    <input name="email" <?php if ($errors['email']) { print 'class="error"'; } ?> value="<?php print $values['email']; ?>" /><br>
 		    <div class="error_message <?php if (!$errors['email']) { print 'hidden'; } ?>">
 		        <?php if ($errors['email'] == 'empty') { print 'Введите email.'; }
 			      else { print 'email должен иметь вид email@example.com'; } ?>
 		    </div>
                 </label>
-	    </div><br />
+	    </div><br>
 		
 	    <div class="point">
                 <label>
-                    Дата рождения:<font color="red">*</font><br />
-                    <input name="birthday" type="date" <?php if ($errors['birthday']) { print 'class="error"'; } ?> value="<?php print $values['birthday']; ?>" /><br />
+                    Дата рождения:<font color="red">*</font><br>
+                    <input name="birthday" type="date" <?php if ($errors['birthday']) { print 'class="error"'; } ?> value="<?php print $values['birthday']; ?>" /><br>
 		    <div class="error_message <?php if (!$errors['birthday']) { print 'hidden'; } ?>">
 		        <?php if ($errors['birthday'] == 'empty') { print 'Введите дату рождения.'; }
 			      else { print 'Дата рождения не может быть позже ' && print date('Y-m-d'); } ?>
 		    </div>
                 </label>
-	    </div><br />
+	    </div><br>
 	    
 	    <div class="point">
-                Пол:<font color="red">*</font><br />
+                Пол:<font color="red">*</font><br>
                 <label>
                     <input type="radio" name="gender" value="Male" <?php if($values['gender'] == "Male"){ print "checked='checked'"; } ?> />Мужской
                 </label>
@@ -60,14 +60,14 @@
                 </label>
                 <label>
                     <input type="radio" name="gender" value="other" <?php if($values['gender'] == "other"){ print "checked='checked'"; } ?> />Другое
-                </label><br />
+                </label><br>
 		<div class="error_message <?php if (!$errors['gender']) { print 'hidden'; } ?>">
 		    Выберите пол.
 		</div>
-	    </div><br />
+	    </div><br>
 		
 	    <div class="point">
-                Количество конечностей:<font color="red">*</font><br />
+                Количество конечностей:<font color="red">*</font><br>
                 <label>
                     <input type="radio" name="limbs" value="2" <?php if($values['limbs'] == "2"){ print "checked='checked'"; } ?> />2
                 </label>
@@ -76,47 +76,47 @@
                 </label>
                 <label>
                     <input type="radio" name="limbs" value="other" <?php if($values['limbs'] == "other"){ print "checked='checked'"; } ?> />Другое
-                </label><br />
+                </label><br>
 		<div class="error_message <?php if (!$errors['limbs']) { print 'hidden'; } ?>">
 		    Выберите количество конечностей.
 		</div>
-	    </div><br />
+	    </div><br>
       
 	    <div class="point">
                 <label>
-                    Сверхспособность:<font color="red">*</font><br />
+                    Сверхспособность:<font color="red">*</font><br>
                     <select name="superpowers[]" multiple="multiple" <?php if ($errors['superpowers']) { print 'class="error"'; } ?> >
                         <option value="Immortality" <?php if (in_array("Immortality", $values['superpowers'])) { print "selected='selected'";} ?>>Бессмертие</option>
                         <option value="Immateriality" <?php if (in_array("Immateriality", $values['superpowers'])) { print "selected='selected'";} ?>>Прохождение сквозь стены</option>
                         <option value="Levitation" <?php if (in_array("Levitation", $values['superpowers'])) { print "selected='selected'";} ?>>Левитация</option>
                     </select>
-                </label><br />
+                </label><br>
 		<div class="error_message <?php if (!$errors['superpowers']) { print 'hidden'; } ?>">
 		    Выберите хотя бы одну сверхспособность.
 		</div>
-	    </div><br />
+	    </div><br>
 		
 	    <div class="point">
                 <label>
-                    Биография:<font color="red">*</font><br />
+                    Биография:<font color="red">*</font><br>
                     <textarea name="biography" <?php if ($errors['biography']) { print 'class="error"'; } ?>><?php print $values['biography']; ?></textarea>
-                </label><br />
+                </label><br>
 		<div class="error_message <?php if (!$errors['biography']) { print 'hidden'; } ?>">
 		    Расскажите о себе.
 		</div>
-	    </div><br />
+	    </div><br>
 		
 	    <div class="point">
                 <label>
                     <input type="checkbox" name="contract" <?php if ($values['contract']) { print "checked='checked'"; } ?> />С контрактом ознакомлен(а)<font color="red">*</font>
-                </label><br />
+                </label><br>
 		<div class="error_message <?php if (!$errors['contract']) { print 'hidden'; } ?>">
 		    Примите соглашение.
 		</div>
-	    </div><br />
+	    </div><br>
 		
 	    <div class="point">
-                <input class="button" type="submit" value="Отправить" /><br />
+                <input class="button" type="submit" value="Отправить" /><br>
 		<div class="error_message <?php if (!$errors['save']) { print 'hidden'; } ?>">
 		    Ошибка сохранения, попробуйте ещё раз.
 		</div>
