@@ -53,7 +53,9 @@ $limbs = $_POST['limbs'];
 $superpowers = implode(',',$_POST['superpowers']); // объединить элементы массива в строку
 $biography = $_POST['biography'];
 
-$user = 'u16346';
+print($name . $email . $birthday . $gender . $limbs . $superpowers . $biography);
+
+/*$user = 'u16346';
 $pass = '34rerfeq5';
 $db = new PDO('mysql:host=localhost;dbname=u16346', $user , $pass, array(PDO::ATTR_PERSISTENT => true));
 // PDO – PHP Data Objects – это прослойка, которая предлагает универсальный способ работы с несколькими базами данных.
@@ -75,4 +77,4 @@ catch(PDOException $e){
   exit();
 }
 
-header('Location: ?save=1');
+header('Location: ?save=1');*/
