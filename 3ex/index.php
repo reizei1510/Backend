@@ -75,6 +75,6 @@ catch(PDOException $e){
 catch(PDOException $e){
   echo "<script type='text/javascript'>alert('Error: ' + $e->getMessage());</script>";
   exit();
-}*/
+}
 
-header('Location: ?save=1');
+header('Location: ?save=1');*/
