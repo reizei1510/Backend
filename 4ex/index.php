@@ -36,7 +36,7 @@ else {
         setcookie('name_error', 'empty');
         $errors = TRUE;
     }
-    else if (!preg_match("/^[A-ZА-яё][а-яёa-z-]+[а-яёa-z]$/u", $_POST['name'])){
+    else if (!preg_match("/[a-z\s]|[а-яё\s]/i", $_POST['name'])){
         setcookie('name_error', 'incorrect');
         $errors = TRUE;
     }
