@@ -22,7 +22,7 @@
  
     <div class="content">
 	    
-	<div class="data_message"><?php print $messages['data']; ?></div><br>
+	<div class="point data_message"><?php print $messages['data']; ?></div><br>
 	    
         <form action="" method="POST">
 		
