@@ -19,6 +19,8 @@
 	    <?php } ?>
         </div>
     </div>
+	
+    <div class="data_message"><?php print $messages['data']; ?></div><br>
  
     <div class="content">
 	    
@@ -90,9 +92,7 @@
                 <input class="button" type="submit" value="Отправить" /><br>
 		<div class="error_message"><?php print $messages['save']; ?></div><br>
 	
-	    </form>    
-		
-	<div class="data_message"><?php print $messages['data']; ?></div><br>
+	    </form>
         
     </div>
  
