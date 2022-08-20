@@ -6,11 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Задание 4</title>
+    <title>Задание 5</title>
 </head>
 <body>
     <header>
-        <div class="head">Задание 4</div>
+        <div class="head_left">Задание 5</div>
+    	<div class="head_right">
+	    <?php if (empty($_SESSION['login'])) { ?>
+		<a href="login.php" >Войти</a>
+            <?php } else { ?>
+		<a href="login.php" >Выйти</a>
+	    <?php } ?>
+	</div>
     </header>
  
     <div class="content">
