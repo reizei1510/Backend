@@ -22,10 +22,6 @@
  
     <div class="content">
 	    
-	<div class="point data_message"><?php print $messages['data']; ?></div><br>
-	
-	<div class="point">
-		
             <form action="" method="POST">
 	    
                 <label>
@@ -92,11 +88,11 @@
 		<div class="error_message"><?php print $messages['contract']; ?></div><br>
 		
                 <input class="button" type="submit" value="Отправить" /><br>
-		<div class="error_message"><?php print $messages['save']; ?></div>
+		<div class="error_message"><?php print $messages['save']; ?></div><br>
 	
 	    </form>    
 		
-	</div>
+	<div class="data_message"><?php print $messages['data']; ?></div><br>
         
     </div>
  
