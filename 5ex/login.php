@@ -87,21 +87,20 @@ else {
     $db_pass = '34rerfeq5';
     $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
-    $checkData = $db->prepare("SELECT * from users5 WHERE usr_login = ?");
-    $checkData->execute([$_POST['usr_login']])
+    $checkData = $db->prepare("SELECT * from users5 WHERE usr_login = $usr_login");
     $user = $checkData->fetch(PDO::FETCH_ASSOC);
     if (empty($user)) {
         setcookie('login_error', 'incorrect', time() + 24 * 60 * 60);
         header('Location: login.php');
         exit();
     }
-    if ($user['usr_pass'] != $_POST['usr_pass']) {
+    if ($user['usr_pass'] != $usr_pass) {
         setcookie('pass_error', 'incorrect', time() + 24 * 60 * 60);
         header('Location: login.php');
         exit();
     }
   
-    $_SESSION['login'] = $_POST['usr_login'];
+    $_SESSION['login'] = $usr_login;
     $_SESSION['uid'] = $user['id'];
 
     header('Location: index.php');
