@@ -235,8 +235,8 @@ else {
             $usr_id = $db->lastInsertId();
             $stmt = $db->prepare("INSERT INTO powers5 SET usr_id = ?, superpowers = ?");
             $stmt -> execute(array($usr_id, $superpowers));
-            $stmt = $db->prepare("INSERT INTO users_data SET id = ?, login = ?, pass = ?");
-            $stmt -> execute(array($id, $usr_login, $usr_pass));
+            $stmt = $db->prepare("INSERT INTO users_data SET usr_id = ?, login = ?, pass = ?");
+            $stmt -> execute(array($usr_id, $usr_login, $usr_pass));
         }
         catch (PDOException $e) {
             setcookie('save_error', '$e->getMessage()', 100000);
