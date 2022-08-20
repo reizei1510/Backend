@@ -237,10 +237,10 @@ else {
     
         try {
             $stmt = $db->prepare("INSERT INTO users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
-            $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
+            $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography']));
             $usr_id = $db->lastInsertId();
             $stmt = $db->prepare("INSERT INTO powers5 SET usr_id = ?, superpowers = ?");
-            $stmt -> execute(array($usr_id, implode(', ', $_POST['superpowers'])));
+            $stmt -> execute(array(usr_id, implode(', ', $_POST['superpowers'])));
             $stmt = $db->prepare("INSERT INTO users_data5 SET usr_id = ?, usr_login = ?, usr_pass = ?");
             $stmt -> execute(array($usr_id, $usr_login, $usr_pass));
         }
