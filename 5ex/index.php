@@ -4,13 +4,13 @@ header('Content-Type: text/html; charset=UTF-8');
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     if (!empty($_COOKIE['save'])) {
-        setcookie('save', '', 100000);
-        setcookie('login', '', 100000);
-        setcookie('pass', '', 100000);
         echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
         if (!empty($_COOKIE['pass'])) {
             echo "<script type='text/javascript'>alert('Ваш логин: ${$_COOKIE['usr_login']}, пароль: ${$_COOKIE['usr_pass']}.');</script>";
         }
+        setcookie('save', '', 100000);
+        setcookie('login', '', 100000);
+        setcookie('pass', '', 100000);
     }
     
     $errors = array();
@@ -222,10 +222,6 @@ else {
         for ($i = 0; $i < 8; $i++) {
             $usd_login .= $alphabet[random_int(0, strlen($alphabet) - 1)];
         }
-        
-        //
-        print($usr_login);
-        //
         
         $usr_pass = '';
         for ($i = 0; $i < 10; $i++) {
