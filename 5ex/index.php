@@ -2,20 +2,6 @@
 header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-	
-    //----------------------------------------------------------------------
-	
-    if (!empty($_SESSION['login'])) {
-        setcookie('isSessionActive', 'yes', time() + 24 * 60 * 60);
-        setcookie('SessionLogin', $_SESSION['login'], time() + 24 * 60 * 60);
-        setcookie('SessionID', $_SESSION['uid'], time() + 24 * 60 * 60);
-        setcookie('SessionName', $_COOKIE[session_name()], time() + 24 * 60 * 60);
-    }
-    else {
-        setcookie('isSessionActive', 'no', time() + 24 * 60 * 60);
-    }
-	
-    //----------------------------------------------------------------------
     
     $messages = array();
     $messages['data'] = '';
@@ -97,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $values['biography'] = empty($_COOKIE['biography_value']) ? '' : $_COOKIE['biography_value'];
     $values['contract'] = empty($_COOKIE['contract_value']) ? '' : $_COOKIE['contract_value'];
     
-    /*if (empty($errors) && !empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
+    if (empty($errors) && !empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
         $db_login = 'u16346';
         $db_pass = '34rerfeq5';
         $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
@@ -114,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $values['biography'] = $user['biography'];
 	
         $messages['data'] = 'Вход с логином ' . $_SESSION['login'] . ', id ' . $_SESSION['uid'];
-    }*/
+    }
     
     include('form.php');
 }
