@@ -29,7 +29,7 @@
                 <label>
                     e-mail:<font color="red">*</font><br>
                     <input name="email" type="email" <?php if ($errors['email']) { print 'class="error"'; } ?> value="<?php print $values['email']; ?>" /><br>
-		    <div class="error_message"><?php print $messages['name']; ?></div>
+		    <div class="error_message"><?php print $messages['email']; ?></div>
                 </label>
 	    </div><br>
 		
