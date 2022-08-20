@@ -88,22 +88,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $db_pass = '34rerfeq5';
         $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
         
-        $stmt = $db->prepare("SELECT * FROM users5 WHERE id = ?");
-        $stmt->execute([$_SESSION['uid']]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $getValues = $db->prepare("SELECT * FROM users5");
+	foreach($getValues as $user) {
+	    if ($user['usr_id'] == $_SESSION['uid']) {
+                $values['name'] = $user['name'];
+                $values['email'] = $user['email'];
+                $values['birthday'] = $user['birthday'];
+                $values['gender'] = $user['gender'];
+                $values['limbs'] = $user['limbs'];
+                $values['biography'] = $user['biography'];
+	}
 
-        $values['name'] = $user['name'];
-        $values['email'] = $user['email'];
-        $values['birthday'] = $user['birthday'];
-        $values['gender'] = $user['gender'];
-        $values['limbs'] = $user['limbs'];
-        $values['biography'] = $user['biography'];
-
-        $stmt = $db->prepare("SELECT superpowers FROM powers5 WHERE usr_id = ?");
-        $stmt->execute([$_SESSION['uid']]);
-        $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        $values['superpowers'] = explode(', ', $user['superpowers']);
-	    
+        $getSP = $db->prepare("SELECT * FROM powers5");
+	foreach($getSP as $user) {
+	    if ($user['usr_id'] == $_SESSION['uid']) {
+        	$values['superpowers'] = explode(', ', $user['superpowers']);
+	    }
+	
         echo "<script type='text/javascript'>alert('Вход выполнен.');</script>";
     }
     
