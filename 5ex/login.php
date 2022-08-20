@@ -2,14 +2,12 @@
 
 header('Content-Type: text/html; charset=UTF-8');
 
-session_start();
-
-/*if (!empty($_SESSION['login'])) {
-    session_destroy();
-    header('Location: ./');
-}*/
-
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+	
+    if (!empty($_SESSION['login'])) {
+        session_destroy();
+        header('Location: ./');
+    }
 
     $errors = array();
     $errors['usr_login'] = empty($_COOKIE['usr_login_error']) ? false : $_COOKIE['usr_login_error'];
@@ -98,6 +96,8 @@ else {
         header('Location: login.php');
         exit();
     }
+	
+    session_start();
   
     $_SESSION['login'] = $_POST['usr_login'];
     $_SESSION['uid'] = $user['usr_id'];	
