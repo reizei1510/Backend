@@ -22,6 +22,8 @@
  
     <div class="content">
 	    
+	<?php if ($messages['data']) { print <div class="data_message">$messages['data']'<br>'</div>; } ?>
+	    
         <form action="" method="POST">
 		
 	    <div class="point">
