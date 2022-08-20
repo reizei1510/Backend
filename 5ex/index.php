@@ -222,6 +222,11 @@ else {
         for ($i = 0; $i < 8; $i++) {
             $usd_login .= $alphabet[random_int(0, strlen($alphabet) - 1)];
         }
+        
+        //
+        print($usr_login);
+        //
+        
         $usr_pass = '';
         for ($i = 0; $i < 10; $i++) {
             $usd_pass .= $alphabet[random_int(0, strlen($alphabet) - 1)];
