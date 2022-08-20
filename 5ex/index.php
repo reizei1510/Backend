@@ -4,6 +4,7 @@ header('Content-Type: text/html; charset=UTF-8');
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     $messages = array();
+    $messages['data'] = '';
     
     if (!empty($_COOKIE['save'])) {
         echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
