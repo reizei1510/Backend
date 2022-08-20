@@ -3,10 +3,13 @@ header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
+    $messages = array();
+    $messages['data'] = '';
+    
     if (!empty($_COOKIE['save'])) {
         echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
         if (!empty($_COOKIE['usr_pass'])) {
-            echo "<script type='text/javascript'>alert('Ваш логин: ${$_COOKIE['usr_login']}, пароль: ${$_COOKIE['usr_pass']}.');</script>";
+            $messages['data'] = 'Ваш логин: ' . $_COOKIE['usr_login'] . ', пароль: ' . $_COOKIE['usr_pass'];
         }
         setcookie('save', '', 100000);
         setcookie('usr_login', '', 100000);
@@ -24,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $errors['contract'] = empty($_COOKIE['contract_error']) ? false : $_COOKIE['contract_error'];
     $errors['save'] = empty($_COOKIE['save_error']) ? false : $_COOKIE['save_error'];
     
-    $messages = array();
     if ($errors['name']) {
         setcookie('name_error', '', 100000);
         $messages['name'] = $errors['name'] == 'empty' ? 'Введите имя.' : 'Имя должно начинаться с заглавной буквы<br>и может содержать только латинские буквы.';
