@@ -232,7 +232,7 @@ else {
  
 	    for ($i = 0; $i < 6; $i++) {
 		    $usr_login .= $arr[random_int(0, count($arr) - 1)];
-		    $usr_login .= $arr[random_int(0, count($arr) - 1)];
+		    $usr_pass .= $arr[random_int(0, count($arr) - 1)];
 	    }
         
         setcookie('usr_login', $usr_login);
