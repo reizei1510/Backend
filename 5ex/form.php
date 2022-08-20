@@ -9,16 +9,16 @@
     <title>Задание 5</title>
 </head>
 <body>
-    <header>
-        <div class="head_left">Задание 5</div>
-    	<div class="head_right">
-	    <?php if (empty($_SESSION['login'])) { ?>
+    <div class="topnav">
+        <a href="form.html">Задание 5</a>
+        <div class="topnav_right">
+            <?php if (empty($_SESSION['login'])) { ?>
 		<a href="login.php" >Войти</a>
             <?php } else { ?>
 		<a href="login.php" >Выйти</a>
 	    <?php } ?>
-	</div>
-    </header>
+        </div>
+    </div>
  
     <div class="content">
 	    
