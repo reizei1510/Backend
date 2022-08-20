@@ -84,7 +84,7 @@ else {
     $db_pass = '34rerfeq5';
     $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 	
-    $stmt = $db->prepare("SELECT * FROM users_data5 WHERE user_id = ");
+    $stmt = $db->prepare("SELECT * FROM users_data5 WHERE user_id = ?");
     $stmt->execute([$_POST['usr_login']]);
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 	
