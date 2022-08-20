@@ -220,11 +220,11 @@ else {
         $alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $usr_login = '';
         for ($i = 0; $i < 8; $i++) {
-            $usd_login .= $alph[random_int(0, strlen($alph) - 1)];
+            $usd_login .= $alphabet[random_int(0, strlen($alphabet) - 1)];
         }
         $usr_pass = '';
         for ($i = 0; $i < 10; $i++) {
-            $usd_pass .= $alph[random_int(0, strlen($alph) - 1)];
+            $usd_pass .= $alphabet[random_int(0, strlen($alphabet) - 1)];
         }
         setcookie('usr_login', $usr_login);
         setcookie('usr_pass', $usr_pass);
