@@ -87,31 +87,23 @@ else {
     $db_pass = '34rerfeq5';
     $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
-    $checkLogin = $db->query("SELECT usr_login FROM users5 WHERE usr_login = $usr_login");
-    foreach($checkLogin as $user)
-        $varLogin=$user['usr_login'];
-    if (empty($varLogin)) {
+    $checkData = $db->prepare("SELECT * from users5 WHERE usr_login = ?");
+    $checkData->execute([$_POST['usr_login']])
+    $user = $checkData->fetch(PDO::FETCH_ASSOC);
+    if (empty($user)) {
         setcookie('login_error', 'incorrect', time() + 24 * 60 * 60);
         header('Location: login.php');
         exit();
     }
-  
-    $checkPass = $db->query("SELECT usr_pass FROM users5 WHERE usr_login = $usr_login");
-    foreach($checkPass as $user)
-        $varPass=$user['usr_pass'];
-    if ($varPass != $usr_pass){
+    if ($user['usr_pass'] != $_POST['usr_pass']) {
         setcookie('pass_error', 'incorrect', time() + 24 * 60 * 60);
         header('Location: login.php');
         exit();
     }
   
     $_SESSION['login'] = $_POST['usr_login'];
-    $checkUser = $db->query("SELECT id FROM users5 WHERE usr_login=$usr_login AND usr_pass=$usr_pass");
-    foreach($checkUser as $user)
-        $id = (int)$user['id'];
-    $_SESSION['uid'] = $id;
-  }
+    $_SESSION['uid'] = $user['id'];
 
-  header('Location: index.php');
-  exit();
+    header('Location: index.php');
+    exit();
 }
