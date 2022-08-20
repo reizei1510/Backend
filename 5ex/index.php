@@ -219,8 +219,8 @@ else {
         }
     }
     else {
-        $usr_login = substr(time(), 0, 8);
-        $usr_pass = substr(time(), 8, 16);
+        $usr_login = substr(time(), 0, 5);
+        $usr_pass = substr(time(), 5, 10);
         setcookie('usr_login', $usr_login);
         setcookie('usr_pass', $usr_pass);
     
