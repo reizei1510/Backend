@@ -1,10 +1,10 @@
 <?php
 
-$db_login = 'u16346';
-$db_pass = '34rerfeq5';
-$db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
+$user = 'u47572';
+$pass = '4532025';
+$db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
 
-/*if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete'])) {
         $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
         $stmt->execute(array($_POST['delete']));
@@ -19,8 +19,7 @@ $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(P
             $powers->execute(array($_POST['delete']));
             header('Location: ?delete_error=0');
         }
-    }
-    else if (!empty($_POST['edit'])) {
+    } else if (!empty($_POST['edit'])) {
         $user = 'u47572';
         $pass = '4532025';
         $member_id = $_POST['edit'];
@@ -76,128 +75,134 @@ $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(P
             exit();
         }
     }
-}*/
+}
 
-if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW'])) {
+if (!empty($_SERVER['PHP_AUTH_USER']) && !empty($_SERVER['PHP_AUTH_PW'])) {
+    try {
+        $stmt = $db->prepare("SELECT * FROM admins WHERE login = ?");
+        $stmt->execute(array($_SERVER['PHP_AUTH_USER']));
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+        print('Error : ' . $e->getMessage());
+        exit();
+    }
+
+    if (empty($result['password'])) {
+        header('HTTP/1.1 401 Unanthorized');
+        header('WWW-Authenticate: Basic realm="My site"');
+        print('<h1>401 Неверный логин</h1>');
+        exit();
+    }
+
+    if ($result['password'] != md5($_SERVER['PHP_AUTH_PW'])) {
+        header('HTTP/1.1 401 Unanthorized');
+        header('WWW-Authenticate: Basic realm="My site"');
+        print('<h1>401 Неверный пароль</h1>');
+        exit();
+    }
+
+    print('Вы успешно авторизовались и видите защищенные паролем данные.');
+
+    $stmt = $db->prepare("SELECT * FROM members");
+    $stmt->execute([]);
+    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    $stmt = $db->prepare("SELECT powers, COUNT(*) as owners FROM powers2 GROUP BY powers");
+    $stmt->execute();
+    $powersCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} else {
     header('HTTP/1.1 401 Unanthorized');
-    header('WWW-Authenticate: Basic realm="Realm_6"');
+    header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация</h1>');
     exit();
 }
-
-$stmt = $db->prepare("SELECT * FROM admins6 WHERE adm_login = ?");
-$stmt->execute($_SERVER['PHP_AUTH_USER']);
-$admin = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (empty($admin)) {
-    header('HTTP/1.1 401 Unanthorized');
-    header('WWW-Authenticate: Basic realm="Realm_6"');
-    print('<h1>401 Неверный логин</h1>');
-    exit();
-}
-
-if ($admin['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
-    header('HTTP/1.1 401 Unanthorized');
-    header('WWW-Authenticate: Basic realm="Realm_6"');
-    print('<h1>401 Неверный пароль</h1>');
-    exit();
-}
-
-print('Авторизация выполнена успешно.');
-
-$stmt = $db->query("SELECT * FROM users6");
-$users_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$stmt = $db->query("SELECT superpower, COUNT(*) AS count_own FROM powers6 GROUP BY superpower");
-$powers_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 ?>
-
 <!DOCTYPE html>
 <html lang="">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Админ</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <title>Admin</title>
 </head>
 
 <body>
-    <div class="content">
+    <div class="records-list">
         <table>
             <tr>
                 <th>Название способности</th>
                 <th>Количество обладателей</th>
             </tr>
             <?php
-            if (!empty($powers_data)) {
-                foreach ($powers_data as $power) {
+            if (!empty($powersCount)) {
+                foreach ($powersCount as $value) {
             ?>
                     <tr>
-                        <td><?php echo $power['superpower'] ?></td>
-                        <td><?php echo $power['count_own'] ?></td>
+                        <td><?php echo $value['powers'] ?></td>
+                        <td><?php echo $value['owners'] ?></td>
                     </tr>
             <?php }
-            } 
-            else ?>
-                    <tr>
-                        <td>нет данных</td>
-                        <td>нет данных</td>  
-                    </tr>
+            } ?>
         </table>
     </div>
-    <div class="content">
+    <div class="records-list">
         <table>
             <tr>
                 <th>Имя</th>
-                <th>email</th>
+                <th>Email</th>
                 <th>Дата рождения</th>
                 <th>Пол</th>
-                <th>Количество конечностей</th>
+                <th>Конечности</th>
                 <th>Суперспособности</th>
                 <th>Биография</th>
             </tr>
             <?php
-            if (!empty($users_data)) {
-                foreach ($users_data as $user) {
-                    $stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
-                    $stmt = $db->execute($user['usr_id']);
-                    $usr_powers = $stmt->fetchAll(PDO::FETCH_ASSOC);
-                    $usr_powers_string = '';
-                    foreach ($usr_powers as $usr_power) {
-                        $usr_powers_string .= $usr_power['superpower'] . ', ';
-                    }
+            if (!empty($result)) {
+                foreach ($result as $value) {
             ?>
                     <tr>
-                        <td><?php echo $user['usr_id'] ?></td>
-                        <td><?php echo $user['name'] ?></td>
-                        <td><?php echo $user['email'] ?></td>
-                        <td><?php echo $user['birhday'] ?></td>
-                        <td><?php echo $vuser['limbs'] ?></td>
-                        <td><?php echo $user['gender'] ?></td>
-                        <td><?php echo $usr_powers_string ?></td>
-                        <td id="biography"><?php echo $user['biography'] ?></td>
-                        <td><form action="" method="post">
-                                <input value="<?php echo $value['usr_id'] ?>" name="edit" type="hidden" /><button id="edit">Edit</button>
+                        <td><?php echo $value['name'] ?></td>
+                        <td><?php echo $value['email'] ?></td>
+                        <td><?php echo $value['date'] ?></td>
+                        <td><?php echo $value['limbs'] ?></td>
+                        <td><?php echo $value['gender'] ?></td>
+                        <td>
+                            <?php
+                            $powers = $db->prepare("SELECT * FROM powers2 where user_login = ?");
+                            $powers->execute(array($value['login']));
+                            $superpowers = $powers->fetch(PDO::FETCH_ASSOC);
+                            echo $superpowers['powers'];
+                            ?>
+                        </td>
+                        <td id="bio">
+                            <?php echo $value['bio'] ?>
+                        </td>
+                        <td class="edit-buttons">
+                            <form action="" method="post">
+                                <input value="<?php echo $value['id'] ?>" name="edit" type="hidden" />
+                                <button id="edit">Edit</button>
                             </form>
                         </td>
-                        <td><form action="" method="post">
-                                <input value="<?php echo $value['login'] ?>" name="delete" type="hidden" /><button id="delete">Delete</button>
+                        <td class="edit-buttons">
+                            <form action="" method="post">
+                                <input value="<?php echo $value['login'] ?>" name="delete" type="hidden" />
+                                <button id="delete">Delete</button>
                             </form>
                         </td>
                     </tr>
-            <?php }
-            } else {  ?>
+            <?php
+                }
+            } else {
                 echo "Записи не найдены";
-            <?php }  ?>
+            }
+            ?>
         </table>
     </div>
-  
-    /*<?php if (!empty($_POST['edit'])) {
+    <?php if (!empty($_POST['edit'])) {
         include('edit.php');
-    } ?>*/
-  
+    } ?>
 </body>
 
 </html>
