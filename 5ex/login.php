@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <body>
     <div class="topnav">
-        <a href="form.html">Задание 5</a>
+        <a href="index.php">Задание 5</a>
     </div>
  
     <div class="content">
