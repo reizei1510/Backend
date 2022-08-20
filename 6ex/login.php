@@ -1,114 +1,73 @@
 <?php
 
+/**
+ * Файл login.php для не авторизованного пользователя выводит форму логина.
+ * При отправке формы проверяет логин/пароль и создает сессию,
+ * записывает в нее логин и id пользователя.
+ * После авторизации пользователь перенаправляется на главную страницу
+ * для изменения ранее введенных данных.
+ **/
+
+// Отправляем браузеру правильную кодировку,
+// файл login.php должен быть в кодировке UTF-8 без BOM.
 header('Content-Type: text/html; charset=UTF-8');
-	
+
+// Начинаем сессию.
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] == 'GET') {
-	
-    if (!empty($_SESSION['login'])) {
-        session_destroy();
-        setcookie('name_value', '', 100000);
-        setcookie('email_value', '', 100000);
-        setcookie('birthday_value', '', 100000);
-        setcookie('gender_value', '', 100000);
-        setcookie('limbs_value', '', 100000);
-        setcookie('superpowers_value', '', 100000);
-        setcookie('biography_value', '', 100000);
-        setcookie('contract_value', '', 100000);
-        header('Location: ./');
-    }
-
-    $errors = array();
-    $errors['usr_login'] = empty($_COOKIE['usr_login_error']) ? false : $_COOKIE['usr_login_error'];
-    $errors['usr_pass'] = empty($_COOKIE['usr_pass_error']) ? false : $_COOKIE['usr_pass_error'];
-
-    $messages = array();
-    if ($errors['usr_login']) {
-        setcookie('usr_login_error', '', 100000);
-        $messages['usr_login'] = $errors['usr_login'] == 'empty' ? 'Введите логин.' : 'Данный логин не зарегистрирован.';
-    }
-    else $messages['usr_login'] = '';
-    if ($errors['usr_pass']) {
-        setcookie('usr_pass_error', '', 100000);
-        $messages['usr_pass'] = $errors['usr_pass'] == 'empty' ? 'Введите пароль.' : 'Неверный пароль.';
-    }
-    else $messages['usr_pass'] = '';
-
-?>
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Вход</title>
-</head>
-
-<body>
-    <div class="topnav">
-        <a href="index.php">Задание 5</a>
-    </div>
- 
-    <div class="content">
-	    
-        <form action="" method="POST">
-  
-            <label>
-                Логин:<br>
-                <input name="usr_login" <?php if ($errors['usr_login']) { print 'class="error"'; } ?> /><br>
-		<div class="error_message"><?php print $messages['usr_login']; ?></div>
-            </label><br>
-            <label>
-                Пароль:<br>
-                <input name="usr_pass" type="password" <?php if ($errors['usr_pass']) { print 'class="error"'; } ?> /><br>
-		<div class="error_message"><?php print $messages['usr_pass']; ?></div>
-            </label><br>
-            <input type="submit" class="button" value="Войти" />
-        </form>
-          
-<?php
-  
+// В суперглобальном массиве $_SESSION хранятся переменные сессии.
+// Будем сохранять туда логин после успешной авторизации.
+if (!empty($_SESSION['login'])) {
+  header('Location: ./');
 }
 
-else {
-  
-    $errors = FALSE;
-    if (empty($_POST['usr_login'])) {
-        setcookie('usr_login_error', 'empty', time() + 24 * 60 * 60);
-	$errors = TRUE;
-   }
-  
-   if (empty($_POST['usr_pass'])) {
-        setcookie('usr_pass_error', 'empty', time() + 24 * 60 * 60);
-	$errors = TRUE;
-    }
-	
-    if ($errors) {
-        header('Location: login.php');
-        exit();
-    }
+// В суперглобальном массиве $_SERVER PHP сохраняет некторые заголовки запроса HTTP
+// и другие сведения о клиненте и сервере, например метод текущего запроса $_SERVER['REQUEST_METHOD'].
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+  if (!empty($_GET['logout'])) {
+    session_destroy();
+    $_SESSION['login'] = '';
+    header('Location: ./');
+  }
+  if (!empty($_GET['error'])) {
+    print('<div>Не верный пароль/логин проверьте корректность введенных данных</div>');
+  }
+?>
 
-    $db_login = 'u16346';
-    $db_pass = '34rerfeq5';
-    $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
-	
-    $stmt = $db->prepare("SELECT * FROM users_data5 WHERE usr_login = ?");
-    $stmt->execute([$_POST['usr_login']]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
-	
-    if (empty($user)) {
-        setcookie('usr_login_error', 'incorrect', time() + 24 * 60 * 60);
-        header('Location: login.php');
-        exit();
-    }
-    if ($user['usr_pass'] != $_POST['usr_pass']) {
-        setcookie('usr_pass_error', 'incorrect', time() + 24 * 60 * 60);
-        header('Location: login.php');
-        exit();
-    }
-  
-    $_SESSION['login'] = $_POST['usr_login'];
-    $_SESSION['uid'] = $user['usr_id'];	
+  <form action="" method="POST">
+    <span>Логин:</span>
+    <input name="login" />
+    <span>Пароль:</span>
+    <input name="pass" />
+    <input type="submit" value="Войти" />
+  </form>
+
+<?php
+}
+// Иначе, если запрос был методом POST, т.е. нужно сделать авторизацию с записью логина в сессию.
+else {
+  $user = 'u47572';
+  $pass = '4532025';
+  $db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+
+  $member = $_POST['login'];
+  $member_pass_hash = md5($_POST['pass']);
+
+  try {
+    $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
+    $stmt->execute(array($member));
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+  } catch (PDOException $e) {
+    print('Error : ' . $e->getMessage());
+    exit();
+  }
+  if ($result['pass'] == $member_pass_hash) {
+
+    $_SESSION['login'] = $_POST['login'];
+    $_SESSION['uid'] = $result['id'];
 
     header('Location: ./');
+  } else {
+    header('Location: ?error=1');
+  }
 }
