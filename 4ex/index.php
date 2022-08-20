@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('email_error', '', 100000);
         $messages['email'] = $errors['email'] == 'empty' ? 'Введите email.' : 'email должен иметь вид email@example.com.';
     }
-    else $messages['date'] = '';
+    else $messages['email'] = '';
     if ($errors['birthday']) {
         setcookie('birthday_error', '', 100000);
         $messages['birthday'] = $errors['birthday'] == 'empty' ? 'Введите дату рождения.' : 'Дата рождения не может быть позже ' && print date('Y-m-d');
