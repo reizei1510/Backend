@@ -87,10 +87,12 @@ else {
     $db_pass = '34rerfeq5';
     $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 	
-    $checkLogin = $db->query("SELECT * FROM users_data WHERE login = $usr_login");
+    $checkLogin = $db->query("SELECT * FROM users_data");
     foreach($checkLogin as $user) {
-        $varLogin=$user['login'];
-        $varPass=$user['pass'];
+	if ($user['login'] == $usr_login) {
+            $varLogin=$user['login'];
+            $varPass=$user['pass'];
+	}
     }
 	
     if (empty($varLogin)) {
