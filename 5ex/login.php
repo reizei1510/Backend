@@ -6,7 +6,7 @@ session_start();
 
 if (!empty($_SESSION['login'])) {
     session_destroy();
-    header('Location: index.php');
+    header('Location: ./');
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
