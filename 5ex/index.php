@@ -96,8 +96,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $values['birthday'] = $user['birthday'];
         $values['gender'] = $user['gender'];
         $values['limbs'] = $user['limbs'];
-        $values['superpowers'] = explode(', ', $user['superpowers']);
         $values['biography'] = $user['biography'];
+	    
+	$stmt = $db->prepare("SELECT * FROM powers5 WHERE usr_id = ?");
+    	$stmt->execute([$_SESSION['uid']]);
+    	$pwr = $stmt->fetch(PDO::FETCH_ASSOC);
+        $values['superpowers'] = explode(', ', $pwr['superpowers']);
 	
         $messages['data'] = 'Вход с логином ' . $_SESSION['login'] . ', id ' . $_SESSION['uid'];
     }
