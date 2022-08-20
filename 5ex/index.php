@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $values['superpowers'] = explode(', ', $user['superpowers']);
         $values['biography'] = $user['biography'];
 	
-        printf('Вход с логином %s, uid %d', $_SESSION['login'], $_SESSION['uid']);
+        $messages['data'] = 'Вход с логином ' . $_SESSION['login'] . ', id ' . $_SESSION['uid'];
     }
     
     include('form.php');
