@@ -103,7 +103,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $stmt->execute([$_SESSION['uid']]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
         $values['superpowers'] = explode(', ', $user['superpowers']);
-        echo "<script type='text/javascript'>alert('Вход с логином ${$_SESSION['login']}.');</script>";
+	    
+        echo "<script type='text/javascript'>alert('Вход выполнен.');</script>";
     }
     
     include('form.php');
