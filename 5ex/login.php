@@ -91,8 +91,9 @@ else {
 	
     $checkLogin = $db->query("SELECT * FROM users_data WHERE login = $usr_login");
     foreach($checkLogin as $user) {
-      $varLogin=$user['login'];
-      $varPass=$user['pass'];
+        setcookie('BLYAAAATTTT', '1', time() + 24 * 60 * 60);
+        $varLogin=$user['login'];
+        $varPass=$user['pass'];
     }
 	
     if (empty($user)) {
