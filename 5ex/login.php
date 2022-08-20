@@ -90,6 +90,12 @@ else {
     $checkData = $db->prepare("SELECT * from users_data WHERE login = ?");
     $checkData -> execute($usr_login);
     $user = $checkData->fetch(PDO::FETCH_ASSOC);
+	
+	//
+	print ('login');
+	print ($user['login']);
+	//
+	
     if (empty($user)) {
         setcookie('usr_login_error', 'incorrect', time() + 24 * 60 * 60);
         header('Location: login.php');
