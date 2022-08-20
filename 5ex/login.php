@@ -8,6 +8,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	
     if (!empty($_SESSION['login'])) {
         session_destroy();
+        setcookie('name_value', '', 100000);
+        setcookie('email_value', '', 100000);
+        setcookie('birthday_value', '', 100000);
+        setcookie('gender_value', '', 100000);
+        setcookie('limbs_value', '', 100000);
+        setcookie('superpowers_value', '', 100000);
+        setcookie('biography_value', '', 100000);
+        setcookie('contract_value', '', 100000);
         header('Location: ./');
     }
 
