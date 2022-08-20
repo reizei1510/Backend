@@ -99,8 +99,8 @@ else {
         exit();
     }
   
-    $_SESSION['login'] = $usr_login;
-    $_SESSION['uid'] = $user['id'];
+    $_SESSION['login'] = $_POST['usr_login'];
+    $_SESSION['uid'] = $user['usr_id'];
 
     header('Location: ./');
 }
