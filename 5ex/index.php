@@ -9,8 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             echo "<script type='text/javascript'>alert('Ваш логин: ${$_COOKIE['usr_login']}, пароль: ${$_COOKIE['usr_pass']}.');</script>";
         }
         setcookie('save', '', 100000);
-        setcookie('login', '', 100000);
-        setcookie('pass', '', 100000);
+        setcookie('usr_login', '', 100000);
+        setcookie('usr_pass', '', 100000);
     }
     
     $errors = array();
@@ -217,8 +217,8 @@ else {
         }
     }
     else {
-        $usr_login = substr(md5(time()), 0, 8);
-        $usr_pass = substr(md5(time()), 0, 8);
+        $usr_login = substr(time()), 0, 8);
+        $usr_pass = substr(time()), 8, 16);
         setcookie('usr_login', $usr_login);
         setcookie('usr_pass', $usr_pass);
     
