@@ -208,7 +208,7 @@ else {
             $stmt = $db->prepare("UPDATE users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ? WHERE id = ?");
             $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography, $uid));
             $stmt = $db->prepare("UPDATE powers5 SET superpowers = ? WHERE id = ?");
-            $stmt2->execute(array($superpowers, $uid));
+            $stmt->execute(array($superpowers, $uid));
         }
         catch(PDOException $e){
             setcookie('save_error', '$e->getMessage()', time() + 24 * 60 *60);
@@ -217,25 +217,33 @@ else {
         }
     }
     else {
-    -----------------------------------------
+        $alphabet = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $usr_login = '';
+        for ($i = 0; $i < 8; $i++) {
+            $usd_login .= $alph[random_int(0, strlen($alph) - 1)];
+        }
+        $usr_pass = '';
+        for ($i = 0; $i < 10; $i++) {
+            $usd_pass .= $alph[random_int(0, strlen($alph) - 1)];
+        }
+        setcookie('usr_login', $usr_login);
+        setcookie('usr_pass', $usr_pass);
     
+        try {
+            $stmt = $db->prepare("INSERT INTO users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
+            $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
+            $usr_id = $db->lastInsertId();
+            $stmt = $db->prepare("INSERT INTO powers5 SET usr_id = ?, superpowers = ?");
+            $stmt -> execute(array($usr_id, $superpowers));
+            $stmt = $db->prepare("INSERT INTO users_data SET id = ?, login = ?, pass = ?");
+            $stmt -> execute(array($id, $usr_login, $usr_pass));
+        }
+        catch (PDOException $e) {
+            setcookie('save_error', '$e->getMessage()', 100000);
+            header('Location: index.php');
+            exit();
+        }
     }
-    
-    try {
-         $stmt = $db->prepare("INSERT INTO users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
-         $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
-         $usr_id = $db->lastInsertId();
-         $stmt = $db->prepare("INSERT INTO powers5 SET usr_id = ?, superpowers = ?");
-         $stmt -> execute(array($usr_id, $superpowers));
-         $stmt = $db->prepare("INSERT INTO users_data SET id = ?, login = ?, pass = ?");
-         $stmt -> execute(array($id, $usr_login, $usr_pass));
-    }
-    catch (PDOException $e) {
-      setcookie('save_error', '$e->getMessage()', 100000);
-      header('Location: index.php');
-      exit();
-    }
-  }
     
     setcookie('save', '1');
     header('Location: index.php');
