@@ -44,6 +44,8 @@ body {
 
 .data_message {
     color: #00FF00;
+    display: flex;
+    text-align: center;
 }
 
 .point {
