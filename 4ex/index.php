@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     else $messages['email'] = '';
     if ($errors['birthday']) {
         setcookie('birthday_error', '', 100000);
-        $messages['birthday'] = $errors['birthday'] == 'empty' ? 'Введите дату рождения.' : 'Введите корректную дату рождения.');
+        $messages['birthday'] = $errors['birthday'] == 'empty' ? 'Введите дату рождения.' : 'Введите корректную дату рождения.';
     }
     else $messages['birthday'] = '';
     if ($errors['gender']) {
