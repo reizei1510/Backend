@@ -104,7 +104,7 @@ else {
 	
     //----------------------------------------------------------------------
 	
-    if (session_start() && !empty($_SESSION['login']) {
+    if (session_start() && !empty($_SESSION['login'])) {
         setcookie('isSessionActive', 'yes', time() + 24 * 60 * 60);
         setcookie('SessionLogin', $_SESSION['login'], time() + 24 * 60 * 60);
         setcookie('SessionID', $_SESSION['uid'], time() + 24 * 60 * 60);
