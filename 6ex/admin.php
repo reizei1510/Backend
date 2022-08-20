@@ -161,6 +161,13 @@ $powers_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <?php
             if (!empty($users_data)) {
                 foreach ($users_data as $user) {
+                    $stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
+                    $stmt = $db->execute($user['usr_id']);
+                    $usr_powers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    $usr_powers_string = '';
+                    foreach ($usr_powers as $usr_power) {
+                        $usr_powers_string .= $usr_power['superpower'] . ', ';
+                    }
             ?>
                     <tr>
                         <td><?php echo $user['usr_id'] ?></td>
@@ -169,9 +176,7 @@ $powers_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?php echo $user['birhday'] ?></td>
                         <td><?php echo $vuser['limbs'] ?></td>
                         <td><?php echo $user['gender'] ?></td>
-                        <td>
-                            //
-                        </td>
+                        <td><?php echo $usr_powers_string ?></td>
                         <td id="biography"><?php echo $user['biography'] ?></td>
                         <td><form action="" method="post">
                                 <input value="<?php echo $value['usr_id'] ?>" name="edit" type="hidden" /><button id="edit">Edit</button>
@@ -182,11 +187,10 @@ $powers_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </form>
                         </td>
                     </tr>
-            <?php
-                }
-            } else {
+            <?php }
+            } else {  ?>
                 echo "Записи не найдены";
-            }  ?>
+            <?php }  ?>
         </table>
     </div>
   
