@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="topnav">
-        <a href="form.html">Задание 5</a>
+        <a href="index.php">Задание 5</a>
         <div class="topnav_right">
             <?php if (empty($_SESSION['login'])) { ?>
 		<a href="login.php" >Войти</a>
