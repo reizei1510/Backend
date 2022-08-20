@@ -15,12 +15,25 @@ body {
     font-family: arial;
 }
 
-header {
+.topnav {
     background-color: #000000;
+}
+
+.topnav a {
+    float: left;
     color: #FFFFFF;
     text-align: center;
     padding: 15px 20px;
     text-decoration: none;
+}
+
+.topnav a:hover {
+    background-color: #B0E0E6;
+    color: #000000;
+}
+
+.topnav_right {
+    float: right;
 }
 
 .content {
