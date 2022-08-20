@@ -2,6 +2,20 @@
 header('Content-Type: text/html; charset=UTF-8');
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+	
+    //----------------------------------------------------------------------
+	
+    if (session_start() && !empty($_SESSION['login'])) {
+        setcookie('isSessionActive', 'yes', time() + 24 * 60 * 60);
+        setcookie('SessionLogin', $_SESSION['login'], time() + 24 * 60 * 60);
+        setcookie('SessionID', $_SESSION['uid'], time() + 24 * 60 * 60);
+        setcookie('SessionName', $_COOKIE[session_name()], time() + 24 * 60 * 60);
+    }
+    else {
+        setcookie('isSessionActive', 'no', time() + 24 * 60 * 60);
+    }
+	
+    //----------------------------------------------------------------------
     
     $messages = array();
     $messages['data'] = '';
