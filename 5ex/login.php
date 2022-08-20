@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <input name="usr_pass" type="password" <?php if ($errors['usr_pass']) { print 'class="error"'; } ?> ?> /><br>
 		<div class="error_message"><?php print $messages['usr_pass']; ?></div>
             </label><br>
-            <input type="submit" value="Войти" />
+            <input type="submit" class="button" value="Войти" />
         </form>
           
 <?php
