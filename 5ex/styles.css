@@ -42,6 +42,10 @@ body {
     margin: 30px;
 }
 
+.data_message {
+    color: #00FF00;
+}
+
 .point {
     padding: 15px, 0;
 }
