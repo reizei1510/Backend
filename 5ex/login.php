@@ -92,6 +92,7 @@ else {
 	if ($user['login'] == $usr_login) {
             $varLogin=$user['login'];
             $varPass=$user['pass'];
+            $varId=$user['usr_id'];
 	}
     }
 	
@@ -107,8 +108,7 @@ else {
     }
   
     $_SESSION['login'] = $usr_login;
-    $_SESSION['uid'] = $user['usr_id'];
+    $_SESSION['uid'] = $varId;
 
-    header('Location: index.php');
-    exit();
+    header('Location: ./');
 }
