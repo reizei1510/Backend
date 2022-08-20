@@ -17,7 +17,11 @@
         </div>
     </div>
 	
+    <div class="content">
+	
     <div class="data_message"><?php print $messages['data']; ?></div><br>
+	    
+    </div>
  
     <div class="content">
 	    
