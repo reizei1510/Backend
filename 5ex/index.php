@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     if (!empty($_COOKIE['save'])) {
         echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
-        if (!empty($_COOKIE['pass'])) {
+        if (!empty($_COOKIE['usr_pass'])) {
             echo "<script type='text/javascript'>alert('Ваш логин: ${$_COOKIE['usr_login']}, пароль: ${$_COOKIE['usr_pass']}.');</script>";
         }
         setcookie('save', '', 100000);
