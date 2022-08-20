@@ -12,11 +12,8 @@
     <div class="topnav">
         <a href="index.php">Задание 5</a>
         <div class="topnav_right">
-            <?php if (empty($_SESSION['login'])) { ?>
-		<a href="login.php" >Войти</a>
-            <?php } else { ?>
-		<a href="login.php" >Выйти</a>
-	    <?php } ?>
+            <?php if (empty($_SESSION['login'])) { print '<a href="login.php" >Войти</a>'; }
+		  else { print '<a href="login.php" >Выйти</a>'; } ?>
         </div>
     </div>
 	
