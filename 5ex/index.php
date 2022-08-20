@@ -97,6 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 $values['gender'] = $user['gender'];
                 $values['limbs'] = $user['limbs'];
                 $values['biography'] = $user['biography'];
+	    }
 	}
 
         $getSP = $db->prepare("SELECT * FROM powers5");
