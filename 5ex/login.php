@@ -79,36 +79,28 @@ else {
         header('Location: login.php');
         exit();
     }
-    
-    $usr_login=$_POST['usr_login'];
-    $usr_pass=$_POST['usr_pass'];
 
     $db_login = 'u16346';
     $db_pass = '34rerfeq5';
     $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 	
-    $checkLogin = $db->query("SELECT * FROM users_data");
-    foreach($checkLogin as $user) {
-	if ($user['login'] == $usr_login) {
-            $varLogin=$user['login'];
-            $varPass=$user['pass'];
-            $varId=$user['usr_id'];
-	}
-    }
+    $stmt = $db->prepare("SELECT * FROM users_data WHERE user_id = ");
+    $stmt->execute([$_POST['usr_login']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
 	
-    if (empty($varLogin)) {
+    if (empty($user)) {
         setcookie('usr_login_error', 'incorrect', time() + 24 * 60 * 60);
         header('Location: login.php');
         exit();
     }
-    else if ($varPass != $usr_pass) {
+    if ($user['usr_pass'] != $_POST['usr_pass']) {
         setcookie('usr_pass_error', 'incorrect', time() + 24 * 60 * 60);
         header('Location: login.php');
         exit();
     }
   
     $_SESSION['login'] = $usr_login;
-    $_SESSION['uid'] = $varId;
+    $_SESSION['uid'] = $user['id'];
 
     header('Location: ./');
 }
