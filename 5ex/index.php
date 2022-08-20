@@ -5,7 +5,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	
     //----------------------------------------------------------------------
 	
-    if (session_start() && !empty($_SESSION['login'])) {
+    if (!empty($_SESSION['login'])) {
         setcookie('isSessionActive', 'yes', time() + 24 * 60 * 60);
         setcookie('SessionLogin', $_SESSION['login'], time() + 24 * 60 * 60);
         setcookie('SessionID', $_SESSION['uid'], time() + 24 * 60 * 60);
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $values['biography'] = empty($_COOKIE['biography_value']) ? '' : $_COOKIE['biography_value'];
     $values['contract'] = empty($_COOKIE['contract_value']) ? '' : $_COOKIE['contract_value'];
     
-    if (empty($errors) && !empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
+    /*if (empty($errors) && !empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
         $db_login = 'u16346';
         $db_pass = '34rerfeq5';
         $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
@@ -114,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $values['biography'] = $user['biography'];
 	
         $messages['data'] = 'Вход с логином ' . $_SESSION['login'] . ', id ' . $_SESSION['uid'];
-    }
+    }*/
     
     include('form.php');
 }
@@ -216,7 +216,7 @@ else {
     $db_pass = '34rerfeq5';
     $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
     
-    if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
+    /*if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
         try {
             $stmt = $db->prepare("UPDATE users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ? WHERE usr_id = ?");
             $stmt -> execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography'], $_SESSION['uid']));
@@ -229,7 +229,7 @@ else {
             exit();
         }
     }
-    else {
+    else {*/
         $usr_login = '';
         $usr_pass = '';
         
@@ -263,7 +263,7 @@ else {
             header('Location: index.php');
             exit();
         }
-    }
+    //}
     
     setcookie('save', '1');
     header('Location: index.php');
