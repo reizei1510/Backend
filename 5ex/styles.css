@@ -50,6 +50,10 @@ body {
 
 .point {
     padding: 15px, 0;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .error {
