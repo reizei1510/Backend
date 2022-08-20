@@ -9,9 +9,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('pass', '', 100000);
         echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
         if (!empty($_COOKIE['pass'])) {
-            echo "<script type='text/javascript'>alert('Ваш логин: $_COOKIE['usr_login'], пароль: $_COOKIE['usr_pass'].');</script>";
+            echo "<script type='text/javascript'>alert('Ваш логин: ${$_COOKIE['usr_login']}, пароль: ${$_COOKIE['usr_pass']}.');</script>";
         }
-        
     }
     
     $errors = array();
