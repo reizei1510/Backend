@@ -22,7 +22,7 @@
  
     <div class="content">
 	    
-	<?php if ($messages['data']) { print '<div class="data_message">'$messages['data']'<br></div>'; } ?>
+	<div class="data_message"><?php if ($messages['data']) { print $messages['data']; } ?></div><br>
 	    
         <form action="" method="POST">
 		
