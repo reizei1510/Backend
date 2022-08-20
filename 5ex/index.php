@@ -4,8 +4,14 @@ header('Content-Type: text/html; charset=UTF-8');
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     
     if (!empty($_COOKIE['save'])) {
+        setcookie('save', '', 100000);
+        setcookie('login', '', 100000);
+        setcookie('pass', '', 100000);
         echo "<script type='text/javascript'>alert('Результаты сохранены.');</script>";
-        setcookie('save_error', '', 1000000);
+        if (!empty($_COOKIE['pass'])) {
+            echo "<script type='text/javascript'>alert('Ваш логин: $_COOKIE['usr_login'], пароль: $_COOKIE['usr_pass'].');</script>";
+        }
+        
     }
     
     $errors = array();
@@ -75,6 +81,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $values['superpowers'] = empty($_COOKIE['superpowers_value']) ? [] : explode(', ', $_COOKIE['superpowers_value']);
     $values['biography'] = empty($_COOKIE['biography_value']) ? '' : $_COOKIE['biography_value'];
     $values['contract'] = empty($_COOKIE['contract_value']) ? '' : $_COOKIE['contract_value'];
+    
+    if (empty($errors) && !empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
+        $db_login = 'u16346';
+        $db_pass = '34rerfeq5';
+        $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
+        
+        $stmt = $db->prepare("SELECT * FROM users5 WHERE id = ?");
+        $stmt->execute([$_SESSION['uid']]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $values['name'] = $user['name'];
+        $values['email'] = $user['email'];
+        $values['birthday'] = $user['birthday'];
+        $values['gender'] = $user['gender'];
+        $values['limbs'] = $user['limbs'];
+        $values['biography'] = $user['biography'];
+
+        $stmt = $db->prepare("SELECT superpowers FROM powers5 WHERE usr_id = ?");
+        $stmt->execute([$_SESSION['uid']]);
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $values['superpowers'] = explode(', ', $user['superpowers']);
+        echo "<script type='text/javascript'>alert('Вход с логином $_SESSION['login'].');</script>";
+    }
     
     include('form.php');
 }
@@ -170,22 +199,44 @@ else {
     $superpowers = implode(', ', $_POST['superpowers']); // объединить элементы массива в строку
     $biography = $_POST['biography'];
 
-    $user = 'u16346';
-    $pass = '34rerfeq5';
-    $db = new PDO('mysql:host=localhost;dbname=u16346', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-
+    $db_login = 'u16346';
+    $db_pass = '34rerfeq5';
+    $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
+    
+    if (!empty($_COOKIE[session_name()]) && session_start() && !empty($_SESSION['login'])) {
+        try {
+            $uid = $_SESSION['uid'];
+            $stmt = $db->prepare("UPDATE users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ? WHERE id = ?");
+            $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography, $uid));
+            $stmt = $db->prepare("UPDATE powers5 SET superpowers = ? WHERE id = ?");
+            $stmt2->execute(array($superpowers, $uid));
+        }
+        catch(PDOException $e){
+            setcookie('save_error', '$e->getMessage()', time() + 24 * 60 *60);
+            header('Location: index.php');
+            exit();
+        }
+    }
+    else {
+    -----------------------------------------
+    
+    }
+    
     try {
-        $stmt = $db->prepare("INSERT INTO users SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
-        $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
-        $usr_id = $db->lastInsertId();
-        $pwrs = $db->prepare("INSERT INTO powers SET usr_id = ?, superpowers = ?");
-        $pwrs -> execute(array($usr_id, $superpowers));
+         $stmt = $db->prepare("INSERT INTO users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
+         $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography));
+         $usr_id = $db->lastInsertId();
+         $stmt = $db->prepare("INSERT INTO powers5 SET usr_id = ?, superpowers = ?");
+         $stmt -> execute(array($usr_id, $superpowers));
+         $stmt = $db->prepare("INSERT INTO users_data SET id = ?, login = ?, pass = ?");
+         $stmt -> execute(array($id, $usr_login, $usr_pass));
     }
-    catch(PDOException $e){
-        setcookie('save_error', '$e->getMessage()', time() + 24 * 60 *60);
-        header('Location: index.php');
-        exit();
+    catch (PDOException $e) {
+      setcookie('save_error', '$e->getMessage()', 100000);
+      header('Location: index.php');
+      exit();
     }
+  }
     
     setcookie('save', '1');
     header('Location: index.php');
