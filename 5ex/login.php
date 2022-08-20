@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $errors = array();
     $errors['usr_login'] = empty($_COOKIE['usr_login_error']) ? false : $_COOKIE['usr_login_error'];
-    $errors['usr_pass'] = empty($_COOKIE['usr_login_error']) ? false : $_COOKIE['usr_login_error'];
+    $errors['usr_pass'] = empty($_COOKIE['usr_pass_error']) ? false : $_COOKIE['usr_pass_error'];
 
     $messages = array();
     if ($errors['usr_login']) {
