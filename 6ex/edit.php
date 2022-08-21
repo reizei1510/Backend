@@ -15,21 +15,21 @@
     <form method="POST" action="">
       
       <label>
-          Имя:
+          Имя:<br>
           <input name="name" value="<?php print $values['name']; ?>" /><br>
       </label><br>
       
       <label>
-          e-mail:
+          e-mail:<br>
           <input name="email" value="<?php print $values['email']; ?>" /><br>
       </label><br>
       
       <label>
-          Дата рождения:
+          Дата рождения:<br>
           <input name="birthday" value="<?php print $values['birthday']; ?>" /><br>
       </label><br>
       
-      Пол:
+      Пол:<br>
       <label>
           <input type="radio" name="gender" value="Male" <?php if($values['gender'] == "Male"){ print "checked='checked'"; } ?> />Мужской
       </label>
@@ -40,7 +40,7 @@
           <input type="radio" name="gender" value="other" <?php if($values['gender'] == "other"){ print "checked='checked'"; } ?> />Другое
       </label><br>
   
-      Количество конечностей:
+      Количество конечностей:<br>
       <label>
           <input type="radio" name="limbs" value="2" <?php if($values['limbs'] == "2"){ print "checked='checked'"; } ?> />2
       </label>
@@ -52,7 +52,7 @@
       </label><br>
   
       <label>
-          Сверхспособность:
+          Сверхспособность:<br>
           <select name="superpowers[]" multiple="multiple">
               <option value="Immortality" <?php if (in_array("Immortality", $values['superpowers'])) { print "selected='selected'";} ?>>Бессмертие</option>
               <option value="Immateriality" <?php if (in_array("Immateriality", $values['superpowers'])) { print "selected='selected'";} ?>>Прохождение сквозь стены</option>
@@ -61,7 +61,7 @@
       </label><br>
   
       <label>
-          Биография:
+          Биография:<br>
           <textarea name="biography"><?php print $values['biography']; ?></textarea>
       </label><br>
       
