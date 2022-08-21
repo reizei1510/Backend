@@ -58,13 +58,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else {
         try {
+		
+	    $name = htmlspecialchars($_POST['name']);
+	    $email = htmlspecialchars($_POST['email']);
+	    $birthday = htmlspecialchars($_POST['birthday']);
+	    $gender = htmlspecialchars($_POST['gender']);
+	    $limbs = htmlspecialchars($_POST['limbs']);
+	    $biography = htmlspecialchars($_POST['biography']);
+		
             $stmt = $db->prepare("UPDATE users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ? WHERE usr_id = ?");
-            $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography'], $_COOKIE['user_id']));
+            $stmt->execute(array($name, $email, $birthday, $gender, $limbs, $biography, $user_id));
 
             $stmt = $db->prepare('DELETE FROM powers6 WHERE usr_id = ?');
             $stmt->execute([$_COOKIE['user_id']]);
 	        $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
-            foreach ($_POST['superpowers'] as $pw)
+            foreach ($_POST['superpowers'] as htmlspecialchars($pw))
                 $stmt -> execute(array($_COOKIE['user_id'], $pw));
 	    }
 	catch (PDOException $e) {
