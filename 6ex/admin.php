@@ -35,58 +35,44 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	header('Location: ./admin.php');
     }
    
-    /*else if (!empty($_POST['edit'])) {
-        $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
-        $stmt->execute(array($member_id));
+    else if (!empty($_POST['edit'])) {
+        $stmt = $db->prepare("SELECT * FROM users6 WHERE usr_id = ?");
+        $stmt->execute($_POST['edit']);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $values['name'] = $result['name'];
         $values['email'] = $result['email'];
-        $values['birth'] = $result['date'];
+        $values['birthday'] = $result['birthday'];
         $values['gender'] = $result['gender'];
         $values['limbs'] = $result['limbs'];
-        $values['bio'] = $result['bio'];
-        $values['policy'] = $result['policy'];
+        $values['biography'] = $result['biography'];
+        $values['contract'] = $result['contract'];
 
-        setcookie('user_id', $member_id, time() + 12 * 30 * 24 * 60 * 60);
+        setcookie('user_id', $_POST['edit'], time() + 12 * 30 * 24 * 60 * 60);
 
-        $powers = $db->prepare("SELECT * FROM powers2 WHERE user_login = ?");
-        $powers->execute(array($member_id['login']));
-        $result = $powers->fetch(PDO::FETCH_ASSOC);
-        $values['select'] = $result['powers'];
+        $stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
+    	$stmt->execute($_POST['edit']);
+    	$pwrs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($pwrs as $pwr)
+            array_push($values['superpowers'], $pwr['superpower']);
     }
     else {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $date = $_POST['birth'];
-        $gender = $_POST['gender'];
-        $limbs = $_POST['limbs'];
-        $bio = $_POST['bio'];
-        $policy = $_POST['policy'];
-        $select = implode(',', $_POST['select']);
-        $user = 'u47572';
-        $pass = '4532025';
-        $db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
-
-        $member_id = $_COOKIE['user_id'];
-
         try {
-            $stmt = $db->prepare("SELECT login FROM members WHERE id = ?");
-            $stmt->execute(array($member_id));
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt = $db->prepare("UPDATE users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?, contract = ? WHERE usr_id = ?");
+            $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography'], $_POST['contract'], $_COOKIE['user_id']));
 
-            setcookie('login_value', $result['login'], time() + 12 * 30 * 24 * 60 * 60);
-
-            $stmt = $db->prepare("UPDATE members SET name = ?, email = ?, date = ?, gender = ?, limbs = ?, bio = ?, policy = ? WHERE login = ?");
-            $stmt->execute(array($name, $email, $date, $gender, $limbs, $bio, $policy, $result['login']));
-
-            $superpowers = $db->prepare("UPDATE powers2 SET powers = ? WHERE user_login = ? ");
-            $superpowers->execute(array($select, $result['login']));
-        } catch (PDOException $e) {
+            $stmt = $db->prepare('DELETE FROM powers6 WHERE usr_id = ?');
+            $stmt->execute($usr_id);
+	    $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
+            foreach ($_POST['superpowers'] as $pw) {
+                $stmt -> execute(array($usr_id, $pw));
+	    }
+        }
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
-    }*/
+    }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
@@ -170,7 +156,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             ?>
                         </td>
                         <td><?php echo $usr['biography'] ?></td>
-                        <td><form action="./edit.php" method="GET">
+                        <td><form action="" method="POST">
                             <input value="<?php echo $usr['usr_id'] ?>" name="edit" type="hidden" /><button id="edit">Изменить</button>
                             </form>
                         </td>
