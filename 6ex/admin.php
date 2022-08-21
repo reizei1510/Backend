@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
    
     else if (!empty($_POST['edit'])) {
         $stmt = $db->prepare("SELECT * FROM users6 WHERE usr_id = ?");
-        $stmt->execute($_POST['edit']);
+        $stmt->execute([$_POST['edit']]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $values['name'] = $result['name'];
@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         setcookie('user_id', $_POST['edit'], time() + 12 * 30 * 24 * 60 * 60);
 
         $stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
-    	$stmt->execute($_POST['edit']);
+    	$stmt->execute([$_POST['edit']]);
     	$pwrs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	    foreach ($pwrs as $pwr)
             array_push($values['superpowers'], $pwr['superpower']);
