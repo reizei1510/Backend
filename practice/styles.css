@@ -23,22 +23,22 @@ body {
     font-family: Snell Roundhand, cursive;
     display: block;
     text-shadow:
-        -0 -1px 1px #FFC0CB,
-        0 -1px 1px #FFC0CB,
-        -0 1px 1px #FFC0CB,
-        0 1px 1px #FFC0CB,
-        -1px -0 1px #FFC0CB,
-        1px -0 1px #FFC0CB,
-        -1px 0 1px #FFC0CB,
-        1px 0 1px #FFC0CB,
-        -1px -1px 1px #FFC0CB,
-        1px -1px 1px #FFC0CB,
-        -1px 1px 1px #FFC0CB,
-        1px 1px 1px #FFC0CB,
-        -1px -1px 1px #FFC0CB,
-        1px -1px 1px #FFC0CB,
-        -1px 1px 1px #FFC0CB,
-        1px 1px 1px #FFC0CB;
+        -0 -1px 1px #DB7093,
+        0 -1px 1px #DB7093,
+        -0 1px 1px #DB7093,
+        0 1px 1px #DB7093,
+        -1px -0 1px #DB7093,
+        1px -0 1px #DB7093,
+        -1px 0 1px #DB7093,
+        1px 0 1px #DB7093,
+        -1px -1px 1px #DB7093,
+        1px -1px 1px #DB7093,
+        -1px 1px 1px #DB7093,
+        1px 1px 1px #DB7093,
+        -1px -1px 1px #DB7093,
+        1px -1px 1px #DB7093,
+        -1px 1px 1px #DB7093,
+        1px 1px 1px #DB7093;
 }
 
 .welcome_text {
@@ -47,22 +47,23 @@ body {
     font-size: 30px;
     color: #FFFFFF;
     font-family: Snell Roundhand, cursive;
-        -0 -1px 1px #FFC0CB,
-        0 -1px 1px #FFC0CB,
-        -0 1px 1px #FFC0CB,
-        0 1px 1px #FFC0CB,
-        -1px -0 1px #FFC0CB,
-        1px -0 1px #FFC0CB,
-        -1px 0 1px #FFC0CB,
-        1px 0 1px #FFC0CB,
-        -1px -1px 1px #FFC0CB,
-        1px -1px 1px #FFC0CB,
-        -1px 1px 1px #FFC0CB,
-        1px 1px 1px #FFC0CB,
-        -1px -1px 1px #FFC0CB,
-        1px -1px 1px #FFC0CB,
-        -1px 1px 1px #FFC0CB,
-        1px 1px 1px #FFC0CB;
+    text-shadow:
+        -0 -2px 2px #DB7093,
+        0 -2px 2px #DB7093,
+        -0 2px 2px #DB7093,
+        0 2px 2px #DB7093,
+        -2px -0 2px #DB7093,
+        2px -0 2px #DB7093,
+        -2px 0 2px #DB7093,
+        2px 0 2px #DB7093,
+        -2px -2px 2px #DB7093,
+        2px -2px 2px #DB7093,
+        -2px 2px 2px #DB7093,
+        2px 2px 2px #DB7093,
+        -2px -2px 2px #DB7093,
+        2px -2px 2px #DB7093,
+        -2px 2px 2px #DB7093,
+        2px 2px 2px #DB7093;
 }
 
 .topnav {
