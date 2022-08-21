@@ -96,6 +96,8 @@
 	    </form>
         
     </div>
+	
+    <div class='content'><a href="admin.php">Вы администратор?</a></div>
  
 </body>
  
