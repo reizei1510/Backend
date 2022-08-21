@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <th>Количество конечностей</th>
                 <th>Суперспособности</th>
                 <th>Биография</th>
-                <th>Действия</th>
+                <th colspan="2">Действия</th>
             </tr>
             <?php
             if (!empty($allUsers)) {
