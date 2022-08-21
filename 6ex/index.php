@@ -250,10 +250,8 @@ else {
             $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography']));
             $usr_id = $db->lastInsertId();
 		
-		//
-                $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
-                $stmt -> execute($usr_id, $usr_id);
-		//		 
+            $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
+            $stmt -> execute(array($usr_id, $usr_login, $usr_pass));mt -> execute($usr_id, $usr_id);		 
 				 
             //foreach ($_POST['superpowers'] as $pw) {
             //    $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
