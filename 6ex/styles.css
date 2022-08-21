@@ -71,7 +71,7 @@ body {
 }
 
 table {
-  max-width: 960px;
+  max-width: 100%;
   background-color: #FFF8DC;
   border: 1px;
   margin: 0 auto;
