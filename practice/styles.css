@@ -14,11 +14,15 @@ body {
 .welcome {
     text-align: center;
     margin: 30px, auto;
-    color: #FFFFFF;
-    font-size: 50px;
-    display: flex;
-    flex-direction: column;
+    font-size: 30px;
     font-family: Snell Roundhand, cursive;
+    display: flex;
+    
+}
+
+.welcome_text {
+    font-size: 70px;
+    color: #FFFFFF;
     text-shadow:
         -0 -1px 1px #FFC0CB,
         0 -1px 1px #FFC0CB,
@@ -84,4 +88,5 @@ footer {
 footer table {
     border: collapse;
     margin: auto;
+    width: 720px;
 }
