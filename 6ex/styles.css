@@ -68,3 +68,21 @@ body {
 .button {
     font-size: 20px;
 }
+
+table {
+  background-color: #FFF8DC;
+  border: 1px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  width:200px;
+  padding: 4px;
+  text-align: center;
+}
+
+th {
+    background: #008080;
+    color: #FFFFFF;
+   }
