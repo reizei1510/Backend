@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     <title>Main Page</title>
 </head>
-<body>
+<body link="#FFC0CB" vlink="#FFC0CB">
 	
     <div class="welcome">
         Diary
