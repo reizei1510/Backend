@@ -7,12 +7,9 @@
     <title>Main Page</title>
 </head>
 <body>
-    <div class="topnav">
-        <a href="index.php">Diary</a>
-    </div>
 	
     <div class="welcome">
-        <div class="welcome_text"><h1>Diary</h1></div><br>Welcome
+        <div class="welcome_text"><h1>Diary</h1></div><br>
     </div>
     <div class="content">
 	You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
