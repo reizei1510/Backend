@@ -93,10 +93,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             <?php
                             $superpowers = [];
                             $stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
-    	                    $stmt->execute($usr['usr_id']);
+    	                    $stmt->execute([$usr['usr_id']]);
     	                    $pwrs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	                    foreach ($pwrs as $pwr)
-                                $superpowers.array_push($pwr['superpower']);
+                                array_push($superpowers, $pwr['superpower']);
                             echo implode(', ', $superpowers);
                             ?>
                         </td>
