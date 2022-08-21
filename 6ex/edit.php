@@ -16,19 +16,17 @@
       
       <label>
           Имя:
-          <input name="name" <?php if ($errors['name']) { print 'class="error"'; } ?> value="<?php print $values['name']; ?>" /><br>
-		      <div class="error_message"><?php print $messages['name']; ?></div>
+          <input name="name" value="<?php print $values['name']; ?>" /><br>
       </label><br>
       
       <label>
           e-mail:
-          <input name="email" <?php if ($errors['email']) { print 'class="error"'; } ?> value="<?php print $values['email']; ?>" /><br>
-		      <div class="error_message"><?php print $messages['email']; ?></div>
+          <input name="email" value="<?php print $values['email']; ?>" /><br>
       </label><br>
       
       <label>
           Дата рождения:
-          <input name="birthday" type="date" <?php if ($errors['birthday']) { print 'class="error"'; } ?> value="<?php print $values['birthday']; ?>" /><br>
+          <input name="birthday" value="<?php print $values['birthday']; ?>" /><br>
       </label><br>
       
       Пол:
@@ -55,15 +53,16 @@
   
       <label>
           Сверхспособность:
-          <select name="superpowers[]" multiple="multiple" <?php if ($errors['superpowers']) { print 'class="error"'; } ?> >
-          <option value="Immortality" <?php if (in_array("Immortality", $values['superpowers'])) { print "selected='selected'";} ?>>Бессмертие</option>
-          <option value="Immateriality" <?php if (in_array("Immateriality", $values['superpowers'])) { print "selected='selected'";} ?>>Прохождение сквозь стены</option>               <option value="Levitation" <?php if (in_array("Levitation", $values['superpowers'])) { print "selected='selected'";} ?>>Левитация</option>
+          <select name="superpowers[]" multiple="multiple">
+              <option value="Immortality" <?php if (in_array("Immortality", $values['superpowers'])) { print "selected='selected'";} ?>>Бессмертие</option>
+              <option value="Immateriality" <?php if (in_array("Immateriality", $values['superpowers'])) { print "selected='selected'";} ?>>Прохождение сквозь стены</option>
+              <option value="Levitation" <?php if (in_array("Levitation", $values['superpowers'])) { print "selected='selected'";} ?>>Левитация</option>
           </select>
       </label><br>
   
       <label>
           Биография:
-          <textarea name="biography" <?php if ($errors['biography']) { print 'class="error"'; } ?>><?php print $values['biography']; ?></textarea>
+          <textarea name="biography"><?php print $values['biography']; ?></textarea>
       </label><br>
       
       <input class="button" type="submit" value="Отправить" /><br>
