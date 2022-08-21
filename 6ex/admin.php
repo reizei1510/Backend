@@ -1,10 +1,14 @@
 <?php
 
-if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW']) || !empty($_GET['logout'])) {
+if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW'])) {
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация.</h1>');
     exit();
+}
+
+if (!empty($_GET['logout'])) {
+    Location: './';	
 }
 
 $db_login = 'u16346';
@@ -38,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $del_powers->execute(array($_POST['delete']));
         $del_data = $db->prepare("DELETE FROM users_data6 WHERE usr_id = ?");
         $del_data->execute(array($_POST['delete']));
+	Location: './admin.php';
     }
    
     /*else if (!empty($_POST['edit'])) {
