@@ -103,7 +103,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     	$pwrs = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	foreach ($pwrs as $pwr)
             $values['superpowers'].array_push($pwr['superpower']);
-        }
 	
         $messages['data'] = 'Вход с логином ' . $_SESSION['login'] . ', id ' . $_SESSION['uid'];
     }
