@@ -66,16 +66,22 @@ body {
     flex-direction: column;
     font-size: 15px;
     font-family: arial;
+    text-align: center;
+}
+
+.text {
+    display: flex;
+    flex-direction: row;
 }
 
 footer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     width:100%;
+    margin-top: 30px;
 }
 
 footer table {
     border: collapse;
-    margin: 10px, auto;
+    margin: auto;
 }
