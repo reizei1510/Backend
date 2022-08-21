@@ -26,6 +26,8 @@
     <div class="content">
 	    
             <form action="" method="POST">
+		    
+		<input type="hidden" name="token" value=$_SESSION['token'] />
 	    
                 <label>
                     Имя:<font color="red">*</font><br>
