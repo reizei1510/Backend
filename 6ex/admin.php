@@ -68,6 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	    
         <table>
             <tr>
+                <th>ID</th>
                 <th>Имя</th>
                 <th>Email</th>
                 <th>Дата рождения</th>
@@ -75,12 +76,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <th>Количество конечностей</th>
                 <th>Суперспособности</th>
                 <th>Биография</th>
+                <th>Действия</th>
             </tr>
             <?php
             if (!empty($allUsers)) {
                 foreach ($allUsers as $usr) {
             ?>
                     <tr>
+                        <td><?php echo $usr['usr_id'] ?></td>
                         <td><?php echo $usr['name'] ?></td>
                         <td><?php echo $usr['email'] ?></td>
                         <td><?php echo $usr['birthday'] ?></td>
@@ -97,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             echo implode(', ', $superpowers);
                             ?>
                         </td>
-                        <td><?php echo $value['biography'] ?></td>
+                        <td><?php echo $usr['biography'] ?></td>
                         <td><form action="" method="POST">
                             <input value="<?php echo $usr['usr_id'] ?>" name="edit" type="hidden" /><button id="edit">Изменить</button>
                             </form>
