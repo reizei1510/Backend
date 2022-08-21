@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             ?>
                         </td>
                         <td><?php echo $usr['biography'] ?></td>
-                        <td><form action="./edit.php" method="POST">
+                        <td><form action="./edit.php" method="GET">
                             <input value="<?php echo $usr['usr_id'] ?>" name="edit" type="hidden" /><button id="edit">Изменить</button>
                             </form>
                         </td>
