@@ -38,7 +38,7 @@
       </label>
       <label>
           <input type="radio" name="gender" value="other" <?php if($values['gender'] == "other"){ print "checked='checked'"; } ?> />Другое
-      </label><br>
+      </label><br><br>
   
       Количество конечностей:<br>
       <label>
@@ -49,7 +49,7 @@
       </label>
       <label>
           <input type="radio" name="limbs" value="other" <?php if($values['limbs'] == "other"){ print "checked='checked'"; } ?> />Другое
-      </label><br>
+      </label><br><br>
   
       <label>
           Сверхспособность:<br>
@@ -58,12 +58,12 @@
               <option value="Immateriality" <?php if (in_array("Immateriality", $values['superpowers'])) { print "selected='selected'";} ?>>Прохождение сквозь стены</option>
               <option value="Levitation" <?php if (in_array("Levitation", $values['superpowers'])) { print "selected='selected'";} ?>>Левитация</option>
           </select>
-      </label><br>
+      </label><br><br>
   
       <label>
           Биография:<br>
           <textarea name="biography"><?php print $values['biography']; ?></textarea>
-      </label><br>
+      </label><br><br>
       
       <input class="button" type="submit" value="Отправить" /><br>
       
