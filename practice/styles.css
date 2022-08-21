@@ -9,20 +9,18 @@ body {
     background: url(img/background.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    font-family: arial;
 }
 
 .welcome {
     text-align: center;
-    margin: 30px, auto;
-    font-size: 30px;
-    font-family: Snell Roundhand, cursive;
-    display: flex;
-    
-}
-
-.welcome_text {
-    font-size: 70px;
+    font-size: 60px;
     color: #FFFFFF;
+    margin: 30px, auto, 10px, auto;
+    font-family: Snell Roundhand, cursive;
     text-shadow:
         -0 -1px 1px #FFC0CB,
         0 -1px 1px #FFC0CB,
@@ -40,6 +38,14 @@ body {
         1px -1px 1px #FFC0CB,
         -1px 1px 1px #FFC0CB,
         1px 1px 1px #FFC0CB;
+}
+
+.welcome_text {
+    text-align: center;
+    margin: 10px, auto, 10px, auto;
+    font-size: 30px;
+    color: #FFFFFF;
+    font-family: Snell Roundhand, cursive;
 }
 
 .topnav {
@@ -64,29 +70,15 @@ body {
     float: right;
 }
 
-.content {
-    max-width:960px;
-    display: flex;
-    flex-direction: column;
-    font-size: 15px;
-    font-family: arial;
-    text-align: center;
-}
-
-.text {
-    display: flex;
-    flex-direction: row;
-}
-
 footer {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     width:100%;
     margin-top: 30px;
 }
 
 footer table {
     border: collapse;
-    margin: auto;
-    width: 720px;
+    margin: 0, auto;
+    max-width: 720px;
 }
