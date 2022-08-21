@@ -251,7 +251,7 @@ else {
             $usr_id = $db->lastInsertId();
 		
             $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
-            $stmt -> execute(array($usr_id, $usr_login, $usr_pass));mt -> execute($usr_id, $usr_id);		 
+            $stmt->execute(array($usr_id, $usr_login, $usr_pass));		 
 				 
             //foreach ($_POST['superpowers'] as $pw) {
             //    $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
@@ -259,7 +259,7 @@ else {
 	    //}
 		
             $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
-            $stmt -> execute(array($usr_id, $usr_login, $usr_pass));
+            $stmt->execute(array($usr_id, $usr_login, $usr_pass));
         }
         catch (PDOException $e) {
             setcookie('save_error', '$e->getMessage()', 100000);
