@@ -67,10 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             foreach ($_POST['superpowers'] as $pw)
                 $stmt -> execute(array($_COOKIE['user_id'], $pw));
 	    }
-	    catch (PDOException $e) {
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
+	header('Location: ./admin.php');
     }
 }
 
