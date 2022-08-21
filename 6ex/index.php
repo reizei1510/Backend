@@ -252,11 +252,11 @@ else {
 		
             $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
             $stmt->execute(array($usr_id, $usr_login, $usr_pass));		 
-				 
-            //foreach ($_POST['superpowers'] as $pw) {
-            //    $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
-            //    $stmt -> execute($usr_id, $pw);
-	    //}
+			
+            $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");	 
+            foreach ($_POST['superpowers'] as $pw) {
+                $stmt -> execute($usr_id, $pw);
+	    }
 		
             $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
             $stmt->execute(array($usr_id, $usr_login, $usr_pass));
