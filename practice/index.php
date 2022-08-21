@@ -9,8 +9,10 @@
 <body>
 	
     <div class="welcome">
-        <div class="welcome_text"><h1>Diary</h1></div><br>
-	<div class="text">You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a></div>
+        <h1>Diary</h1><br>
+    </div>
+    <div class="welcome_text">
+	You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
     </div>
 	
     <footer>
