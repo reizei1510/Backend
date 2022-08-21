@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="topnav">
-        <a href="index.php">Задание 5</a>
+        <a href="index.php">Задание 6</a>
         <div class="topnav_right">
             <?php if (empty($_SESSION['login'])) { print '<a href="login.php" >Войти</a>'; }
 		  else { print '<a href="login.php" >Выйти</a>'; } ?>
