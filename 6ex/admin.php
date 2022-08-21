@@ -1,10 +1,13 @@
 <?php
 
 if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW']) || !empty($_GET['logout'])) {
+    if (!empty($_GET['logout'])) {
+	Location: './admin.php';
+    }
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация.</h1>');
-    Location: './';
+    exit();
 }
 
 $db_login = 'u16346';
