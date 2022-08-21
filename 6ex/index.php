@@ -249,12 +249,18 @@ else {
             $stmt = $db->prepare("INSERT INTO users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
             $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography']));
             $usr_id = $db->lastInsertId();
-            $stmt1 = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
-            foreach ($_POST['superpowers'] as $pw) {
-                $stmt1 -> execute($usr_id, $pw);
-	    }
-            $stmt2 = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
-            $stmt2 -> execute(array($usr_id, $usr_login, $usr_pass));
+		
+		//
+                $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
+                $stmt -> execute($usr_id, implode(', ', $_POST['superpowers']);
+		//		 
+				 
+            //foreach ($_POST['superpowers'] as $pw) {
+            //    $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
+            //    $stmt -> execute($usr_id, $pw);
+	    //}
+            $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
+            $stmt -> execute(array($usr_id, $usr_login, $usr_pass));
         }
         catch (PDOException $e) {
             setcookie('save_error', '$e->getMessage()', 100000);
