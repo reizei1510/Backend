@@ -1,30 +1,20 @@
 <?php
 
-$user = 'u47572';
-$pass = '4532025';
-$db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+$db_login = 'u16346';
+$db_pass = '34rerfeq5';
+$db = new PDO('mysql:host=localhost;dbname=uu16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete'])) {
-        $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
-        $stmt->execute(array($_POST['delete']));
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        if (empty($result)) {
-            print('<p>Ошибка при удалении данных</p>');
-        } else {
-            $stmt = $db->prepare("DELETE FROM members WHERE login = ?");
-            $stmt->execute(array($_POST['delete']));
-
-            $powers = $db->prepare("DELETE FROM powers2 where user_login = ?");
-            $powers->execute(array($_POST['delete']));
-            header('Location: ?delete_error=0');
-        }
-    } else if (!empty($_POST['edit'])) {
-        $user = 'u47572';
-        $pass = '4532025';
-        $member_id = $_POST['edit'];
-
-        $db = new PDO('mysql:host=localhost;dbname=u47572', $user, $pass, array(PDO::ATTR_PERSISTENT => true));
+        $del_user = $db->prepare("DELETE FROM users6 WHERE usr_id = ?");
+        $del_user->execute(array($_POST['delete']));
+        $del_powers = $db->prepare("DELETE FROM powers6 WHERE usr_id = ?");
+        $del_powers->execute(array($_POST['delete']));
+        $del_data = $db->prepare("DELETE FROM users_data6 WHERE usr_id = ?");
+        $del_powers->execute(array($_POST['delete']));
+    }
+//------------------------------------------------------------------------------------------------------    
+    else if (!empty($_POST['edit'])) {
         $stmt = $db->prepare("SELECT * FROM members WHERE login = ?");
         $stmt->execute(array($member_id));
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -43,7 +33,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $powers->execute(array($member_id['login']));
         $result = $powers->fetch(PDO::FETCH_ASSOC);
         $values['select'] = $result['powers'];
-    } else {
+    }
+    else {
         $name = $_POST['name'];
         $email = $_POST['email'];
         $date = $_POST['birth'];
@@ -77,31 +68,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-if (!empty($_SERVER['PHP_AUTH_USER']) && !empty($_SERVER['PHP_AUTH_PW'])) {
-    try {
-        $stmt = $db->prepare("SELECT * FROM admins WHERE login = ?");
-        $stmt->execute(array($_SERVER['PHP_AUTH_USER']));
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    } catch (PDOException $e) {
-        print('Error : ' . $e->getMessage());
-        exit();
-    }
+//------------------------------------------------------------------------------------------------------
 
-    if (empty($result['password'])) {
-        header('HTTP/1.1 401 Unanthorized');
-        header('WWW-Authenticate: Basic realm="My site"');
-        print('<h1>401 Неверный логин</h1>');
-        exit();
-    }
+if (empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW'])) {
+    header('HTTP/1.1 401 Unanthorized');
+    header('WWW-Authenticate: Basic realm="My site"');
+    print('<h1>401 Требуется авторизация</h1>');
+    exit();
+}
+    
+try {
+    $stmt = $db->prepare("SELECT * FROM admins WHERE adm_login = ?");
+    $stmt->execute($_SERVER['PHP_AUTH_USER']);
+    $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+}
+catch (PDOException $e) {
+    print('Error : ' . $e->getMessage());
+    exit();
+}
 
-    if ($result['password'] != md5($_SERVER['PHP_AUTH_PW'])) {
-        header('HTTP/1.1 401 Unanthorized');
-        header('WWW-Authenticate: Basic realm="My site"');
-        print('<h1>401 Неверный пароль</h1>');
-        exit();
-    }
+if (empty($admin) {
+    header('HTTP/1.1 401 Unanthorized');
+    header('WWW-Authenticate: Basic realm="My site"');
+    print('<h1>401 Неверный логин</h1>');
+    exit();
+}
 
-    print('Вы успешно авторизовались и видите защищенные паролем данные.');
+if ($admin['password'] != $_SERVER['PHP_AUTH_PW']) {
+    header('HTTP/1.1 401 Unanthorized');
+    header('WWW-Authenticate: Basic realm="My site"');
+    print('<h1>401 Неверный пароль</h1>');
+    exit();
+}
+
+print('Авторизация выполнена успешно.');
+    
+//------------------------------------------------------------------------------------------------------
 
     $stmt = $db->prepare("SELECT * FROM members");
     $stmt->execute([]);
@@ -123,8 +125,7 @@ if (!empty($_SERVER['PHP_AUTH_USER']) && !empty($_SERVER['PHP_AUTH_PW'])) {
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
     <title>Admin</title>
 </head>
 
