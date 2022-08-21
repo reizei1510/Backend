@@ -100,8 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	    
 	$stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
     	$stmt->execute([$_SESSION['uid']]);
-    	while($pwr = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $values['superpowers'].array_push($user['superpower']);
+    	$pwrs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	foreach ($pwrs as $pwr)
+            $values['superpowers'].array_push($pwr['superpower']);
         }
 	
         $messages['data'] = 'Вход с логином ' . $_SESSION['login'] . ', id ' . $_SESSION['uid'];
