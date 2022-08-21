@@ -26,7 +26,7 @@
       
       <label>
           Дата рождения:<br>
-          <input name="birthday" value="<?php print $values['birthday']; ?>" /><br>
+          <input name="birthday" type="date" value="<?php print $values['birthday']; ?>" /><br>
       </label><br>
       
       Пол:<br>
