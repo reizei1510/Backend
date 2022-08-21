@@ -66,6 +66,14 @@ body {
         2px 2px 2px #DB7093;
 }
 
+.welcome_text a {
+    color: #FFB6C1;
+}
+
+.welcome_text a:visited {
+    color: #FFB6C1;
+}
+
 .topnav {
     background-color: #FFB6C1;
 }
@@ -91,12 +99,22 @@ body {
 footer {
     display: flex;
     justify-content: center;
-    width:100%;
+    width: 100%;
+    height: 60px;
     margin-top: 30px;
+    background-color: #FFB6C1;
 }
 
 footer table {
     border: collapse;
     margin: 0, auto;
     max-width: 720px;
+}
+
+footer a {
+    color: #FFFFFF;   
+}
+
+footer a:visited {
+    color: #FFFFFF;   
 }
