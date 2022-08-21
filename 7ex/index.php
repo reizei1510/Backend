@@ -210,13 +210,22 @@ else {
     
     if (session_start() && !empty($_SESSION['login'])) {
         try {
+		
+	    $name = htmlspecialchars($_POST['name']);
+	    $email = htmlspecialchars($_POST['email']);
+	    $birthday = htmlspecialchars($_POST['birthday']);
+	    $gender = htmlspecialchars($_POST['gender']);
+	    $limbs = htmlspecialchars($_POST['limbs']);
+	    $biography = htmlspecialchars($_POST['biography']);
+		
+		
             $stmt = $db->prepare("UPDATE users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ? WHERE usr_id = ?");
-            $stmt -> execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography'], $_SESSION['uid']));
+            $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography, $_SESSION['uid']));
             $stmt = $db->prepare('DELETE FROM powers6 WHERE usr_id = ?');
             $stmt->execute([$_SESSION['uid']]);
             $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
             foreach ($_POST['superpowers'] as $pw) {
-                $stmt -> execute(array($_SESSION['uid'], $pw));
+                $stmt -> execute(array($_SESSION['uid'], htmlspecialchars($pw)));
 	    }
         }
         catch(PDOException $e){
@@ -246,13 +255,21 @@ else {
         setcookie('usr_pass', $usr_pass);
     
         try {
+	
+	    $name = htmlspecialchars($_POST['name']);
+	    $email = htmlspecialchars($_POST['email']);
+	    $birthday = htmlspecialchars($_POST['birthday']);
+	    $gender = htmlspecialchars($_POST['gender']);
+	    $limbs = htmlspecialchars($_POST['limbs']);
+	    $biography = htmlspecialchars($_POST['biography']);
+		
             $stmt = $db->prepare("INSERT INTO users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
-            $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography']));
+            $stmt->execute(array($name, $email, $birthday, $gender, $limbs, $biography));
             $usr_id = $db->lastInsertId();		 
 			
             $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");	 
             foreach ($_POST['superpowers'] as $pw) {
-                $stmt->execute(array($usr_id, $pw));
+                $stmt->execute(array($usr_id, htmlspecialchars($pw)));
 	    }
 		
             $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
