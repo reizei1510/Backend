@@ -1,6 +1,6 @@
 <?php
 
-if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW'])) {
+if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW']) || !empty($_POST['logout'])) {
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация.</h1>');
@@ -170,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             ?>
                         </td>
                         <td><?php echo $usr['biography'] ?></td>
-                        <td><form action="" method="POST">
+                        <td><form action="./edit.php" method="POST">
                             <input value="<?php echo $usr['usr_id'] ?>" name="edit" type="hidden" /><button id="edit">Изменить</button>
                             </form>
                         </td>
@@ -188,10 +188,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         </table>
 	    
     </div>
-	
-    <?php if (!empty($_POST['edit'])) {
-        include('edit.php');
-    } 
 } ?>
 	
 </body>
