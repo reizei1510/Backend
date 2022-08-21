@@ -19,7 +19,7 @@ body {
     text-align: center;
     font-size: 60px;
     color: #FFFFFF;
-    margin: 30px, auto, 10px, auto;
+    margin: 30px auto 10px auto;
     font-family: Snell Roundhand, cursive;
     text-shadow:
         -0 -1px 1px #FFC0CB,
@@ -42,7 +42,7 @@ body {
 
 .welcome_text {
     text-align: center;
-    margin: 10px, auto, 10px, auto;
+    margin: 10px auto 10px auto;
     font-size: 30px;
     color: #FFFFFF;
     font-family: Snell Roundhand, cursive;
