@@ -252,7 +252,7 @@ else {
 		
 		//
                 $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
-                $stmt -> execute($usr_id, 'f'));
+                $stmt -> execute($usr_id, 'f');
 		//		 
 				 
             //foreach ($_POST['superpowers'] as $pw) {
