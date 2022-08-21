@@ -6,26 +6,26 @@
     <link rel="stylesheet" href="styles.css">
     <title>Main Page</title>
 </head>
-<body link="#FFC0CB" vlink="#FFC0CB">
+<body>
 	
     <div class="welcome">
         Diary
     </div>
     <div class="welcome_text">
-	You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
+	You can <a href="logup.php" style="color:#FFC0CB">Join</a> or <a href="login.php" style="color:#FFC0CB">Login</a> or <a href="read.php" style="color:#FFC0CB">Read</a>
     </div>
 	
     <footer>
         <table>
 	    <tr>
-                <td><a href="about.php">About</a></td>
-                <td><a href="admin.php">Are you admin?</a></td>
+                <td><a href="about.php" style="color:#FFFFFF">About</a></td>
+                <td><a href="admin.php" style="color:#FFFFFF">Are you admin?</a></td>
 	    </tr>
             <tr>
-                <td><a href="contacts.php">Contacts</a></td>
+                <td><a href="contacts.php" style="color:#FFFFFF">Contacts</a></td>
             </tr>
             <tr>
-                <td><a href="contacts.php">Rules</a></td>
+                <td><a href="contacts.php" style="color:#FFFFFF">Rules</a></td>
             </tr>
         </table>
     <footer>
