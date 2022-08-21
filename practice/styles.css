@@ -21,6 +21,7 @@ body {
     color: #FFFFFF;
     margin: 30px auto 10px auto;
     font-family: Snell Roundhand, cursive;
+    display: block;
     text-shadow:
         -0 -1px 1px #FFC0CB,
         0 -1px 1px #FFC0CB,
