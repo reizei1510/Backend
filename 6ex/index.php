@@ -248,14 +248,11 @@ else {
         try {
             $stmt = $db->prepare("INSERT INTO users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
             $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography']));
-            $usr_id = $db->lastInsertId();
-		
-            $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
-            $stmt->execute(array($usr_id, $usr_login, $usr_pass));		 
+            $usr_id = $db->lastInsertId();		 
 			
             $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");	 
             foreach ($_POST['superpowers'] as $pw) {
-                $stmt -> execute($usr_id, $pw);
+                $stmt->execute(array($usr_id, $pw));
 	    }
 		
             $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
