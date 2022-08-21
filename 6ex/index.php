@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $db_pass = '34rerfeq5';
         $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
         
-        $stmt = $db->prepare("SELECT * FROM users6 WHERE usr_id = ?");
+        $stmt = $db->prepare("SELECT * FROM users5 WHERE usr_id = ?");
     	$stmt->execute([$_SESSION['uid']]);
     	$user = $stmt->fetch(PDO::FETCH_ASSOC);
         $values['name'] = $user['name'];
@@ -208,9 +208,9 @@ else {
     
     if (session_start() && !empty($_SESSION['login'])) {
         try {
-            $stmt = $db->prepare("UPDATE users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ? WHERE usr_id = ?");
+            $stmt = $db->prepare("UPDATE users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ? WHERE usr_id = ?");
             $stmt -> execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography'], $_SESSION['uid']));
-            $stmt = $db->prepare("UPDATE powers6 SET superpowers = ? WHERE usr_id = ?");
+            $stmt = $db->prepare("UPDATE powers5 SET superpowers = ? WHERE usr_id = ?");
             $stmt->execute(array(implode(', ', $_POST['superpowers']), $_SESSION['uid']));
         }
         catch(PDOException $e){
@@ -240,12 +240,12 @@ else {
         setcookie('usr_pass', $usr_pass);
     
         try {
-            $stmt = $db->prepare("INSERT INTO users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
+            $stmt = $db->prepare("INSERT INTO users5 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ?");
             $stmt->execute(array($_POST['name'], $_POST['email'], $_POST['birthday'], $_POST['gender'], $_POST['limbs'], $_POST['biography']));
             $usr_id = $db->lastInsertId();
-            $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpowers = ?");
+            $stmt = $db->prepare("INSERT INTO powers5 SET usr_id = ?, superpowers = ?");
             $stmt -> execute(array($usr_id, implode(', ', $_POST['superpowers'])));
-            $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
+            $stmt = $db->prepare("INSERT INTO users_data5 SET usr_id = ?, usr_login = ?, usr_pass = ?");
             $stmt -> execute(array($usr_id, $usr_login, $usr_pass));
         }
         catch (PDOException $e) {
