@@ -72,8 +72,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt = $db->prepare('DELETE FROM powers6 WHERE usr_id = ?');
             $stmt->execute([$_COOKIE['user_id']]);
 	        $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
-            foreach ($_POST['superpowers'] as htmlspecialchars($pw))
-                $stmt -> execute(array($_COOKIE['user_id'], $pw));
+            foreach ($_POST['superpowers'] as $pw)
+                $stmt -> execute(array($_COOKIE['user_id'], htmlspecialchars($pw)));
 	    }
 	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
