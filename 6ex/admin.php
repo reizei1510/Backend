@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <body>
 	
-    <div class="content topnav_right"><a href="./admin.php?logout=1">Выйти</a></div>
+    <div class="content"><a href="./admin.php?logout=1">Выйти</a></div>
     
     <div class="content">
 	    
