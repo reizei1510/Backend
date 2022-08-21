@@ -218,7 +218,6 @@ else {
 	    $limbs = htmlspecialchars($_POST['limbs']);
 	    $biography = htmlspecialchars($_POST['biography']);
 		
-		
             $stmt = $db->prepare("UPDATE users6 SET name = ?, email = ?, birthday = ?, gender = ?, limbs = ?, biography = ? WHERE usr_id = ?");
             $stmt -> execute(array($name, $email, $birthday, $gender, $limbs, $biography, $_SESSION['uid']));
             $stmt = $db->prepare('DELETE FROM powers6 WHERE usr_id = ?');
