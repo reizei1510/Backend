@@ -70,7 +70,7 @@ $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(P
 
 //------------------------------------------------------------------------------------------------------
 
-if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW'])) {
+/*if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW'])) {
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация</h1>');
@@ -101,7 +101,42 @@ if ($admin['password'] != $_SERVER['PHP_AUTH_PW']) {
     exit();
 }
 
-print('Авторизация выполнена успешно.');
+print('Авторизация выполнена успешно.');*/
+
+
+
+
+
+if (empty($_SERVER['PHP_AUTH_USER']) ||
+    empty($_SERVER['PHP_AUTH_PW']) ||
+    !empty($_GET['logout'])) {
+  header('HTTP/1.1 401 Unanthorized');
+  header('WWW-Authenticate: Basic realm="Authorization error"');
+  print('<h1>401 Требуется авторизация</h1>');
+  exit();
+}
+
+  $user = 'u16346';
+  $pass_db = '34rerfeq5';
+  $db = new PDO('mysql:host=localhost;dbname=u16346', $user, $pass_db, array(PDO::ATTR_PERSISTENT => true));
+  $stmt = $db->prepare("SELECT * from admins6 WHERE adm_login = ?");
+  $stmt->execute([$_SERVER['PHP_AUTH_USER']]);
+  $admindata = $stmt->fetch(PDO::FETCH_ASSOC);
+  if (empty($admindata) || $admindata['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
+    header('HTTP/1.1 401 Unanthorized');
+    header('WWW-Authenticate: Basic realm="Authorization error"');
+    print('<h1>401 Неверные данные входа</h1>');
+    exit();
+  }
+
+print('Вы успешно авторизовались и видите защищенные паролем данные.');
+
+
+
+
+
+
+
 
  /*   $stmt = $db->query("SELECT * FROM users6");
     $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
