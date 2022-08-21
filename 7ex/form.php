@@ -6,11 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Задание 6</title>
+    <title>Задание 7</title>
 </head>
 <body>
     <div class="topnav">
-        <a href="index.php">Задание 6</a>
+        <a href="index.php">Задание 7</a>
         <div class="topnav_right">
             <?php if (empty($_SESSION['login'])) { print '<a href="login.php" >Войти</a>'; }
 		  else { print '<a href="login.php" >Выйти</a>'; } ?>
