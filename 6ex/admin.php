@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $del_powers->execute(array($_POST['delete']));
         $del_data = $db->prepare("DELETE FROM users_data6 WHERE usr_id = ?");
         $del_data->execute(array($_POST['delete']));
-	    header('Location: ./admin.php');
+	header('Location: ./admin.php');
     }
    
     else if (!empty($_POST['edit'])) {
@@ -173,6 +173,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         </table>
 	    
     </div>
+	
+    <?php if (!empty($_POST['edit'])) {
+        include('edit.php');
+    } ?>
 	
 </body>
 
