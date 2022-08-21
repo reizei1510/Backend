@@ -9,7 +9,7 @@
 <body>
 	
     <div class="welcome">
-        <h1>Diary</h1><br>
+        Diary
     </div>
     <div class="welcome_text">
 	You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
