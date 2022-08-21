@@ -96,6 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         $values['birthday'] = $user['birthday'];
         $values['gender'] = $user['gender'];
         $values['limbs'] = $user['limbs'];
+        $values['superpowers'] = [];
         $values['biography'] = $user['biography'];
 	    
 	$stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
