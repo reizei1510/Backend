@@ -107,11 +107,15 @@ print('Авторизация выполнена успешно.');*/
 
 
 
-if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW']) || !empty($_GET['logout'])) {
-  header('HTTP/1.1 401 Unanthorized');
-  header('WWW-Authenticate: Basic realm="Authorization error"');
-  print('<h1>401 Требуется авторизация</h1>');
-  exit();
+if (isset($_SERVER['PHP_AUTH_USER']) && isset($_SERVER['PHP_AUTH_PW'])) { 
+    $admin = $_SERVER['PHP_AUTH_USER'];
+    $password = $_SERVER['PHP_AUTH_PW'];
+}
+else {
+    header('WWW-Authenticate: Basic realm="Protected zone"');
+    header('HTTP/1.0 401 Unauthorized');
+    echo 'Login failed.';
+    exit();
 }
 
   /*$stmt = $db->prepare("SELECT * from admins6 WHERE adm_login = ?");
