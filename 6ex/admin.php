@@ -1,9 +1,6 @@
 <?php
 
 if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW']) || !empty($_GET['logout'])) {
-    if (!empty($_GET['logout'])) {
-	Location: './admin.php';
-    }
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Требуется авторизация.</h1>');
@@ -23,8 +20,6 @@ if (empty($admin) || $admin['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
     exit();
 }
 
-?>
-
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $stmt = $db->query("SELECT * FROM users6");
     $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -32,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $stmt = $db->query("SELECT superpower, COUNT(*) as count_own FROM powers6 GROUP BY superpower");
     $powersCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+?>	
+	
 <!DOCTYPE html>
 <html lang="">
 
@@ -64,7 +61,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             } ?>
         </table>
     </div>
+	
     <div class="content">
+	    
         <table>
             <tr>
                 <th>Имя</th>
@@ -113,7 +112,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
             ?>
         </table>
+	    
     </div>
+	
     <?php if (!empty($_POST['edit'])) {
         include('edit.php');
     } ?>
