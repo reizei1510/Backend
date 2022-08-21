@@ -6,11 +6,11 @@ $db = new PDO('mysql:host=localhost;dbname=uu16346', $db_login, $db_pass, array(
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete'])) {
-        $del_user = $db->prepare("DELETE FROM users6 WHERE usr_id = ?");
+        $del_user = $db->prepare("DELETE FROM users5 WHERE usr_id = ?");
         $del_user->execute(array($_POST['delete']));
-        $del_powers = $db->prepare("DELETE FROM powers6 WHERE usr_id = ?");
+        $del_powers = $db->prepare("DELETE FROM powers5 WHERE usr_id = ?");
         $del_powers->execute(array($_POST['delete']));
-        $del_data = $db->prepare("DELETE FROM users_data6 WHERE usr_id = ?");
+        $del_data = $db->prepare("DELETE FROM users_data5 WHERE usr_id = ?");
         $del_powers->execute(array($_POST['delete']));
     }
 //------------------------------------------------------------------------------------------------------    
@@ -78,7 +78,7 @@ if (empty($_SERVER['PHP_AUTH_USER']) && empty($_SERVER['PHP_AUTH_PW'])) {
 }
     
 try {
-    $stmt = $db->prepare("SELECT * FROM admins WHERE adm_login = ?");
+    $stmt = $db->prepare("SELECT * FROM admins6 WHERE adm_login = ?");
     $stmt->execute($_SERVER['PHP_AUTH_USER']);
     $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 }
@@ -105,11 +105,10 @@ print('Авторизация выполнена успешно.');
     
 //------------------------------------------------------------------------------------------------------
 
-    $stmt = $db->prepare("SELECT * FROM members");
-    $stmt->execute([]);
+    $stmt = $db->query("SELECT * FROM users5");
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmt = $db->prepare("SELECT powers, COUNT(*) as owners FROM powers2 GROUP BY powers");
+    $stmt = $db->prepare("SELECT superpowers, COUNT(*) as count_own FROM powers2 GROUP BY powers");
     $stmt->execute();
     $powersCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
@@ -130,10 +129,10 @@ print('Авторизация выполнена успешно.');
 </head>
 
 <body>
-    <div class="records-list">
+    <div class="content">
         <table>
             <tr>
-                <th>Название способности</th>
+                <th>Способность</th>
                 <th>Количество обладателей</th>
             </tr>
             <?php
@@ -148,7 +147,7 @@ print('Авторизация выполнена успешно.');
             } ?>
         </table>
     </div>
-    <div class="records-list">
+    <div class="content">
         <table>
             <tr>
                 <th>Имя</th>
