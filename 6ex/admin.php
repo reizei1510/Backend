@@ -1,10 +1,10 @@
 <?php
 
-/*$db_login = 'u16346';
+$db_login = 'u16346';
 $db_pass = '34rerfeq5';
 $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+/*if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete'])) {
         $del_user = $db->prepare("DELETE FROM users6 WHERE usr_id = ?");
         $del_user->execute(array($_POST['delete']));
@@ -77,7 +77,7 @@ if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW'])) {
     exit();
 }
     
-/*try {
+try {
     $stmt = $db->prepare("SELECT * FROM admins6 WHERE adm_login = ?");
     $stmt->execute($_SERVER['PHP_AUTH_USER']);
     $admin = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -99,7 +99,7 @@ if ($admin['password'] != $_SERVER['PHP_AUTH_PW']) {
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Неверный пароль</h1>');
     exit();
-}*/
+}
 
 print('Авторизация выполнена успешно.');
 
