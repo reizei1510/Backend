@@ -45,15 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $values['birthday'] = $result['birthday'];
         $values['gender'] = $result['gender'];
         $values['limbs'] = $result['limbs'];
+        $values['superpowers'] = [];
         $values['biography'] = $result['biography'];
-        $values['contract'] = $result['contract'];
 
         setcookie('user_id', $_POST['edit'], time() + 12 * 30 * 24 * 60 * 60);
 
         $stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
     	$stmt->execute([$_POST['edit']]);
     	$pwrs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	    foreach ($pwrs as $pwr)
+	foreach ($pwrs as $pwr)
             array_push($values['superpowers'], $pwr['superpower']);
     }
     else {
