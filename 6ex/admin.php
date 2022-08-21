@@ -2,7 +2,7 @@
 
 $db_login = 'u16346';
 $db_pass = '34rerfeq5';
-$db = new PDO('mysql:host=localhost;dbname=uu16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
+$db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete'])) {
