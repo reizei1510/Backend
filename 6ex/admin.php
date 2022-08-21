@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $del_powers->execute(array($_POST['delete']));
         $del_data = $db->prepare("DELETE FROM users_data6 WHERE usr_id = ?");
         $del_data->execute(array($_POST['delete']));
-	header('Location: ./admin.php');
+	    header('Location: ./admin.php');
     }
    
     else if (!empty($_POST['edit'])) {
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
     	$stmt->execute($_POST['edit']);
     	$pwrs = $stmt->fetchAll(PDO::FETCH_ASSOC);
-	foreach ($pwrs as $pwr)
+	    foreach ($pwrs as $pwr)
             array_push($values['superpowers'], $pwr['superpower']);
     }
     else {
@@ -63,12 +63,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $stmt = $db->prepare('DELETE FROM powers6 WHERE usr_id = ?');
             $stmt->execute($usr_id);
-	    $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
-            foreach ($_POST['superpowers'] as $pw) {
+	        $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
+            foreach ($_POST['superpowers'] as $pw)
                 $stmt -> execute(array($usr_id, $pw));
 	    }
-        }
-	catch (PDOException $e) {
+	    catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
@@ -102,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	    
         <table>
 	    <tr>
-                <th>Сверхспособности</th>
+        <th>Сверхспособности</th>
 		<th>Количество владельцев</th>
 	    </tr>
             <?php
@@ -174,8 +173,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         </table>
 	    
     </div>
-} ?>
 	
 </body>
 
 </html>
+
+<?php
+}
+?>
