@@ -174,14 +174,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	    
     </div>
 	
-    <?php if (!empty($_POST['edit'])) {
-        include('edit.php');
-    } ?>
-	
 </body>
 
 </html>
 
 <?php
+}
+if (!empty($_POST['edit'])) {
+    include('edit.php');
 }
 ?>
