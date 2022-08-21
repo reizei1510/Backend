@@ -11,9 +11,8 @@
         <a href="index.php">Diary</a>
     </div>
 	
-    <div class="content">
-        <div class="welcome"><h1>Diary</h1></div>
-	<div class="welcome_text">Welcome</div>
+    <div class="welcome">
+        <div class="welcome_text"><h1>Diary</h1></div><br>Welcome
     </div>
     <div class="content">
 	You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
