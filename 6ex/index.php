@@ -216,7 +216,7 @@ else {
             $stmt->execute([$_SESSION['uid']]);
             $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
             foreach ($_POST['superpowers'] as $pw) {
-                $stmt -> execute($_SESSION['uid'], $pw);
+                $stmt -> execute(array($_SESSION['uid'], $pw));
 	    }
         }
         catch(PDOException $e){
