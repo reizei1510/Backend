@@ -251,6 +251,7 @@ else {
             $usr_id = $db->lastInsertId();
             $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, superpower = ?");
             foreach ($_POST['superpowers'] as $pw) {
+		setcookie($pw, '', time() + 60 * 60);
                 $stmt -> execute($usr_id, $pw);
 	    }
             $stmt = $db->prepare("INSERT INTO users_data6 SET usr_id = ?, usr_login = ?, usr_pass = ?");
