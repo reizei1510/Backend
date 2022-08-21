@@ -6,12 +6,12 @@ $db = new PDO('mysql:host=localhost;dbname=uu16346', $db_login, $db_pass, array(
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete'])) {
-        $del_user = $db->prepare("DELETE FROM users5 WHERE usr_id = ?");
+        $del_user = $db->prepare("DELETE FROM users6 WHERE usr_id = ?");
         $del_user->execute(array($_POST['delete']));
-        $del_powers = $db->prepare("DELETE FROM powers5 WHERE usr_id = ?");
+        $del_powers = $db->prepare("DELETE FROM powers6 WHERE usr_id = ?");
         $del_powers->execute(array($_POST['delete']));
-        $del_data = $db->prepare("DELETE FROM users_data5 WHERE usr_id = ?");
-        $del_powers->execute(array($_POST['delete']));
+        $del_data = $db->prepare("DELETE FROM users_data6 WHERE usr_id = ?");
+        $del_data->execute(array($_POST['delete']));
     }
 //------------------------------------------------------------------------------------------------------    
     else if (!empty($_POST['edit'])) {
@@ -102,22 +102,14 @@ if ($admin['password'] != $_SERVER['PHP_AUTH_PW']) {
 }
 
 print('Авторизация выполнена успешно.');
-    
-//------------------------------------------------------------------------------------------------------
 
-    $stmt = $db->query("SELECT * FROM users5");
-    $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt = $db->query("SELECT * FROM users6");
+    $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $stmt = $db->prepare("SELECT superpowers, COUNT(*) as count_own FROM powers2 GROUP BY powers");
-    $stmt->execute();
+    $stmt = $db->query("SELECT superpower, COUNT(*) as count_own FROM powers6 GROUP BY superpower");
     $powersCount = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} else {
-    header('HTTP/1.1 401 Unanthorized');
-    header('WWW-Authenticate: Basic realm="My site"');
-    print('<h1>401 Требуется авторизация</h1>');
-    exit();
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="">
 
@@ -137,11 +129,11 @@ print('Авторизация выполнена успешно.');
             </tr>
             <?php
             if (!empty($powersCount)) {
-                foreach ($powersCount as $value) {
+                foreach ($powersCount as $pwr) {
             ?>
                     <tr>
-                        <td><?php echo $value['powers'] ?></td>
-                        <td><?php echo $value['owners'] ?></td>
+                        <td><?php echo $pwr['superpower'] ?></td>
+                        <td><?php echo $pwr['count_own'] ?></td>
                     </tr>
             <?php }
             } ?>
@@ -154,41 +146,38 @@ print('Авторизация выполнена успешно.');
                 <th>Email</th>
                 <th>Дата рождения</th>
                 <th>Пол</th>
-                <th>Конечности</th>
+                <th>Количество конечностей</th>
                 <th>Суперспособности</th>
                 <th>Биография</th>
             </tr>
             <?php
-            if (!empty($result)) {
-                foreach ($result as $value) {
+            if (!empty($allUsers)) {
+                foreach ($allUsers as $usr) {
             ?>
                     <tr>
-                        <td><?php echo $value['name'] ?></td>
-                        <td><?php echo $value['email'] ?></td>
-                        <td><?php echo $value['date'] ?></td>
-                        <td><?php echo $value['limbs'] ?></td>
-                        <td><?php echo $value['gender'] ?></td>
+                        <td><?php echo $usr['name'] ?></td>
+                        <td><?php echo $usr['email'] ?></td>
+                        <td><?php echo $usr['birthday'] ?></td>
+                        <td><?php echo $usr['gender'] ?></td>
+                        <td><?php echo $usr['limbs'] ?></td>
                         <td>
                             <?php
-                            $powers = $db->prepare("SELECT * FROM powers2 where user_login = ?");
-                            $powers->execute(array($value['login']));
-                            $superpowers = $powers->fetch(PDO::FETCH_ASSOC);
-                            echo $superpowers['powers'];
+                            $superpowers = [];
+                            $stmt = $db->prepare("SELECT superpower FROM powers6 WHERE usr_id = ?");
+    	                    $stmt->execute($usr['usr_id']);
+    	                    $pwrs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	                        foreach ($pwrs as $pwr)
+                                array_push($superpowers, $pwr['superpower']);
+                            echo implode(', ', $superpowers);
                             ?>
                         </td>
-                        <td id="bio">
-                            <?php echo $value['bio'] ?>
-                        </td>
-                        <td class="edit-buttons">
-                            <form action="" method="post">
-                                <input value="<?php echo $value['id'] ?>" name="edit" type="hidden" />
-                                <button id="edit">Edit</button>
+                        <td><?php echo $value['biography'] ?></td>
+                        <td><form action="" method="POST">
+                            <input value="<?php echo $usr['usr_id'] ?>" name="edit" type="hidden" /><button id="edit">Изменить</button>
                             </form>
                         </td>
-                        <td class="edit-buttons">
-                            <form action="" method="post">
-                                <input value="<?php echo $value['login'] ?>" name="delete" type="hidden" />
-                                <button id="delete">Delete</button>
+                        <td><form action="" method="POST">
+                            <input value="<?php echo $usr['usr_id'] ?>" name="delete" type="hidden" /><button id="delete">Удалить</button>
                             </form>
                         </td>
                     </tr>
