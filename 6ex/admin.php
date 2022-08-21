@@ -24,16 +24,6 @@ if (empty($admin) || $admin['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
     exit();
 }
 
-
-
-
-
-
-
-
-
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete'])) {
         $del_user = $db->prepare("DELETE FROM users6 WHERE usr_id = ?");
@@ -99,20 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }*/
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $stmt = $db->query("SELECT * FROM users6");
     $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -134,7 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 <body>
 	
-    <div class="content"><a href="./admin.php?logout=1">Выйти</a></div>
+    <div class="content message_data">Авторизация успешно выполнена.</div>
     
     <div class="content">
 	    
