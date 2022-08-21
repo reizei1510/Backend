@@ -87,7 +87,7 @@ catch (PDOException $e) {
     exit();
 }
 
-if (empty($admin) {
+if (empty($admin)) {
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
     print('<h1>401 Неверный логин</h1>');
