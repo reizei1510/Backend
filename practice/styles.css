@@ -17,33 +17,34 @@ body {
 
 .welcome {
     text-align: center;
-    color: #FFFFFF;
-    font-size: 50px;
+    color: ##FFC0CB;
+    font-size: 30px;
     font-family: Snell Roundhand, cursive;
-    text-shadow:
-      -0 -1px 1px #FFC0CB,
-      0 -1px 1px #FFC0CB,
-      -0 1px 1px #FFC0CB,
-      0 1px 1px #FFC0CB,
-      -1px -0 1px #FFC0CB,
-      1px -0 1px #FFC0CB,
-      -1px 0 1px #FFC0CB,
-      1px 0 1px #FFC0CB,
-      -1px -1px 1px #FFC0CB,
-      1px -1px 1px #FFC0CB,
-      -1px 1px 1px #FFC0CB,
-      1px 1px 1px #FFC0CB,
-      -1px -1px 1px #FFC0CB,
-      1px -1px 1px #FFC0CB,
-      -1px 1px 1px #FFC0CB,
-      1px 1px 1px #FFC0CB;
+    margin: 30px, auto;
 }
 
 .welcome_text {
     text-align: center;
-    color: ##FFC0CB;
-    font-size: 30px;
+    color: #FFFFFF;
+    font-size: 50px;
     font-family: Snell Roundhand, cursive;
+    text-shadow:
+        -0 -1px 1px #FFC0CB,
+        0 -1px 1px #FFC0CB,
+        -0 1px 1px #FFC0CB,
+        0 1px 1px #FFC0CB,
+        -1px -0 1px #FFC0CB,
+        1px -0 1px #FFC0CB,
+        -1px 0 1px #FFC0CB,
+        1px 0 1px #FFC0CB,
+        -1px -1px 1px #FFC0CB,
+        1px -1px 1px #FFC0CB,
+        -1px 1px 1px #FFC0CB,
+        1px 1px 1px #FFC0CB,
+        -1px -1px 1px #FFC0CB,
+        1px -1px 1px #FFC0CB,
+        -1px 1px 1px #FFC0CB,
+        1px 1px 1px #FFC0CB;
 }
 
 .topnav {
