@@ -10,8 +10,6 @@
 	
     <div class="welcome">
         <div class="welcome_text"><h1>Diary</h1></div><br>
-    </div>
-    <div class="content">
 	<div class="text">You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a></div>
     </div>
 	
