@@ -215,7 +215,7 @@ else {
             $stmt->execute([$_SESSION['uid']]);
             $stmt = $db->prepare("INSERT INTO powers6 SET usr_id = ?, power = ?");
             foreach ($_POST['superpowers'] as $pw)
-                $stmt -> execute($pw, [$_SESSION['uid']);
+                $stmt -> execute($pw, $_SESSION['uid']);
         }
         catch(PDOException $e){
             setcookie('save_error', '$e->getMessage()', time() + 24 * 60 *60);
