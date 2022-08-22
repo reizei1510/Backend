@@ -148,7 +148,7 @@ else {
     }
   
     $stmt = $db->prepare("INSERT INTO diary_users SET usr_login = ?, usr_pass = ?, reg_date = ?");
-    $stmt->execute([$_POST['usr_login'], $_POST['usr_pass'], date('Y-m-d')]);
+    $stmt->execute([$_POST['usr_login'], $_POST['usr_pass'], date("Y-m-d H:i:s")]);
 	
     $stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_login = ?");
     $stmt->execute([$_POST['usr_login']]);
