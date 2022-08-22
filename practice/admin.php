@@ -125,7 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <?php
                 }
             } else {
-                print '<tr colspan="8">Записи не найдены</tr>';
+                print '<tr><td colspan="8">Записи не найдены</td></tr>';
             }
             ?>
         </table>
