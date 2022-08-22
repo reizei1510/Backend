@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="./styles.css" />
+  <title>Обновление данных</title>
+</head>
+
+<body>
+  
+  <div class="page">
+    
+  <div class="topnav">
+	    <a href="index.php">Diary</a>
+	    <div class="topnav_right">
+		  <?php
+		  if (session_start() && empty($_SESSION['login'])) {
+	      print '<a href="login.php">Log In</a>';  
+		    print '<a href="logup.php">Log Up</a>';
+		  }
+		  else {
+		    print '<a href="profile.php">Profile</a>'; 
+		  }
+      ?>
+	    </div>
+</div>
+  
+  <div class="content">
+    
+    <form method="POST" action="">
+      
+      
+      <form action="" method="POST">
+              
+              <table id="info">
+                
+                <tr>
+                  <td>Name/Login:</td>
+                  <td><input name="name" value="<?php print $values['name']; ?>" /><br>
+                </tr>
+	    
+                <tr>
+                  <td>Gender:</td>
+                  <td><input type="radio" name="gender" value="Male" <?php if ($values['gender'] == "Male"){ print "checked='checked'"; } ?> />Male<br>
+                      <input type="radio" name="gender" value="Female" <?php if ($values['gender'] == "Female"){ print "checked='checked'"; } ?> />Female<br>
+                </tr>
+		
+                <tr>
+                  <td>Biography:</td>
+                  <td><textarea name="bio" class="bio"><?php print values['bio']; ?></textarea><br>
+                </tr>
+		
+                <tr>
+                  <td>Password:</td>
+                  <td><input name="pass" value="" /><br>
+                </tr>
+              
+              </table><br>
+              <input value="<?php echo $_SESSION['id'] ?>" name="update_user" type="hidden" /><button id="update_user">Edit</button>
+           </form>
+      
+      
+
+      
+      <input class="button" type="submit" value="Отправить" /><br>
+      
+    </form>
+    
+    </div>
+    
+  </div>
+  
+</body>
+
+</html>
