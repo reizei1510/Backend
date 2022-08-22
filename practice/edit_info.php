@@ -1,3 +1,7 @@
+<?php
+$value
+?>
+
 <!DOCTYPE html>
 
 <html lang="ru">
@@ -28,22 +32,22 @@
                 
                 <tr>
                   <td>Name/Login:</td>
-                  <td><input name="name" value="<?php if (!empty($user['usr_login'])) print $user['usr_login']; else print '';?>" /><br>
+                  <td><input name="name" value="<?php print $name; ?>" /><br>
                 </tr>
 	    
                 <tr>
                   <td>Gender:</td>
-                  <td><input type="radio" name="gender" value="Male" <?php if(!empty($user['gender']) && $user['gender'] == "Male"){ print "checked='checked'"; } ?> />Male<br>
-                      <input type="radio" name="gender" value="Female" <?php if(!empty($user['gender']) && $user['gender'] == "Female"){ print "checked='checked'"; } ?> />Female<br>
+                  <td><input type="radio" name="gender" value="Male" <?php if ($gender == "Male"){ print "checked='checked'"; } ?> />Male<br>
+                      <input type="radio" name="gender" value="Female" <?php if ($gender == "Female"){ print "checked='checked'"; } ?> />Female<br>
                 </tr>
 		
                 <td>Birthday:</td>
-                  <td><input name="birthday" type="date" <?php if (!empty($user['birthday'])) echo 'value="'.$user["birthday"].'\"'; ?>" /><br>
+                  <td><input name="birthday" type="date" value="<?php print $birthday; ?>" /><br>
                 </tr>
 		
                 <tr>
                   <td>Biography:</td>
-                  <td><textarea name="bio" class="bio" value="<?php if (!empty($user['bio'])) print $user['bio']; else print ''; ?>"></textarea><br>
+                  <td><textarea name="bio" class="bio" value="<?php print $bio; ?>"></textarea><br>
                 </tr>
               
               </table><br>
