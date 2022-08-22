@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         include('add_post.php');
     }
     else if (!empty($_POST['edit_post'])) {
+	$pid = $_POST['edit_post'];
         include('edit_post.php');
     }
     else if (!empty($_POST['delete_post'])) {
