@@ -126,18 +126,19 @@ else {
                 print '<div class="description">You don\'t have notes yet.</div>';
             }
             else {
-		//array_reverse($posts);
+		array_reverse($posts);
                 foreach ($posts as $p) {
                     print '<div class="description">';
-                    print $p['post'];
-                    print '<br><br>';
                     print $p['date'];
                     if ($p['up_date'] > $p['date']) {
                         print '<br>updated';
                         print $p['up_date'];
-                    } ?>
-                    <div class="post_button">
-			<table class="log_form">
+                    }
+                    print '<br><br>';
+                    print $p['post']; ?>
+                    print '<br><br>';
+                    <div class="log_form">
+			<table>
 			    <tr>
 				<td><form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="edit_post" type="hidden" />
 				    <button id="edit_post">Edit note</button></form></td>
