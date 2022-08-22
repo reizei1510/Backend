@@ -85,13 +85,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <table>
             <tr>
                 <th>ID</th>
-                <td>Login</td>
-                <td>Password</td>
-                <td>Registration date</td>
-                <td>Gender</td>
-                <td>Biography</td>
-                <td>Posts</td>
-                <td colspan="3">Acts</td>
+                <th>Login</th>
+                <th>Password</th>
+                <th>Registration date</th>
+                <th>Gender</th>
+                <th>Biography</th>
+                <th>Posts</th>
+                <th colspan="3">Acts</th>
             </tr>
             <?php
             if (!empty($allUsers)) {
