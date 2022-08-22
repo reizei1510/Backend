@@ -45,6 +45,11 @@ $value
                   <td>Biography:</td>
                   <td><textarea name="bio" class="bio"><?php print $bio; ?></textarea><br>
                 </tr>
+		
+                <tr>
+                  <td>Password:</td>
+                  <td><input name="pass" value="" /><br>
+                </tr>
               
               </table><br>
               <input value="<?php echo $_SESSION['id'] ?>" name="update_info" type="hidden" /><button id="update_info">Submit</button>
