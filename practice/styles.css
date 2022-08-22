@@ -135,6 +135,10 @@ footer a {
     color: #FFFFFF;   
 }
 
+footer a:hover {
+    color: #000000;
+}
+
 footer a:visited {
     color: #FFFFFF;   
 }
