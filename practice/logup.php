@@ -5,7 +5,7 @@ header('Content-Type: text/html; charset=UTF-8');
 session_start();
 
 if (!empty($_SESSION['login'])) {
-    header('Location: ./read.php');
+    header('Location: ./profile.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
