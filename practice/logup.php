@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages = array();
     if ($errors['usr_login']) {
         setcookie('usr_login_error', '', 100000);
-        $messages['usr_login'] = $errors['usr_login'] == 'empty' ? 'Input login.' : $errors['usr_login'] == 'exist' ? 'Login already registered.' : 'Login must contain only letters, numbers and "_".';
+        $messages['usr_login'] = $errors['usr_login'] == 'empty' ? 'Input login.' : ($errors['usr_login'] == 'exist' ? 'Login already registered.' : 'Login must contain only letters, numbers and "_".');
     }
     else $messages['usr_login'] = ' ';
     if ($errors['usr_pass']) {
@@ -108,6 +108,10 @@ else {
         setcookie('usr_login_error', 'empty', time() + 24 * 60 * 60);
 	$errors = TRUE;
     }
+    else if (!preg_match("/[A-Za-z0-9_]+$/", $_POST['usr_login'])) {
+        setcookie('usr_login_error', 'incorrect', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
   
     if (empty($_POST['usr_pass'])) {
         setcookie('usr_pass_error', 'empty', time() + 24 * 60 * 60);
@@ -115,7 +119,7 @@ else {
     }
 	
     if ($errors) {
-        header('Location: logup.php');
+        header('Location: ./logup.php');
         exit();
     }
 
