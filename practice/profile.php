@@ -10,6 +10,24 @@ $db_login = 'u16346';
 $db_pass = '34rerfeq5';
 $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
+$stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_id = ?");
+$stmt->execute([$_SESSION['id']]);
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$name = $user['usr_login'];
+$gender = is_null($user['gender']) ? 'no information' : $user['gender'];
+$reg_date = $user['reg_date'];
+$birthday = is_null($user['birthday']) ? 'no information' : $user['birthday'];
+$bio = is_null($user['bio']) ? 'no information' : $user['bio'];
+
+$stmt = $db->prepare("SELECT COUNT(*) as count_posts FROM posts WHERE usr_id = ? GROUP BY usr_id");
+$stmt->execute([$_SESSION['id']]);
+$count_posts = $stmt->fetch(PDO::FETCH_ASSOC);
+if (!empty($count_posts)) {
+    $count = $count_posts['count_posts'];
+}
+else $count = 0;
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['edit_info'])) {
         include('edit_info.php');
@@ -51,24 +69,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
-$stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_id = ?");
-$stmt->execute([$_SESSION['id']]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-$name = $user['usr_login'];
-$gender = is_null($user['gender']) ? 'no information' : $user['gender'];
-$reg_date = $user['reg_date'];
-$birthday = is_null($user['birthday']) ? 'no information' : $user['birthday'];
-$bio = is_null($user['bio']) ? 'no information' : $user['bio'];
-
-$stmt = $db->prepare("SELECT COUNT(*) as count_posts FROM posts WHERE usr_id = ? GROUP BY usr_id");
-$stmt->execute([$_SESSION['id']]);
-$count_posts = $stmt->fetch(PDO::FETCH_ASSOC);
-if (!empty($count_posts)) {
-    $count = $count_posts['count_posts'];
-}
-else $count = 0;
 ?>
 
 <!DOCTYPE html>
