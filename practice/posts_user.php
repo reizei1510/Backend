@@ -45,6 +45,7 @@ $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(P
         <table id="admin">
             <tr>
                 <th>Note ID</th>
+                <th>Date</th>
                 <th>Note</th>
             </tr>
             <?php
@@ -53,12 +54,13 @@ $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(P
             ?>
                     <tr>
                         <td><?php print $p['post_id'] ?></td>
+                        <td><?php print $p['date'] ?></td>
                         <td><?php print $p['post'] ?></td>
                     </tr>
             <?php
                 }
             } else {
-                print '<tr><td colspan="2">Записи не найдены</td></tr>';
+                print '<tr><td colspan="3">Записи не найдены</td></tr>';
             }
             ?>
         </table>
