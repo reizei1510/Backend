@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 $stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_login = ?");
-$stmt->execute([$_SESSION['usr_id']]);
+$stmt->execute([$_SESSION['id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $name = $user['usr_login'];
@@ -63,7 +63,7 @@ $birthday = is_null($user['birthday']) ? 'no information' : $user['birthday'];
 $bio = is_null($user['bio']) ? 'no information' : $user['bio'];
 
 $stmt = $db->prepare("SELECT COUNT(*) as count_posts FROM posts WHERE usr_id = ? GROUP BY usr_id");
-$stmt->execute([$_SESSION['usr_id']]);
+$stmt->execute([$_SESSION['id']]);
 $count_posts = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!empty($count_posts)) {
     $count = $count_posts['count_posts'];
@@ -111,7 +111,7 @@ else $count = 0;
             <?php
             
             $stmt = $db->prepare("SELECT post_id, post, date, up_date FROM posts WHERE usr_id = ?");
-            $stmt->execute([$_SESSION['usr_id']]);
+            $stmt->execute([$_SESSION['id']]);
             $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             if (empty($posts)) {
                 print '<div class="description">You don\'t have notes yet.</div>';
