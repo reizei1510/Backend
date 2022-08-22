@@ -13,12 +13,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         setcookie('usr_login_error', '', 100000);
         $messages['usr_login'] = $errors['usr_login'] == 'empty' ? 'Input login.' : $errors['usr_login'] == 'exist' ? 'Login already registered.' : 'Login must contain only letters, numbers and "_".';
     }
-    else $messages['usr_login'] = '';
+    else $messages['usr_login'] = ' ';
     if ($errors['usr_pass']) {
         setcookie('usr_pass_error', '', 100000);
         $messages['usr_pass'] = $errors['usr_pass'] == 'empty' ? 'Input password.' : 'Password must contain only letters, numbers and "_".';
     }
-    else $messages['usr_pass'] = '';
+    else $messages['usr_pass'] = ' ';
 
 ?>
 
