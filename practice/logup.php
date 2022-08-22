@@ -81,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     </div>
 	
     <footer>
-        <table>
 	    <tr>
                 <td><a href="about.php">About</a></td>
                 <td><a href="contacts.php">Contacts</a></td>
@@ -90,7 +89,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <tr>
                 <td><a href="admin.php">Are you admin?</a></td>
             </tr>
-        </table>
     <footer>
 
 </div>
