@@ -21,7 +21,7 @@
     <div class="content">
 	    
             <form action="" method="POST">
-              <textarea name="bio" class="add_post"><?php if (!empty($bio)) print $bio; else print '""';?></textarea>
+              <textarea name="post" class="add_post"></textarea>
               <input value="<?php echo $_SESSION['id'] ?>" name="added_post" type="hidden" /><button id="added_post">Add</button>
            </form>
         
