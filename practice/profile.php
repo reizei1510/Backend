@@ -56,8 +56,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else if (!empty($_POST['update_info'])) {
         try {
-            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, usr_pass = ?, gender = ?, bio = ?");
-            $stmt->execute(array($_POST['name'], $_POST['pass'], $_POST['gender'], $_POST['bio']));
+            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, bio = ?");
+            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['bio']));
+	    if ($_POST['pass'] != "") {
+		$stmt = $db->prepare("UPDATE diary_users SET usr_pass = ?");
+                $stmt->execute(array($_POST['pass']));
+	    }
 	    header('Location: ./profile.php');
         }
 	catch (PDOException $e) {
