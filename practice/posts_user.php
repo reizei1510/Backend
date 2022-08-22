@@ -5,6 +5,7 @@ $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(P
 	$stmt = $db->prepare("SELECT * FROM posts WHERE usr_id = ?");
         $stmt->execute([$_POST['posts_user']]);
         $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 
 <!DOCTYPE html>
 <html lang="">
