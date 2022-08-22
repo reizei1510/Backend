@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta charset="utf-8" />
   <link rel="stylesheet" href="./styles.css" />
-  <title>Обновление данных</title>
+  <title>Edit user</title>
 </head>
 
 <body>
@@ -28,9 +28,6 @@
 </div>
   
   <div class="content">
-    
-    <form method="POST" action="">
-      
       
       <form action="" method="POST">
               
@@ -38,7 +35,7 @@
                 
                 <tr>
                   <td>Name/Login:</td>
-                  <td><input name="name" value="<?php print $values['name']; ?>" /><br>
+                  <td><input name="login" value="<?php print $values['login']; ?>" /><br>
                 </tr>
 	    
                 <tr>
@@ -49,7 +46,7 @@
 		
                 <tr>
                   <td>Biography:</td>
-                  <td><textarea name="bio" class="bio"><?php print values['bio']; ?></textarea><br>
+                  <td><textarea name="bio" class="bio"><?php print $values['bio']; ?></textarea><br>
                 </tr>
 		
                 <tr>
@@ -59,12 +56,6 @@
               
               </table><br>
               <input value="<?php echo $_SESSION['id'] ?>" name="update_user" type="hidden" /><button id="update_user">Edit</button>
-           </form>
-      
-      
-
-      
-      <input class="button" type="submit" value="Отправить" /><br>
       
     </form>
     
