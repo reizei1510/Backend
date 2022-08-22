@@ -34,7 +34,7 @@
                 <tr>
                   <td>Gender:</td>
                   <td><input type="radio" name="gender" value="Male" <?php if(!empty($gender) && $gender == "Male"){ print "checked='checked'"; } ?> />Male<br>
-                      <input type="radio" name="gender" value="Female" <?php if(!empty($gender) $gender == "Female"){ print "checked='checked'"; } ?> />Female<br>
+                      <input type="radio" name="gender" value="Female" <?php if(!empty($gender) && $gender == "Female"){ print "checked='checked'"; } ?> />Female<br>
                 </tr>
 		
                   <td>Birthday:</td>
