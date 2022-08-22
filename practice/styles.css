@@ -194,10 +194,16 @@ button {
 
 .admin table {
     color: #000000;
+    width: 960px;
     background-color: #FFF8DC;
     border-color: #DB7093;
 }
 
 tr, td {
    padding: 10px; 
+}
+
+th {
+    color: #FFFFFF;
+    background-color:#DB7093;
 }
