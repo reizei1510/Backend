@@ -83,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 </html>
 
 <?php
-else {
+} else {
         if (!empty($_POST['delete_user'])) {
           $stmt = $db->prepare("DELETE FROM posts WHERE post_id = ?");
           $del_posts->execute([$usr['post_id']]);
