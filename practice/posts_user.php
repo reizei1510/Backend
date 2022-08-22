@@ -10,8 +10,8 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="./styles.css" />
-    <title>Admin</title>
+    <link rel="stylesheet" href="styles.css" />
+    <title>All Posts</title>
 </head>
 
 <body>
@@ -22,8 +22,8 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	  <a href="index.php">Diary</a>
 	  <div class="topnav_right">
 		<?php
-		if (session_start() && empty($_SESSION['login'])) {
-	      print '<a href="login.php">Log In</a>';  
+		if (empty($_SESSION['login'])) {
+	            print '<a href="login.php">Log In</a>';  
 		    print '<a href="logup.php">Log Up</a>';
 		}
 		else {
@@ -34,10 +34,8 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
     
     <div class="content">
-      
-      <div class="admin">
 	    
-        <table>
+        <table id="admin">
             <tr>
                 <th>User ID</th>
                 <th>Note ID</th>
@@ -67,8 +65,6 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             ?>
         </table>
-        
-      </div>
 	    
     </div>
     
