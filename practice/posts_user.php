@@ -2,13 +2,12 @@
 $db_login = 'u16346';
 $db_pass = '34rerfeq5';
 $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
+	$stmt = $db->prepare("SELECT * FROM posts WHERE usr_id = ?");
+        $stmt->execute([$_POST['posts_user']]);
+        $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-$stmt = $db->prepare("SELECT * FROM posts WHERE usr_id = ?");
-$stmt->execute([$_POST['posts_user']]);
-$psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +42,7 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="content">
 	    
 	    <div class="description">
-		    All posts by user <?php print [$_POST['posts_user']]; ?>.
+		    All posts by user <?php print $_POST['posts_user']; ?>.
 		</div>
 	    
         <table id="admin">
@@ -82,3 +81,13 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 
 </html>
+
+<?php
+else {
+        if (!empty($_POST['delete_user'])) {
+          $stmt = $db->prepare("DELETE FROM posts WHERE post_id = ?");
+          $del_posts->execute([$usr['post_id']]);
+	  header('Location: ./posts_user.php?posts_user=<?php print $_POST["posts_user"]; ?>');
+        }
+}
+?>	
