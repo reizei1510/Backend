@@ -17,7 +17,6 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 $name = $user['usr_login'];
 $gender = is_null($user['gender']) ? '' : $user['gender'];
 $reg_date = $user['reg_date'];
-$birthday = $user['birthday'];
 $bio = is_null($user['bio']) ? '' : $user['bio'];
 
 $stmt = $db->prepare("SELECT COUNT(*) as count_posts FROM posts WHERE usr_id = ? GROUP BY usr_id");
@@ -51,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else if (!empty($_POST['update_info'])) {
         try {
-            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, birthday = ?, bio = ?");
-            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio']));
+            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, bio = ?");
+            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['bio']));
 	    header('Location: ./profile.php');
         }
 	      catch (PDOException $e) {
@@ -103,7 +102,7 @@ else {
             <div class="description">
                 <div class="name"><?php print $name; ?></div>
                 <div class="info">
-                    Gender:<?php print $gender; ?><br>Birthday: <?php print $birthday; ?><br>Biography: <?php print $bio; ?><br><br>
+                    Gender:<?php print $gender; ?><br>Biography: <?php print $bio; ?><br><br>
                     Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
                     <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button></form>
                 </div>
