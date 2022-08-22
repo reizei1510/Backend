@@ -201,12 +201,12 @@ button {
     border-color: #DB7093;
 }
 
-tr, td {
+.admin table tr, td {
     text-align: center;
     padding: 10px; 
 }
 
-th {
+.admin table th {
     text-align: center;
     padding: 10px; 
     color: #FFFFFF;
