@@ -28,22 +28,22 @@
                 
                 <tr>
                   <td>Name/Login:</td>
-                  <td><input name="name" <?php if ($errors['name']) { print 'class="error"'; } ?> value="<?php print $name; ?>" /><br>
+                  <td><input name="name" value="<?php if (!empty($name)) print $name; else print '""';?>" /><br>
                 </tr>
 	    
                 <tr>
                   <td>Gender:</td>
-                  <td><input type="radio" name="gender" value="Male" <?php if($gender == "Male"){ print "checked='checked'"; } ?> />Male<br>
-                      <input type="radio" name="gender" value="Female" <?php if($gender == "Female"){ print "checked='checked'"; } ?> />Female<br>
+                  <td><input type="radio" name="gender" value="Male" <?php if(!empty($gender) && $gender == "Male"){ print "checked='checked'"; } ?> />Male<br>
+                      <input type="radio" name="gender" value="Female" <?php if(!empty($gender) $gender == "Female"){ print "checked='checked'"; } ?> />Female<br>
                 </tr>
 		
                   <td>Birthday:</td>
-                  <td><input name="birthday" type="date" <?php if ($errors['birthday']) { print 'class="error"'; } ?> value="<?php print $birthday; ?>" /><br>
+                  <td><input name="birthday" type="date" value="<?php if (!empty($birthday)) print $birthday; else print '""'; ?>" /><br>
                 </tr>
 		
                 <tr>
                   <td>Biography:</td>
-                  <td><textarea name="biography" <?php if ($errors['biography']) { print 'class="error"'; } ?>><?php print $biography; ?></textarea><br>
+                  <td><textarea name="biography"><?php if (!empty($bio)) print $biography; else print '""';?></textarea><br>
                 </tr>
               
               </table>
