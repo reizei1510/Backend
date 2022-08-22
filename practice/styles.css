@@ -13,6 +13,7 @@ body {
     flex-direction: column;
     font-size: 15px;
     font-family: arial;
+    position: relative;
 }
 
 .welcome {
@@ -102,6 +103,7 @@ body {
 }
 
 footer {
+    position: absolute;
     display: flex;
     width: 100%;
     margin: 0 auto;
