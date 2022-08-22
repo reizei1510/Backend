@@ -27,6 +27,8 @@
 </div>
   
   <div class="content">
+	  
+	  <div class="descpription">
       
       <form action="" method="POST">
               
@@ -57,6 +59,7 @@
               <input class="button" type="submit" value="Edit" /><br>
       
     </form>
+		  </div>
     
     </div>
     
