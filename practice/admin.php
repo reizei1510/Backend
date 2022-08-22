@@ -134,7 +134,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             else $count = 0;
 			    $uid = $user['usr_id'];
                             print $count; ?></td>
-                        <td><form action="./posts_user" method="POST">
+                        <td><form action="./posts_user.php" method="POST">
                             <input value="<?php print $uid ?>" name="posts_user" type="hidden" /><button id="posts_user">All<nobr>posts</button>
                             </form></td>
                         <td><form action="" method="POST">
