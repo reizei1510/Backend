@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 
-$stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_login = ?");
+$stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_id = ?");
 $stmt->execute([$_SESSION['id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -99,7 +99,7 @@ else $count = 0;
                 <div class="name"><?php print $name; ?></div>
                 <div class="info">
                     <?php print $gender; ?><br>Birthday: <?php print $birthday; ?><br>Biography: <?php print $bio; ?><br><br>
-                    Posts:  <?php print $count; ?><br><br>Registration date: <?php print $reg_date; ?><br><br>
+                    Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
                     <input value="<?php echo $usr['usr_id'] ?>" name="edit_info" type="hidden" /><button id="Edit info">
                 </div>
             </div>
