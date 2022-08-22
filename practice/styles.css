@@ -76,6 +76,7 @@ body {
 
 .content {
     width: 960px;
+    margin: 0 auto;
 }
 
 .topnav {
@@ -107,17 +108,16 @@ footer {
     margin-top: 30px;
     padding: 10px;
     background-color: #FFB6C1;
-    justify-content: center;
 }
 
 footer table {
     border: collapse;
     margin: 0 auto;
+    display: inline-flex
 }
 
 footer table th, td {
     text-align: center;
-    width: 360px;
 }
 
 footer a {
