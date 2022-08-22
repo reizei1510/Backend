@@ -3,7 +3,7 @@ $db_login = 'u16346';
 $db_pass = '34rerfeq5';
 $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
-$stmt=$db->prepare("SELECT * FROM posts");
+$stmt=$db->query("SELECT * FROM posts");
 $allposts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
@@ -33,7 +33,7 @@ $allposts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 	    </div>
 	</div>
         <div class="content">
-            <div class="description">
+            <div class="text">
                 Here you can read other users.
             </div>
             <?php
