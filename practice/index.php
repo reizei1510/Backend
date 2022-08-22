@@ -14,27 +14,28 @@
     <link rel="stylesheet" href="styles.css">
     <title>Main Page</title>
 </head>
+
 <body>
 	
     <div class="page">	
 	
-	    <div class="content">
+	<div class="content">
 
-		<div class="welcome">
-		    Diary
-		</div>
-		<div class="welcome_text">
-		    You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
-		</div>
-
+	    <div class="welcome">
+	        Diary
+	    </div>
+	    <div class="welcome_text">
+		You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
 	    </div>
 
-	    <footer>
-		<a href="about.php">About</a>
-		<a href="contacts.php">Contacts</a>
-		<a href="contacts.php">Rules</a>
-		<a href="admin.php">Are you admin?</a>
-	    <footer>
+	</div>
+
+	<footer>
+	    <a href="about.php">About</a>
+	    <a href="contacts.php">Contacts</a>
+	    <a href="contacts.php">Rules</a>
+	    <a href="admin.php">Are you admin?</a>
+	<footer>
 		    
     </div>
 		    
