@@ -19,7 +19,7 @@ body {
     text-align: center;
     font-size: 100px;
     color: #FFFFFF;
-    margin: 90px auto 10px auto;
+    margin: 200px auto 10px auto;
     font-family: Snell Roundhand, cursive;
     display: block;
     text-shadow:
@@ -109,6 +109,11 @@ footer table {
     border: collapse;
     margin: 0, auto;
     max-width: 720px;
+}
+
+footer table th, td {
+    width: 360px;
+    text-align: center;
 }
 
 footer a {
