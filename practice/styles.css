@@ -187,3 +187,12 @@ button {
     height: 400px;
     width: 680px;
 }
+
+.post_button {
+    text-align:right;
+    direction: row;
+}
+
+.post_button form {
+    margin: 0 10px
+}
