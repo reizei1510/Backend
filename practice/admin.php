@@ -23,9 +23,9 @@ if (empty($admin) || $admin['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete_user'])) {
         $del_posts = $db->prepare("DELETE FROM posts WHERE usr_id = ?");
-        $del_posts->execute(array($_POST['delete_user']));
+        $del_posts->execute([$_POST['delete_user']]);
         $del_user = $db->prepare("DELETE FROM diary_users WHERE usr_id = ?");
-        $del_user->execute(array($_POST['delete_user']));
+        $del_user->execute([$_POST['delete_user']]);
 	header('Location: ./admin.php');
     }
     else if (!empty($_POST['posts_user'])) {
@@ -119,8 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             <input value="<?php print $user['usr_id'] ?>" name="edit_user" type="hidden" /><button id="edit_user">Edit</button>
                             </form></td>
                         <td><form action="" method="POST">
-                            <input value="<?php print $user['usr_id'] ?>" name="delete_user" type="hidden" /><button id="delete_user">Delete</button>
-                            </form></td>
+			    <input value="<?php echo $user["usr_id"] ?>" name="delete_user" type="hidden" /><button id="delete_post">Delete note</button>
+			    </form></td>
                     </tr>
             <?php
                 }
