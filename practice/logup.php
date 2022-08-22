@@ -68,16 +68,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     </div>
 	
     <div class="content">
-      
-        <?php 
-      
-        if (!empty($_COOKIE['logup'])) {
-            print '<div class="description">You succesfully loged up, now you can <a href="login.php">Login</a>.</div>';
-            setcookie('logup', '', 100000);
-        }
-  
-        else {
-	?>
 	    
             <form action="" method="POST" class="log_form">
           
@@ -91,11 +81,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 </label><br>
                 <input type="submit" class="button" value="Log Up" />
             </form>
-      
-        <?php
-        }
-        ?>
-    	    
+     
     </div>
 	
     <footer>
