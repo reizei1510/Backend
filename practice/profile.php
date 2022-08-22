@@ -17,7 +17,7 @@ $user = $stmt->fetch(PDO::FETCH_ASSOC);
 $name = $user['usr_login'];
 $gender = is_null($user['gender']) ? '' : $user['gender'];
 $reg_date = $user['reg_date'];
-$birthday = is_null($user['birthday']) ? '' : $user['birthday'];
+$birthday = $user['birthday'];
 $bio = is_null($user['bio']) ? '' : $user['bio'];
 
 $stmt = $db->prepare("SELECT COUNT(*) as count_posts FROM posts WHERE usr_id = ? GROUP BY usr_id");
