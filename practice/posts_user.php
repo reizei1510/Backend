@@ -1,6 +1,6 @@
 <?php
 $stmt = $db->prepare("SELECT * FROM posts WHERE usr_id = ?");
-$stmt->execute([$pu]);
+$stmt->execute([$uid]);
 $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
