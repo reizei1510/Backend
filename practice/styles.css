@@ -189,5 +189,15 @@ button {
 }
 
 .admin {
-    
+    margin: 25px auto;
+}
+
+.admin table {
+    color: #000000;
+    background-color: #FFF8DC;
+    border-color: #DB7093;
+}
+
+tr, td {
+   padding: 10px; 
 }
