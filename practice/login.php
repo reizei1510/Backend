@@ -124,7 +124,7 @@ else {
     }
   
     $_SESSION['login'] = $_POST['usr_login'];
-    $_SESSION['uid'] = $user['usr_id'];	
+    $_SESSION['id'] = $user['usr_id'];	
 	
     $stmt = $db->prepare("INSERT INTO diary_users SET reg_date = ?");
     $stmt->execute(date('Y-m-d'));
