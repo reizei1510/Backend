@@ -115,7 +115,7 @@ else {
     }
 	
     if ($errors) {
-        header('Location: login.php');
+        header('Location: logup.php');
         exit();
     }
 
@@ -129,7 +129,7 @@ else {
 	
     if (!empty($user)) {
         setcookie('usr_login_error', 'exist', time() + 24 * 60 * 60);
-        header('Location: login.php');
+        header('Location: logup.php');
         exit();
     }
   
