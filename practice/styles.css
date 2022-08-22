@@ -160,3 +160,7 @@ footer a:visited {
 .log_field {
     height: 30px;
 }
+
+input::placeholder {
+    font-size: 20px;
+}
