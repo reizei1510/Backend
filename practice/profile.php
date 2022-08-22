@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $stmt = $db->prepare("INSERT INTO posts SET post = ?, date = ?, up_date = ?");
             $stmt->execute(array($_POST['post'], date('Y-m-d'), date('Y-m-d')));
+	    header('Location: ./profile.php');
         }
 	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
@@ -52,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, birthday = ?, bio = ?");
             $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio']));
+	    header('Location: ./profile.php');
         }
 	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
@@ -62,6 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $stmt = $db->prepare("UPDATE posts SET post = ?, up_date = ?");
             $stmt->execute(array($_POST['post'], date('Y-m-d')));
+	    header('Location: ./profile.php');
         }
 	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
