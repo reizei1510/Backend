@@ -2,7 +2,6 @@
 
 <html lang="ru">
 
-<?php	      setcookie('ckedn', '');   ?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,7 +54,7 @@
         
     </div>
 	
-		<footer>
+	<footer>
 	    <a href="about.php">About</a>
 	    <a href="contacts.php">Contacts</a>
 	    <a href="rules.php">Rules</a>
