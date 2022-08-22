@@ -77,7 +77,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <body>
 	
   <div class="page">
-    
+  
+    <div class="topnav">
+	    <a href="index.php">Diary</a>
+	    <div class="topnav_right">
+		<?php
+		if (session_start() && empty($_SESSION['login'])) {
+	            print '<a href="login.php">Log In</a>';  
+		    print '<a href="logup.php">Log Up</a>';
+		}
+		else {
+		    print '<a href="profile.php">Profile</a>'; 
+		}
+		?>
+	    </div>
+    </div>	  
+	  
     <div class="content">
       
       <div class="admin">
