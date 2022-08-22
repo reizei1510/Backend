@@ -55,7 +55,7 @@
                 </tr>
               
               </table><br>
-              <input value="" name="update_user" type="hidden" /><button id="update_user">Edit</button>
+              <input class="button" type="submit" value="Edit" /><br>
       
     </form>
     
