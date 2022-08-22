@@ -47,9 +47,7 @@
                 </tr>
               
               </table><br>
-		<form action="" method="POST">
-              		<input value="<?php echo $_SESSION['id'] ?>" name="update_info" type="hidden" /><button id="update_info">Submit</button>
-		</form>
+              <input value="<?php echo $_SESSION['id'] ?>" name="update_info" type="hidden" /><button id="update_info">Submit</button>
            </form>
         
         </div>
