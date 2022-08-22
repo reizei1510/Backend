@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	  
     <div class="content">
 	    
-        <table class="admin">
+        <table id="admin">
             <tr>
                 <th>ID</th>
                 <th>Login</th>
