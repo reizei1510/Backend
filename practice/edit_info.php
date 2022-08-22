@@ -29,31 +29,26 @@
                 <tr>
                   <td>Name/Login:</td>
                   <td><input name="name" <?php if ($errors['name']) { print 'class="error"'; } ?> value="<?php print $name; ?>" /><br>
-                      <div class="error_message"><?php print $messages['name']; ?></div></td>
                 </tr>
 	    
                 <tr>
                   <td>Gender:</td>
                   <td><input type="radio" name="gender" value="Male" <?php if($gender == "Male"){ print "checked='checked'"; } ?> />Male<br>
                       <input type="radio" name="gender" value="Female" <?php if($gender == "Female"){ print "checked='checked'"; } ?> />Female<br>
-		                  <div class="error_message"><?php print $messages['gender']; ?></div></td>
                 </tr>
 		
                   <td>Birthday:</td>
                   <td><input name="birthday" type="date" <?php if ($errors['birthday']) { print 'class="error"'; } ?> value="<?php print $birthday; ?>" /><br>
-		                  <div class="error_message"><?php print $messages['birthday']; ?></div></td>
                 </tr>
 		
                 <tr>
                   <td>Biography:</td>
                   <td><textarea name="biography" <?php if ($errors['biography']) { print 'class="error"'; } ?>><?php print $biography; ?></textarea><br>
-		                  <div class="error_message"><?php print $messages['biography']; ?></div></td>
                 </tr>
               
               </table>
 		<form action="" method="POST">
               		<input value="<?php echo $_SESSION['id'] ?>" name="added_post" type="hidden" /><button id="add_post">OK</button>
-		          	<div class="error_message"><?php print $messages['save']; ?></div><br>
 		</form>
            </form>
         
