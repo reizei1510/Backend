@@ -32,10 +32,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $del_user->execute([$_POST['delete_user']]);
 	header('Location: ./admin.php');
     }
-    else if (!empty($_POST['posts_user'])) {
-        $pu = $_POST['posts_user'];
-        include('posts_user.php');
-    }
     else if (!empty($_POST['edit_user'])) {
         $stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_id = ?");
         $stmt->execute([$_POST['edit_user']]);
@@ -137,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             }
                             else $count = 0;
                             print $count; ?></td>
-                        <td><form action="" method="POST">
+                        <td><form action="./posts_user" method="POST">
                             <input value="<?php print $user['usr_id'] ?>" name="posts_user" type="hidden" /><button id="posts_user">All<nobr>posts</button>
                             </form></td>
                         <td><form action="" method="POST">
