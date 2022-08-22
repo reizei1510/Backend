@@ -177,3 +177,8 @@ footer a:visited {
 button {
     font-size: 16px;
 }
+
+.add_post {
+    height: 500px;
+    weidth: 720px;
+}
