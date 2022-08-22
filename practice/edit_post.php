@@ -1,6 +1,6 @@
 <?php
 $stmt = $db->prepare("SELECT post FROM posts WHERE post_id = ?");
-$stmt->execute($pid);
+$stmt->execute([$pid]);
 $ps = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 
