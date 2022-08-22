@@ -74,6 +74,10 @@ body {
     color: #FFB6C1;
 }
 
+.content {
+    flex: 1 0 auto;
+}
+
 .topnav {
     background-color: #FFB6C1;
 }
@@ -103,6 +107,7 @@ footer {
     margin-top: 30px;
     padding: 10px;
     background-color: #FFB6C1;
+    flex: 0 0 auto;
 }
 
 footer table {
