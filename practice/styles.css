@@ -196,7 +196,7 @@ tr, td {
     margin: 25px auto;
 }
 
-.admin table {
+.admin::table {
     color: #000000;
     width: 960px;
     background-color: #FFF8DC;
@@ -205,12 +205,12 @@ tr, td {
     border-color: #DB7093;
 }
 
-.admin table tr, td {
+.admin::table tr, td {
     text-align: center;
     padding: 10px; 
 }
 
-.admin table th {
+.admin::table th {
     text-align: center;
     padding: 10px; 
     color: #FFFFFF;
