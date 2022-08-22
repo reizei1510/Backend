@@ -4,6 +4,10 @@ if (empty($_SESSION['login'])) {
     header('Location: ./login.php');
 }
 
+$db_login = 'u16346';
+$db_pass = '34rerfeq5';
+$db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['edit_info'])) {
         include('edit_info.php');
@@ -45,10 +49,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-
-$db_login = 'u16346';
-$db_pass = '34rerfeq5';
-$db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
 $stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_login = ?");
 $stmt->execute([$_SESSION['usr_id']]);
