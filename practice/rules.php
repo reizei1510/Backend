@@ -27,7 +27,7 @@
       
         <div class="content">
             <div class="description">
-                Give me a tiny three<img src="img/cat_food.png" id="three" alt="three">
+                Give me a tiny three<br><img src="img/cat_food.png" id="three" alt="three">
             </div>
         </div>
     	    
