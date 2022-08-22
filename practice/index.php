@@ -8,32 +8,36 @@
 </head>
 <body>
 	
-    <div class="content">
+    <div class="page">	
 	
-        <div class="welcome">
-            Diary
-        </div>
-        <div class="welcome_text">
-	    You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
-        </div>
-	    
+	    <div class="content">
+
+		<div class="welcome">
+		    Diary
+		</div>
+		<div class="welcome_text">
+		    You can <a href="logup.php">Join</a> or <a href="login.php">Login</a> or <a href="read.php">Read</a>
+		</div>
+
+	    </div>
+
+	    <footer>
+		<table>
+		    <tr>
+			<td><a href="about.php">About</a></td>
+			<td><a href="admin.php">Are you admin?</a></td>
+		    </tr>
+		    <tr>
+			<td><a href="contacts.php">Contacts</a></td>
+		    </tr>
+		    <tr>
+			<td><a href="contacts.php">Rules</a></td>
+		    </tr>
+		</table>
+	    <footer>
+		
     </div>
-	
-    <footer>
-        <table>
-	    <tr>
-                <td><a href="about.php">About</a></td>
-                <td><a href="admin.php">Are you admin?</a></td>
-	    </tr>
-            <tr>
-                <td><a href="contacts.php">Contacts</a></td>
-            </tr>
-            <tr>
-                <td><a href="contacts.php">Rules</a></td>
-            </tr>
-        </table>
-    <footer>
- 
+		    
 </body>
  
 </html>
