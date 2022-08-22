@@ -3,7 +3,7 @@
 session_start();
 
 if (!empty($_SESSION['login'])) {
-    header('Location: /profile.php');
+    header('Location: ./read.php');
 }
 
 ?>
