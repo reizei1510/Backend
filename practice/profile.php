@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else if (!empty($_POST['update_info'])) {
         try {
-            $stmt = $db->prepare("UPDATE diary_users SET name = ?, gender = ?, birthday = ?, bio = ?");
+            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, birthday = ?, bio = ?");
             $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio']));
         }
 	      catch (PDOException $e) {
@@ -102,12 +102,12 @@ else {
                 <div class="info">
                     Gender:<?php print $gender; ?><br>Birthday: <?php print $birthday; ?><br>Biography: <?php print $bio; ?><br><br>
                     Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
-                    <input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button>
+                    <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button></form>
                 </div>
             </div>
           
             <div class="log_form">
-                <input value="<?php echo $_SESSION['id'] ?>" name="add_post" type="hidden" /><button id="add_post">Add note</button>
+                <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="add_post" type="hidden" /><button id="add_post">Add note</button></form>
             </div>
             
             <?php
@@ -128,7 +128,7 @@ else {
                         print '<br>updated';
                         print $p['up_date'];
                     }
-                    print '<div class="log_form"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></div>';
+                    print '<div class="log_form"><form action="" method="post"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></form></div>';
                     print '</div>';
                 }
             }
