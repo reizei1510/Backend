@@ -202,11 +202,6 @@ button {
     border-color: #DB7093;
 }
 
-#admin tr, td {
-    text-align: center;
-    padding: 10px; 
-}
-
 #admin th {
     text-align: center;
     padding: 10px; 
