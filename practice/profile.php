@@ -138,9 +138,9 @@ else {
                     } ?>
                     <div class="log_form">
 			    <form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="edit_post" type="hidden" />
-				    <button id="edit_post">Edit note</button></form></div>
+				    <button id="edit_post">Edit note</button></form>
 			    <form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="delete_post" type="hidden" />
-				    <button id="delete_post">Delete note</button></form></div>
+				    <button id="delete_post">Delete note</button></form>
                     </div>
 	    <?php
                 }
