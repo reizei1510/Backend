@@ -26,13 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $del_powers->execute(array($_POST['delete_user']));
         $del_user = $db->prepare("DELETE FROM diary_users WHERE usr_id = ?");
         $del_user->execute(array($_POST['delete_user']));
-	      header('Location: ./admin.php');
+	header('Location: ./admin.php');
     }
-    if (!empty($_POST['posts_user'])) {
+    else if (!empty($_POST['posts_user'])) {
         $pu = $_POST['posts_user'];
         include('posts_user.php');
     }
-  
     else if (!empty($_POST['edit_user'])) {
         $stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_id = ?");
         $stmt->execute([$_POST['edit_user']]);
@@ -50,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $stmt = $db->prepare("UPDATE diary_users SET login = ?, pass = ?, gender = ?, bio = ? WHERE usr_id = ?");
             $stmt->execute(array($_POST['login'], $_POST['pass'], $_POST['gender'], $_POST['bio'], $_COOKIE['user_id']));
-	      }
-	      catch (PDOException $e) {
+	}
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
@@ -64,7 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     $stmt = $db->query("SELECT usr_id, COUNT(*) as count FROM posts GROUP BY usr_id");
-    $posts_count = $stmt->fetchAll(PDO::FETCH_ASSOC);	
+    $posts_count = $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 ?>	
 	
 <!DOCTYPE html>
