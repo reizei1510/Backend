@@ -113,7 +113,6 @@ footer {
 footer table {
     border: collapse;
     margin: 0 auto;
-    display: inline-flex
 }
 
 footer table th, td {
