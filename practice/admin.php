@@ -61,9 +61,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $stmt = $db->query("SELECT * FROM diary_users");
     $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    $stmt = $db->query("SELECT usr_id, COUNT(*) as count FROM posts GROUP BY usr_id");
-    $posts_count = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 ?>	
 	
@@ -107,10 +104,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         <td><?php print $user['reg_date'] ?></td>
                         <td><?php print $user['gender'] ?></td>
                         <td><?php print $user['bio'] ?></td>
-                        <td><?php $stmt = $db->query("SELECT * FROM $posts_count WHERE usr_id = ?");
+                        <td><?php $stmt = $db->query("SELECT COUNT(*) as count FROM posts WHERE usr_id = ? GROUPED BY usr_id");
                             $stmt->execute([$user['usr_id']]);
-                            $c = $stmt->fetch(PDO::FETCH_ASSOC);
-                            print $c['count']; ?><td>
+                            $p = $stmt->fetch(PDO::FETCH_ASSOC);
+                            print $p['count']; ?><td>
                         <td><form action="" method="POST">
                             <input value="<?php print $usr['usr_id'] ?>" name="posts_user" type="hidden" /><button id="posts_user">All posts</button>
                             </form></td>
