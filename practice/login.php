@@ -5,7 +5,7 @@ header('Content-Type: text/html; charset=UTF-8');
 session_start();
 
 if (!empty($_SESSION['login'])) {
-    header('Location: ./read.php');
+    header('Location: ./profile.php');
 }
 
 if (empty($_SESSION['token']))
@@ -45,12 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <a href="index.php">Diary</a>
 	<div class="topnav_right">
 	    <?php
-	    if (empty($_SESSION['login'])) {
-	        print '<a href="logup.php">Log Up</a>';  
-	    }
-	    else {
-		print '<a href="login.php"><img src="img/profile.png" id="profile" alt="profile"></a>'; 
-	    }
+	    print '<a href="logup.php">Log Up</a>';
 	    ?>
 	</div>
     </div>
