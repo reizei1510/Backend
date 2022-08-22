@@ -34,24 +34,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 </head>
 
 <body>
+    <div class="page">
+	    
     <div class="topnav">
         <a href="index.php">Diary</a>
 	<div class="topnav_right">
-	    <a href="logup.php">Log Up</a>
+	    <?php
+	    if (empty($_SESSION['login'])) {
+	        print '<a href="logup.php">Log Up</a>';  
+	    }
+	    else {
+		print '<a href="login.php"><img src="img/profile.png" id="profile" alt="profile"></a>'; 
+	    }
+	    ?>
 	</div>
     </div>
 	
     <div class="content">
+      
+        <?php 
+	if (!empty($_SESSION['login'])) {
+            print 'You arleady loged up, get enjoy.';
+        }
+	?>
 	    
-        <form action="" method="POST">
+        <form action="" method="POST"  class="log_form">
           
             <label>
                 <input name="usr_login" <?php if ($errors['usr_login']) { print 'class="error"'; } ?> placeholder="login" /><br>
-    		        <div class="error_message"><?php print $messages['usr_login']; ?></div>
+    		<div class="error_message"><?php print $messages['usr_login']; ?></div>
             </label><br>
             <label>
                 <input name="usr_pass" type="password" <?php if ($errors['usr_pass']) { print 'class="error"'; } placeholder="password" ?> /><br>
-    		        <div class="error_message"><?php print $messages['usr_pass']; ?></div>
+    		<div class="error_message"><?php print $messages['usr_pass']; ?></div>
             </label><br>
             <input type="submit" class="button" value="Log In" />
         </form>
@@ -70,7 +85,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             </tr>
         </table>
     <footer>
-
+	    
+    </div>
 </body>
           
 <?php
