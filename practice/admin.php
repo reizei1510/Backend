@@ -22,8 +22,8 @@ if (empty($admin) || $admin['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete_user'])) {
-        $del_powers = $db->prepare("DELETE FROM posts WHERE usr_id = ?");
-        $del_powers->execute(array($_POST['delete_user']));
+        $del_posts = $db->prepare("DELETE FROM posts WHERE usr_id = ?");
+        $del_posts->execute(array($_POST['delete_user']));
         $del_user = $db->prepare("DELETE FROM diary_users WHERE usr_id = ?");
         $del_user->execute(array($_POST['delete_user']));
 	header('Location: ./admin.php');
@@ -107,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         <td><?php $stmt = $db->prepare("SELECT COUNT(*) as count FROM posts WHERE usr_id = ? GROUPED BY usr_id");
                             $stmt->execute([$user['usr_id']]);
                             $p = $stmt->fetch(PDO::FETCH_ASSOC);
-                            print $p['count']; ?><td>
+                            print $p['count']; ?></td>
                         <td><form action="" method="POST">
                             <input value="<?php print $usr['usr_id'] ?>" name="posts_user" type="hidden" /><button id="posts_user">All posts</button>
                             </form></td>
