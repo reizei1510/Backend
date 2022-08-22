@@ -142,9 +142,9 @@ else {
                     <div class="log_form">
 			<table>
 			    <tr>
-				<td><form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="edit_post" type="hidden" />
+				<td><form action="" method="post"><input value="<?php echo $p["post_id"] ?>" name="edit_post" type="hidden" />
 				    <button id="edit_post">Edit note</button></form></td>
-			        <td><form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="delete_post" type="hidden" />
+			        <td><form action="" method="post"><input value="<?php echo $p["post_id"] ?>" name="delete_post" type="hidden" />
 				    <button id="delete_post">Delete note</button></form></td>
 			    </tr>
 			</table>
