@@ -117,6 +117,10 @@ else {
         setcookie('usr_pass_error', 'empty', time() + 24 * 60 * 60);
 	$errors = TRUE;
     }
+    else if (!preg_match("/[A-Za-z0-9_]+$/", $_POST['usr_pass'])) {
+        setcookie('usr_pass_error', 'incorrect', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
 	
     if ($errors) {
         header('Location: ./logup.php');
