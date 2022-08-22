@@ -107,16 +107,17 @@ footer {
     margin-top: 30px;
     padding: 10px;
     background-color: #FFB6C1;
+    justify-content: center;
 }
 
 footer table {
-    width: 720px;
     border: collapse;
     margin: 0 auto;
 }
 
 footer table th, td {
     text-align: center;
+    width: 360px;
 }
 
 footer a {
