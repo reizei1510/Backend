@@ -2,6 +2,10 @@
 
 header('Content-Type: text/html; charset=UTF-8');
 
+if (!empty($_SESSION['login'])) {
+    header('Location: ./read.php');
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $errors = array();
