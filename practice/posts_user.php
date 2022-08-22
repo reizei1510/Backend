@@ -1,4 +1,8 @@
 <?php
+$db_login = 'u16346';
+$db_pass = '34rerfeq5';
+$db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
+
 $stmt = $db->prepare("SELECT * FROM posts WHERE usr_id = ?");
 $stmt->execute([$uid]);
 $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -36,7 +40,7 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <div class="content">
 	    
 	    <div class="description">
-		    All posts by user <?php print $pu; ?>.
+		    All posts by user <?php print $uid; ?>.
 		</div>
 	    
         <table id="admin">
