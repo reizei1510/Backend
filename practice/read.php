@@ -42,10 +42,10 @@ $allposts = $stmt->fetchAll(PDO::FETCH_ASSOC);
             }
             else {
                 foreach ($allposts as $post) {
-                $stmt=$db->prepare("SELECT user_id FROM posts WHERE post_id = ?");
+                $stmt=$db->prepare("SELECT usr_id FROM posts WHERE post_id = ?");
                 $stmt->execute([$post['post_id']]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
-                $stmt=$db->prepare("SELECT user_login FROM diary_users WHERE usr_id = ?");
+                $stmt=$db->prepare("SELECT usr_login FROM diary_users WHERE usr_id = ?");
                 $stmt->execute([$user['usr_id']]);
                 $autor = $stmt->fetch(PDO::FETCH_ASSOC);
                     print '<div class="description">';
