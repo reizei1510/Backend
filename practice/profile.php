@@ -40,6 +40,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if (!empty($_POST['delete_post'])) {
         $stmt = $db->prepare("DELETE FROM posts WHERE post_id = ?");
 	$stmt->execute([$_POST['delete_post']]);
+	    
+	setcookie('post', $_POST['delete_post'], 60*60);
+	    
 	header('Location: ./profile.php');
     }
     else if (!empty($_POST['added_post'])) {
