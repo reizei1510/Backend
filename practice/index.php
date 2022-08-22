@@ -20,6 +20,8 @@
 		</div>
 
 	    </div>
+		
+    </div>
 
 	    <footer>
 		<table>
@@ -35,8 +37,6 @@
 		    </tr>
 		</table>
 	    <footer>
-		
-    </div>
 		    
 </body>
  
