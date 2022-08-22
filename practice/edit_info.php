@@ -43,7 +43,7 @@
 		
                 <tr>
                   <td>Biography:</td>
-                  <td><textarea name="biography"><?php if (!empty($bio)) print $bio; else print '""';?></textarea><br>
+                  <td><textarea name="bio"><?php if (!empty($bio)) print $bio; else print '""';?></textarea><br>
                 </tr>
               
               </table><br>
