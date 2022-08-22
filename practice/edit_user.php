@@ -28,7 +28,7 @@
   
   <div class="content">
 	  
-	  <div class="descpription">
+	  <div class="description">
       
       <form action="" method="POST">
               
