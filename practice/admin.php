@@ -20,6 +20,10 @@ if (empty($admin) || $admin['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
     exit();
 }
 
+if (session_start() && !empty($_SESSION['login'])) {
+    session_destroy();
+}
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['delete_user'])) {
         $del_posts = $db->prepare("DELETE FROM posts WHERE usr_id = ?");
