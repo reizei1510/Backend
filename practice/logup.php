@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         else {
 	?>
 	    
-            <form action="" method="POST">
+            <form action="" method="POST" class="log">
           
                 <label>
                     <input name="usr_login" <?php if ($errors['usr_login']) { print 'class="error"'; } ?> placeholder="login" /><br>
