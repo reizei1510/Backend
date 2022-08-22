@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     }
-    else if ((!empty($_POST['update_info'])) {
+    else if (!empty($_POST['update_info'])) {
         try {
             $stmt = $db->prepare("UPDATE diary_users SET name = ?, gender = ?, birthday = ?, bio = ?");
             $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio']));
@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             exit();
         }
     }
-    else if ((!empty($_POST['update_post'])) {
+    else if (!empty($_POST['update_post'])) {
         try {
             $stmt = $db->prepare("UPDATE posts SET post = ?, up_date = ?");
             $stmt->execute(array($_POST['post'], date('Y-m-d')));
