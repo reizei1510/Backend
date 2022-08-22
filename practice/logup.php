@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     		            <div class="error_message"><?php print $messages['usr_login']; ?></div>
                 </label><br>
                 <label>
-                    <input name="usr_pass" type="password" <?php if ($errors['usr_pass']) { print 'class="error"'; } placeholder="password" ?> /><br>
+                    <input name="usr_pass" type="password" <?php if ($errors['usr_pass']) { print 'class="error"'; } ?> placeholder="password" /><br>
     		            <div class="error_message"><?php print $messages['usr_pass']; ?></div>
                 </label><br>
                 <input type="submit" class="button" value="Log Up" />
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	    <tr>
                 <td><a href="about.php">About</a></td>
                 <td><a href="contacts.php">Contacts</a></td>
-                <td><a href="contacts.php">Rules</a></td>
+                <td><a href="rules.php">Rules</a></td>
 	    </tr>
             <tr>
                 <td><a href="admin.php">Are you admin?</a></td>
