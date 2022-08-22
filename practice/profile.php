@@ -40,8 +40,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else if (!empty($_POST['added_post'])) {
         try {
-            $stmt = $db->prepare("INSERT INTO posts SET post = ?, date = ?, up_date = ?");
-            $stmt->execute(array($_POST['post'], date('Y-m-d'), date('Y-m-d')));
+            $stmt = $db->prepare("INSERT INTO posts SET usr_id = ?, post = ?, date = ?, up_date = ?");
+            $stmt->execute(array($_SESSION['id'], $_POST['post'], date('Y-m-d'), date('Y-m-d')));
 	    header('Location: ./profile.php');
         }
 	catch (PDOException $e) {
