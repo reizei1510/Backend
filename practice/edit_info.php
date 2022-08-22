@@ -52,7 +52,7 @@
               
               </table>
 		
-              <input type="submit" value="Отправить" /><br>
+              <input value="<?php echo $_SESSION['id'] ?>" name="added_post" type="hidden" /><button id="add_post">OK</button>
 		          <div class="error_message"><?php print $messages['save']; ?></div><br>
 
            </form>
