@@ -51,11 +51,11 @@
 		
                 <tr>
                   <td>Password:</td>
-                  <td><input name="pass" value="" /><br>
+                  <td><input type="password" name="pass" value="" /><br>
                 </tr>
               
               </table><br>
-              <input value="<?php echo $_SESSION['id'] ?>" name="update_user" type="hidden" /><button id="update_user">Edit</button>
+              <input value="" name="update_user" type="hidden" /><button id="update_user">Edit</button>
       
     </form>
     
