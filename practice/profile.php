@@ -93,7 +93,7 @@ else $count = 0;
 	
         <div class="content">
 
-            <div class="description">Hello! This is your profile. Here you can change information about yourself or add or change your notes.</div>
+            <div class="text">Hello! This is your profile. Here you can change information about yourself or add or change your notes.</div>
           
             <div class="description">
                 <div class="name"><?php print $name; ?></div>
