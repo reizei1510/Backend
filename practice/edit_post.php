@@ -1,3 +1,9 @@
+>?php
+$stmt = $db->prepare("SELECT post FROM posts WHERE post_id = ?");
+$stmt->execute($pid);
+$ps = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 
 <html lang="ru">
@@ -20,7 +26,7 @@
  
     <div class="content">	    
             <form action="" method="POST">
-              <textarea name="post" class="add_post"><?php print $p($_POST['edit_post']) ?></textarea><br>
+              <textarea name="post" class="add_post"><?php print $ps('post') ?></textarea><br>
               <div class="log_form"><input value="<?php echo $_SESSION['id'] ?>" name="update_post" type="hidden" /><button id="update_post">Edit</button></div>
            </form>
     </div>
