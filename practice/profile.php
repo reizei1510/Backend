@@ -98,7 +98,7 @@ else $count = 0;
             <div class="description">
                 <div class="name"><?php print $name; ?></div>
                 <div class="info">
-                    <?php print $gender; ?><br>Birthday: <?php print $birthday; ?><br>Biography: <?php print $bio; ?><br><br>
+                    Gender:<?php print $gender; ?><br>Birthday: <?php print $birthday; ?><br>Biography: <?php print $bio; ?><br><br>
                     Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
                     <input value="<?php echo $usr['usr_id'] ?>" name="edit_info" type="hidden" /><button id="Edit info">
                 </div>
