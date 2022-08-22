@@ -15,12 +15,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages = array();
     if ($errors['usr_login']) {
         setcookie('usr_login_error', '', 100000);
-        $messages['usr_login'] = $errors['usr_login'] == 'empty' ? 'Input login.' : ($errors['usr_login'] == 'exist' ? 'Login already registered.' : ($errors['usr_login'] == 'long' ? 'Login must be 6-10 characters long.' : 'Login must contain only letters, numbers and "_".'));
+	if ($errors['usr_login'] == 'empty') {
+	    $messages['usr_login'] = 'Input login.';
+	}
+	else if ($errors['usr_login'] == 'exist') {
+	    $messages['usr_login'] = 'Login already registered.';
+	}
+	else if ($errors['usr_login'] == 'long') {
+	    $messages['usr_login'] = 'Login must be 3-10 characters long.';
+	}
+	else {
+	    $messages['usr_login'] = 'Login must contain only letters, numbers and "_".';
+	}
     }
     else $messages['usr_login'] = ' ';
     if ($errors['usr_pass']) {
         setcookie('usr_pass_error', '', 100000);
-        $messages['usr_pass'] = $errors['usr_pass'] == 'empty' ? 'Input password.' : ($errors['usr_pass'] == 'long' ? 'Password must be 8-15 characters long.' : 'Password must contain only letters, numbers and "_".');
+	if ($errors['usr_pass'] == 'empty') {
+	    $messages['usr_pass'] = 'Input password.';
+	}
+	else if ($errors['usr_pass'] == 'long') {
+	    $messages['usr_pass'] = 'Password must be 6-15 characters long.';
+	}
+	else {
+	    $messages['usr_pass'] = 'Password must contain only letters, numbers and "_".';
+	}
     }
     else $messages['usr_pass'] = ' ';
 
@@ -100,7 +119,7 @@ else {
         setcookie('usr_login_error', 'incorrect', time() + 24 * 60 * 60);
 	$errors = TRUE;
     }
-    else if (strlen($_POST['usr_login']) < 8 || strlen($_POST['usr_login']) > 10) {
+    else if (strlen($_POST['usr_login']) < 3 || strlen($_POST['usr_login']) > 10) {
         setcookie('usr_login_error', 'long', time() + 24 * 60 * 60);
 	$errors = TRUE;
     }
@@ -113,7 +132,7 @@ else {
         setcookie('usr_pass_error', 'incorrect', time() + 24 * 60 * 60);
 	$errors = TRUE;
     }
-    else if (strlen($_POST['usr_pass']) < 10 || strlen($_POST['usr_pass']) > 15) {
+    else if (strlen($_POST['usr_pass']) < 6 || strlen($_POST['usr_pass']) > 15) {
         setcookie('usr_pass_error', 'long', time() + 24 * 60 * 60);
 	$errors = TRUE;
     }
