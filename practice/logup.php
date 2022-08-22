@@ -15,12 +15,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $messages = array();
     if ($errors['usr_login']) {
         setcookie('usr_login_error', '', 100000);
-        $messages['usr_login'] = $errors['usr_login'] == 'empty' ? 'Input login.' : ($errors['usr_login'] == 'exist' ? 'Login already registered.' : 'Login must contain only letters, numbers and "_".');
+        $messages['usr_login'] = $errors['usr_login'] == 'empty' ? 'Input login.' : ($errors['usr_login'] == 'exist' ? 'Login already registered.' : ($errors['usr_login'] == 'long' ? 'Login must be 6-10 characters long.' : 'Login must contain only letters, numbers and "_".'));
     }
     else $messages['usr_login'] = ' ';
     if ($errors['usr_pass']) {
         setcookie('usr_pass_error', '', 100000);
-        $messages['usr_pass'] = $errors['usr_pass'] == 'empty' ? 'Input password.' : 'Password must contain only letters, numbers and "_".';
+        $messages['usr_pass'] = $errors['usr_pass'] == 'empty' ? 'Input password.' : ($errors['usr_pass'] == 'long' ? 'Password must be 8-15 characters long.' : 'Password must contain only letters, numbers and "_".');
     }
     else $messages['usr_pass'] = ' ';
 
@@ -39,23 +39,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <div class="topnav">
         <a href="index.php">Diary</a>
 	<div class="topnav_right">
-	    <?php
-	    if (empty($_SESSION['login'])) {
-	        print '<a href="login.php">Log In</a>';  
-	    }
-	    else {
-		print '<a href="login.php"><img src="img/profile.png" id="profile" alt="profile"></a>'; 
-	    }
-	    ?>
+	    <a href="login.php">Log In</a>;  
         </div>
     </div>
 	
     <div class="content">
       
         <?php 
-	if (!empty($_SESSION['login'])) {
-            print 'You arleady loged up, get enjoy.';
-        }
       
         if (!empty($_COOKIE['logup'])) {
             print 'You siccesfully loged up, now you can <a href="login.php">Login</a>.';
@@ -110,6 +100,10 @@ else {
         setcookie('usr_login_error', 'incorrect', time() + 24 * 60 * 60);
 	$errors = TRUE;
     }
+    else if (strlen($_POST['usr_login']) < 8 || strlen($_POST['usr_login']) > 10) {
+        setcookie('usr_login_error', 'long', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
   
     if (empty($_POST['usr_pass'])) {
         setcookie('usr_pass_error', 'empty', time() + 24 * 60 * 60);
@@ -117,6 +111,10 @@ else {
     }
     else if (!preg_match("/[A-Za-z0-9_]+$/", $_POST['usr_pass'])) {
         setcookie('usr_pass_error', 'incorrect', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
+    else if (strlen($_POST['usr_pass']) < 10 || strlen($_POST['usr_pass']) > 15) {
+        setcookie('usr_pass_error', 'long', time() + 24 * 60 * 60);
 	$errors = TRUE;
     }
 	
@@ -135,12 +133,12 @@ else {
 	
     if (!empty($user)) {
         setcookie('usr_login_error', 'exist', time() + 24 * 60 * 60);
-        header('Location: logup.php');
+        header('Location: ./logup.php');
         exit();
     }
   
-    $stmt = $db->prepare("INSERT INTO diary_users SET usr_login = ?, usr_pass = ");
-    $stmt->execute([$_POST['usr_login'], $_POST['usr_pass']]);
+    $stmt = $db->prepare("INSERT INTO diary_users SET usr_login = ?, usr_pass = ?, reg_date = ?");
+    $stmt->execute([$_POST['usr_login'], $_POST['usr_pass'], date('Y-m-d')]);
   
     setcookie('logup', '', time() + 24 * 60 * 60);	
 
