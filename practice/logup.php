@@ -2,6 +2,8 @@
 
 header('Content-Type: text/html; charset=UTF-8');
 
+session_start();
+
 if (!empty($_SESSION['login'])) {
     header('Location: ./read.php');
 }
@@ -67,8 +69,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <?php 
       
         if (!empty($_COOKIE['logup'])) {
-            print '<div class="description">You siccesfully loged up, now you can <a href="login.php">Login</a>.</div>';
-            //setcookie('logup', '', 100000);
+            print '<div class="description">You succesfully loged up, now you can <a href="login.php">Login</a>.</div>';
+            setcookie('logup', '', 100000);
         }
   
         else {
@@ -158,8 +160,13 @@ else {
   
     $stmt = $db->prepare("INSERT INTO diary_users SET usr_login = ?, usr_pass = ?, reg_date = ?");
     $stmt->execute([$_POST['usr_login'], $_POST['usr_pass'], date('Y-m-d')]);
+	
+    $stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_login = ?");
+    $stmt->execute([$_POST['usr_login']]);
+    $user = $stmt->fetch(PDO::FETCH_ASSOC);
   
-    setcookie('logup', '', time() + 24 * 60 * 60);	
+    $_SESSION['login'] = $_POST['usr_login'];
+    $_SESSION['id'] = $user['usr_id'];		
 
     header('Location: ./logup.php');
 }
