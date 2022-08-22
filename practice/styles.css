@@ -188,6 +188,10 @@ button {
     width: 680px;
 }
 
+tr, td {
+    text-align: left;
+}
+
 .admin {
     margin: 25px auto;
 }
