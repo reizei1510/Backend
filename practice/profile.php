@@ -40,22 +40,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else if (!empty($_POST['added_post'])) {
         try {
-            $stmt = $db->prepare("INSERT INTO posts SET usr_id = ?, post = ?, date = ?, up_date = ?");
-            $stmt->execute(array($_SESSION['id'], $_POST['post'], date('Y-m-d'), date('Y-m-d')));
+            $stmt = $db->prepare("INSERT INTO posts SET post = ?, date = ?, up_date = ?");
+            $stmt->execute(array($_POST['post'], date('Y-m-d'), date('Y-m-d')));
 	    header('Location: ./profile.php');
         }
-	catch (PDOException $e) {
+	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
     }
     else if (!empty($_POST['update_info'])) {
         try {
-            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, birthday = ?, bio = ? WHERE usr_id = ?");
-            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio'], $_SESSION['id']));
+            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, birthday = ?, bio = ?");
+            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio']));
 	    header('Location: ./profile.php');
         }
-	catch (PDOException $e) {
+	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
@@ -66,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute(array($_POST['post'], date('Y-m-d')));
 	    header('Location: ./profile.php');
         }
-	catch (PDOException $e) {
+	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
@@ -130,9 +130,10 @@ else {
                     if ($p['up_date'] > $p['date']) {
                         print '<br>updated';
                         print $p['up_date'];
-                    }
-                    print '<div class="log_form"><form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></form></div>';
-                    print '</div>';
+                    } ?>
+                    <div class="log_form"><form action="" method="post"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></form></div>
+                    </div>
+	    <?php
                 }
             }
             ?>
