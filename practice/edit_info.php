@@ -1,7 +1,3 @@
-<?php
-$value
-?>
-
 <!DOCTYPE html>
 
 <html lang="ru">
