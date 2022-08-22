@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if (!empty($_POST['added_post'])) {
         try {
             $stmt = $db->prepare("INSERT INTO posts SET usr_id = ?, post = ?, date = ?, up_date = ?");
-            $stmt->execute(array($_SESSION['id'], $_POST['post'], date('Y-m-d'), date('Y-m-d')));
+            $stmt->execute(array($_SESSION['id'], $_POST['post'], date("Y-m-d H:i:s"), date("Y-m-d H:i:s")));
 	    header('Location: ./profile.php');
         }
 	catch (PDOException $e) {
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if (!empty($_POST['update_post'])) {
         try {
             $stmt = $db->prepare("UPDATE posts SET post = ?, up_date = ?");
-            $stmt->execute(array($_POST['post'], date('Y-m-d')));
+            $stmt->execute(array($_POST['post'], date("Y-m-d H:i:s")));
 	    header('Location: ./profile.php');
         }
 	catch (PDOException $e) {
