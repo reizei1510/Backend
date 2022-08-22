@@ -13,7 +13,7 @@
 	    <a href="index.php">Diary</a>
 	    <div class="topnav_right">
 		<?php
-		if (empty($_SESSION['login'])) {
+		if (session_start() && empty($_SESSION['login'])) {
 	            print '<a href="login.php">Log In</a>';  
 		    print '<a href="logup.php">Log Up</a>';
 		}
