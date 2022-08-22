@@ -188,7 +188,7 @@ button {
     width: 680px;
 }
 
-tr, td {
+#info tr, td {
     text-align: left;
 }
 
