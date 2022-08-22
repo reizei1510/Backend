@@ -18,7 +18,7 @@
 		    print '<a href="logup.php">Log Up</a>';
 		}
 		else {
-		    print '<a href="login.php"><img src="profile.png" id="profile" alt="profile"></a>'; 
+		    print '<a href="login.php"><img src="img/profile.png" id="profile" alt="profile"></a>'; 
 		}
 		?>
 	    </div>
