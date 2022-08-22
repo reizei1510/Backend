@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         try {
             $stmt = $db->prepare("UPDATE diary_users SET name = ?, birthday = ?, bio = ?");
             $stmt->execute(array($_POST['name'], $_POST['birthday'], $_POST['bio']));
-		setcookie('postcheck', $_POST['bio'], time() + 60 * 60);
+		setcookie('postcheck', $_POST['gender'], time() + 60 * 60);
         }
 	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
