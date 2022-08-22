@@ -125,9 +125,6 @@ else {
   
     $_SESSION['login'] = $_POST['usr_login'];
     $_SESSION['id'] = $user['usr_id'];	
-	
-    $stmt = $db->prepare("INSERT INTO diary_users SET reg_date = ?");
-    $stmt->execute(date("Y-m-d H:i:s"));
 
     header('Location: ./read.php');
 }
