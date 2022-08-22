@@ -201,10 +201,12 @@ button {
 }
 
 tr, td {
-   padding: 10px; 
+    text-align: center;
+    padding: 10px; 
 }
 
 th {
+    text-align: center;
     padding: 10px; 
     color: #FFFFFF;
     background-color:#DB7093;
