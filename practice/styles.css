@@ -142,3 +142,8 @@ footer a:hover {
 footer a:visited {
     color: #FFFFFF;   
 }
+
+#profile, #three {
+    height: 50px;
+    width: 50px;
+}
