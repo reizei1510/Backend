@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	      header('Location: ./admin.php');
     }
     if (!empty($_POST['posts_user'])) {
-        $pu = $_POST['posts_user']);
+        $pu = $_POST['posts_user'];
         include('posts_user.php');
     }
   
