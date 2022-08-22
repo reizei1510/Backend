@@ -1,5 +1,5 @@
 <?php
-if (!empty($_SESSION['login'])) {
+if (session_start() && !empty($_SESSION['login'])) {
     session_destroy();
 }
 header('Location: ./');
