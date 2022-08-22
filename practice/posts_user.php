@@ -35,9 +35,12 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     <div class="content">
 	    
+	    <div class="decription">
+		    All posts by user <?php print $pu; ?>.
+		</div>
+	    
         <table id="admin">
             <tr>
-                <th>User ID</th>
                 <th>Note ID</th>
                 <th>Note</th>
                 <th colspan="2">Acts</th>
@@ -47,7 +50,6 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 foreach ($psts as $p) {
             ?>
                     <tr>
-                        <td><?php print $p['usr_id'] ?></td>
                         <td><?php print $p['post_id'] ?></td>
                         <td><?php print $p['post'] ?></td>
                       
