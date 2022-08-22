@@ -126,7 +126,6 @@ else {
                 print '<div class="description">You don\'t have notes yet.</div>';
             }
             else {
-		array_reverse($posts);
                 foreach ($posts as $p) {
                     print '<div class="description">';
                     print $p['date'];
@@ -135,8 +134,8 @@ else {
                         print $p['up_date'];
                     }
                     print '<br><br>';
-                    print $p['post']; ?>
-                    print '<br><br>';
+                    print $p['post'];
+                    print '<br><br>'; ?>
                     <div class="log_form">
 			<table>
 			    <tr>
