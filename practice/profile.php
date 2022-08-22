@@ -107,7 +107,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             </div>
           
             <div class="log_form">
-                <input value="<?php echo $_SESSION['id'] ?>" name="add_post" type="hidden" /><button id="add_post">Add note</button>
+		    <form action="" method="POST">
+                       <input value="<?php echo $_SESSION['id'] ?>" name="add_post" type="hidden" /><button id="add_post">Add note</button>
+		    </form>
             </div>
             
             <?php
@@ -128,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         print '<br>updated';
                         print $p['up_date'];
                     }
-                    print '<div class="log_form"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></div>';
+                    print '<div class="log_form"><form action="" method="POST"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></form></div>';
                     print '</div>';
                 }
             }
