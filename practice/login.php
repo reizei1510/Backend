@@ -2,7 +2,7 @@
 
 header('Content-Type: text/html; charset=UTF-8');
 
-if (!empty($_SESSION['login'])) {
+if (session_start() && !empty($_SESSION['login'])) {
     header('Location: ./read.php');
 }
 	
