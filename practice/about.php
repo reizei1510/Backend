@@ -33,16 +33,10 @@
     	    
 	
 	<footer>
-	    <table>
-		<tr>
-		    <td><a href="about.php">About</a></td>
-		    <td><a href="contacts.php">Contacts</a></td>
-		    <td><a href="contacts.php">Rules</a></td>
-		</tr>
-		<tr>
-		    <td><a href="admin.php">Are you admin?</a></td>
-		</tr>
-	    </table>
+	    <a href="about.php">About</a>
+	    <a href="contacts.php">Contacts</a>
+	    <a href="contacts.php">Rules</a>
+	    <a href="admin.php">Are you admin?</a>
 	<footer>
 		    
     </div>
