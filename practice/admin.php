@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                         <td><?php print $user['reg_date'] ?></td>
                         <td><?php print $user['gender'] ?></td>
                         <td><?php print $user['bio'] ?></td>
-                        <td><?php $stmt = $db->query("SELECT COUNT(*) as count FROM posts WHERE usr_id = ? GROUPED BY usr_id");
+                        <td><?php $stmt = $db->prepare("SELECT COUNT(*) as count FROM posts WHERE usr_id = ? GROUPED BY usr_id");
                             $stmt->execute([$user['usr_id']]);
                             $p = $stmt->fetch(PDO::FETCH_ASSOC);
                             print $p['count']; ?><td>
