@@ -37,6 +37,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if (!empty($_POST['edit_post'])) {
         include('edit_post.php');
     }
+    else if (!empty($_POST['delete_post'])) {
+        $stmt = $db->prepare("DELETE FROM posts WHERE post_id = ?");
+	$stmt->execute([$_POST['delete_post']]);
+	header('Location: ./profile.php');
+    }
     else if (!empty($_POST['added_post'])) {
         try {
             $stmt = $db->prepare("INSERT INTO posts SET usr_id = ?, post = ?, date = ?, up_date = ?");
@@ -131,7 +136,11 @@ else {
                         print '<br>updated';
                         print $p['up_date'];
                     } ?>
-                    <div class="log_form"><form action="" method="post"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></form></div>
+                    <div class="log_form">
+			    <form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="edit_post" type="hidden" />
+				    <button id="edit_post">Edit note</button></form></div>
+			    <form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="delete_post" type="hidden" />
+				    <button id="delete_post">Delete note</button></form></div>
                     </div>
 	    <?php
                 }
