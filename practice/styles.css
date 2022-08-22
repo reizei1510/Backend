@@ -104,6 +104,7 @@ footer {
     padding: 10px;
     column-count: 2;
     column-width: 200px;
+    column-gap: 40px;
     background-color: #FFB6C1;
 }
 
