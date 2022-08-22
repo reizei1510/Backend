@@ -32,20 +32,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <body>
     <div class="topnav">
         <a href="index.php">Diary</a>
+	<div class="topnav_right">
+	    <?php
+	    if (empty($_SESSION['login'])) {
+	        print '<a href="login.php">Log In</a>';  
+	    }
+	    else {
+		print '<a href="login.php"><img src="img/profile.png" id="profile" alt="profile"></a>'; 
+	    }
+	    ?>
+        </div>
     </div>
 	
     <div class="content">
       
-        if (!empty($_SESSION['login'])) {
+        <?php 
+	if (!empty($_SESSION['login'])) {
             print 'You arleady loged up, get enjoy.';
         }
       
-        <?php if (!empty($_COOKIE('logup'))) {
+        if (!empty($_COOKIE('logup'))) {
             print 'You siccesfully loged up, now you can <a href="login.php">Login</a>.';
             setcookie('logup', '', 100000);
         }
   
-        else { ?>
+        else {
+	?>
 	    
             <form action="" method="POST">
           
