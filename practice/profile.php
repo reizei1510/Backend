@@ -15,10 +15,10 @@ $stmt->execute([$_SESSION['id']]);
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $name = $user['usr_login'];
-$gender = is_null($user['gender']) ? 'no information' : $user['gender'];
+$gender = is_null($user['gender']) ? '' : $user['gender'];
 $reg_date = $user['reg_date'];
-$birthday = is_null($user['birthday']) ? 'no information' : $user['birthday'];
-$bio = is_null($user['bio']) ? 'no information' : $user['bio'];
+$birthday = is_null($user['birthday']) ? '' : $user['birthday'];
+$bio = is_null($user['bio']) ? '' : $user['bio'];
 
 $stmt = $db->prepare("SELECT COUNT(*) as count_posts FROM posts WHERE usr_id = ? GROUP BY usr_id");
 $stmt->execute([$_SESSION['id']]);
