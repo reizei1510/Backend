@@ -85,8 +85,8 @@ else $count = 0;
         <div class="topnav">
 	          <a href="index.php">Diary</a>
 	          <div class="topnav_right">
-		            <a href="login.php"><img src="img/profile.png" id="profile" alt="profile"></a>'; 
-		        </div>
+		      <a href="logout.php">Log Out</a>
+		  </div>
 	  </div>
 	
         <div class="content">
