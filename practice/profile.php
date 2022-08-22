@@ -50,8 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else if (!empty($_POST['update_info'])) {
         try {
-            $stmt = $db->prepare("UPDATE diary_users SET name = ?, gender = ?, birthday = ?, bio = ?");
-            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio']));
+            $stmt = $db->prepare("UPDATE diary_users SET name = ?, /*gender = ?,*/ birthday = ?, bio = ?");
+            $stmt->execute(array($_POST['name'], /*$_POST['gender'],*/ $_POST['birthday'], $_POST['bio']));
         }
 	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
