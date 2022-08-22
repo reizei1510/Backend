@@ -26,10 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>Lod Up</title>
+    <title>Log Up</title>
 </head>
 
 <body>
+<div class="page">
+	
     <div class="topnav">
         <a href="index.php">Diary</a>
 	<div class="topnav_right">
@@ -90,6 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             </tr>
         </table>
     <footer>
+
+</div>
 
 </body>
           
