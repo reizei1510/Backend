@@ -154,5 +154,6 @@ footer a:visited {
 }
 
 .log {
+    display: flex;
     align-items: right;
 }
