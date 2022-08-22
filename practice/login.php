@@ -1,6 +1,10 @@
 <?php
 
 header('Content-Type: text/html; charset=UTF-8');
+
+if (!empty($_SESSION['login'])) {
+    header('Location: ./read.php');
+}
 	
 session_start();
 if (empty($_SESSION['token']))
@@ -51,12 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     </div>
 	
     <div class="content">
-      
-        <?php 
-	if (!empty($_SESSION['login'])) {
-            print 'You arleady loged up, get enjoy.';
-        }
-	?>
 	    
         <form action="" method="POST"  class="log_form">
           
@@ -127,5 +125,5 @@ else {
     $_SESSION['login'] = $_POST['usr_login'];
     $_SESSION['uid'] = $user['usr_id'];	
 
-    header('Location: ./');
+    header('Location: ./read.php');
 }
