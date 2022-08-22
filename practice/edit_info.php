@@ -1,5 +1,3 @@
-<?php setcookie('check', $user['name']); ?>
-
 <!DOCTYPE html>
 
 <html lang="ru">
@@ -30,7 +28,7 @@
                 
                 <tr>
                   <td>Name/Login:</td>
-                  <td><input name="name" value="<?php if (!empty($user['usr_login'])) print $user['usr_login']; else print '""';?>" /><br>
+                  <td><input name="name" value="<?php if (!empty($user['usr_login'])) print $user['usr_login']; else print '';?>" /><br>
                 </tr>
 	    
                 <tr>
@@ -40,12 +38,12 @@
                 </tr>
 		
                   <td>Birthday:</td>
-                  <td><input name="birthday" type="date" value="<?php if (!empty($user['birthday'])) print $user['birthday']; else print '""'; ?>" /><br>
+                  <td><input name="birthday" type="date" value="<?php if (!empty($user['birthday'])) print $user['birthday']; else print ''; ?>" /><br>
                 </tr>
 		
                 <tr>
                   <td>Biography:</td>
-                  <td><textarea name="bio"><?php if (!empty($user['bio'])) print $$user['bio']; else print '""';?></textarea><br>
+                  <td><textarea name="bio" class="add_post"><?php if (!empty($user['bio'])) print $user['bio']; else print '';?></textarea><br>
                 </tr>
               
               </table><br>
