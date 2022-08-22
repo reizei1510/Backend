@@ -196,6 +196,7 @@ button {
     color: #000000;
     width: 960px;
     background-color: #FFF8DC;
+    border: 1px;
     border-color: #DB7093;
 }
 
