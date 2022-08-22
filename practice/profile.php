@@ -100,7 +100,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="info">
                     Gender:<?php print $gender; ?><br>Birthday: <?php print $birthday; ?><br>Biography: <?php print $bio; ?><br><br>
                     Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
-                    <input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button>
+                    <form action="" method="POST">
+	                <input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button>
+		    </form>
                 </div>
             </div>
           
