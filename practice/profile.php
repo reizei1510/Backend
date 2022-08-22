@@ -98,7 +98,7 @@ else {
 	          <div class="topnav_right">
 		      <a href="logout.php">Log Out</a>
 		  </div>
-	  </div>
+	</div>
 	
         <div class="content">
 
@@ -142,6 +142,7 @@ else {
 			    <form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="delete_post" type="hidden" />
 				    <button id="delete_post">Delete note</button></form>
                     </div>
+                </div>
 	    <?php
                 }
             }
