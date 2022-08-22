@@ -148,7 +148,7 @@ footer a:visited {
     width: 50px;
 }
 
-.error_message {
+.message_error {
     color: "FF0000";
     font-size: 12px;
 }
