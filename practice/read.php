@@ -54,7 +54,7 @@ $allposts = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		    print '</div><br>';
                     print $post['date'];
                     if ($post['up_date'] > $post['date']) {
-                        print '<br>updated';
+                        print '<br>updated ';
                         print $post['up_date'];
                     }
                     print '<br><br>';
