@@ -35,7 +35,7 @@ $psts = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     <div class="content">
 	    
-	    <div class="decription">
+	    <div class="description">
 		    All posts by user <?php print $pu; ?>.
 		</div>
 	    
