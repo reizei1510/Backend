@@ -41,10 +41,6 @@ $value
                       <input type="radio" name="gender" value="Female" <?php if ($gender == "Female"){ print "checked='checked'"; } ?> />Female<br>
                 </tr>
 		
-                <td>Birthday:</td>
-                  <td><input name="birthday" type="date" value="<?php print $birthday; ?>" /><br>
-                </tr>
-		
                 <tr>
                   <td>Biography:</td>
                   <td><textarea name="bio" class="bio" value="<?php print $bio; ?>"></textarea><br>
