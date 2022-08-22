@@ -109,14 +109,14 @@ body {
 }
 
 .description {
-  margin: 25px auto;
-  padding: 20px;
-  color: #000000;
-  background-color: #FFF0F5;
-  border-color: #FFB6C1;
-  border-width: 3px;
-  border-radius: 25px;
-  border-style: outset;
+    margin: 25px auto;
+    padding: 20px;
+    color: #000000;
+    background-color: #FFF0F5;
+    border-color: #FFB6C1;
+    border-width: 3px;
+    border-radius: 15px;
+    border-style: outset;
 }
 
 footer {
@@ -156,7 +156,20 @@ footer a:visited {
 .log_form {
     text-align:right;
 }
+
 .name {
     font-size: 20px;
     margin-bottom: 20px;
+}
+
+.text {
+    margin: 0 auto;
+    padding: 20px;
+    color: #000000;
+    background-color: #FFE4C4;
+    border-color: #F4A460;
+    border-width: 3px;
+    border-radius: 15px;
+    border-style: outset;
+    
 }
