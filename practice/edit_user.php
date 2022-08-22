@@ -60,6 +60,9 @@
     </form>
     
     </div>
+	  
+	<footer>
+	<footer>
     
   </div>
   
