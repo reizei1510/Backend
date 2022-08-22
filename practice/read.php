@@ -41,7 +41,8 @@ $allposts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 print '<div class="description">No any notes.</div>';
             }
             else {
-                foreach ($allposts as $post) {
+		$resposts = array_reverse($allposts);    
+                foreach ($resposts as $post) {
                 $stmt=$db->prepare("SELECT usr_id FROM posts WHERE post_id = ?");
                 $stmt->execute([$post['post_id']]);
                 $user = $stmt->fetch(PDO::FETCH_ASSOC);
