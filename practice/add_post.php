@@ -29,7 +29,7 @@
 	    
             <form action="" method="POST">
               <textarea name="post" class="add_post"></textarea><br>
-              <input value="<?php echo $_SESSION['id'] ?>" name="added_post" type="hidden" /><button id="added_post">Add</button>
+              <div class="log_form"><input value="<?php echo $_SESSION['id'] ?>" name="added_post" type="hidden" /><button id="added_post">Add</button></div>
            </form>	
 
         
