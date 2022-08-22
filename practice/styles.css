@@ -109,7 +109,7 @@ body {
 }
 
 .description {
-  margin: 25px 20px;
+  margin: 25px auto;
   padding: 20px;
   color: #000000;
   background-color: #FFF0F5;
@@ -156,7 +156,6 @@ footer a:visited {
 .log_form {
     text-align:right;
 }
-
 .name {
     font-size: 20px;
     margin-bottom: 20px;
