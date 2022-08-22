@@ -35,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <div class="topnav">
         <a href="index.php">Diary</a>
 	<div class="topnav_right">
-		
 	    <?php
 	    if (empty($_SESSION['login'])) {
 	        print '<a href="login.php">Log In</a>';  
@@ -44,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 		print '<a href="login.php"><img src="img/profile.png" id="profile" alt="profile"></a>'; 
 	    }
 	    ?>
-		
         </div>
     </div>
 	
@@ -67,11 +65,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
           
                 <label>
                     <input name="usr_login" <?php if ($errors['usr_login']) { print 'class="error"'; } ?> placeholder="login"/><br>
-    		            <div class="error_message"><?php print $messages['usr_login']; ?></div>
+    		    <div class="error_message"><?php print $messages['usr_login']; ?></div>
                 </label><br>
                 <label>
                     <input name="usr_pass" type="password" <?php if ($errors['usr_pass']) { print 'class="error"'; } ?> placeholder="password"/><br>
-    		            <div class="error_message"><?php print $messages['usr_pass']; ?></div>
+    		    <div class="error_message"><?php print $messages['usr_pass']; ?></div>
                 </label><br>
                 <input type="submit" class="button" value="Log Up" />
             </form>
