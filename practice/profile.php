@@ -39,11 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else if (!empty($_POST['added_post'])) {
         try {
-            $stmt = $db->prepare("INSERT INTO posts SET post = ?, date = ?, up_date = ?");
-            $stmt->execute(array($_POST['post'], date('Y-m-d'), date('Y-m-d')));
+            $stmt = $db->prepare("INSERT INTO posts SET usr_id = ?, post = ?, date = ?, up_date = ?");
+            $stmt->execute(array($_SESSION['id'], $_POST['post'], date('Y-m-d'), date('Y-m-d')));
 	    header('Location: ./profile.php');
         }
-	      catch (PDOException $e) {
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
@@ -54,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['bio']));
 	    header('Location: ./profile.php');
         }
-	      catch (PDOException $e) {
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
@@ -65,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute(array($_POST['post'], date('Y-m-d')));
 	    header('Location: ./profile.php');
         }
-	      catch (PDOException $e) {
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
@@ -121,6 +121,7 @@ else {
                 print '<div class="description">You don\'t have notes yet.</div>';
             }
             else {
+		//array_reverse($posts);
                 foreach ($posts as $p) {
                     print '<div class="description">';
                     print $p['post'];
