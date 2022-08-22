@@ -131,7 +131,8 @@ else {
                 print '<div class="description">You don\'t have notes yet.</div>';
             }
             else {
-                foreach ($posts as $p) {
+		$resposts = array_reverse($posts);    
+                foreach ($resposts as $p) {
                     print '<div class="description">';
                     print $p['date'];
                     if ($p['up_date'] > $p['date']) {
