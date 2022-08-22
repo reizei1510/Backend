@@ -66,11 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <form action="" method="POST" class="log_form">
           
                 <label>
-                    <input name="usr_login" <?php if ($errors['usr_login']) { print 'class="error"'; } ?> placeholder="login" class="field"/><br>
+                    <input name="usr_login" <?php if ($errors['usr_login']) { print 'class="error"'; } ?> placeholder="login"/><br>
     		            <div class="error_message"><?php print $messages['usr_login']; ?></div>
                 </label><br>
                 <label>
-                    <input name="usr_pass" type="password" <?php if ($errors['usr_pass']) { print 'class="error"'; } ?> placeholder="password" class="field"/><br>
+                    <input name="usr_pass" type="password" <?php if ($errors['usr_pass']) { print 'class="error"'; } ?> placeholder="password"/><br>
     		            <div class="error_message"><?php print $messages['usr_pass']; ?></div>
                 </label><br>
                 <input type="submit" class="button" value="Log Up" />
