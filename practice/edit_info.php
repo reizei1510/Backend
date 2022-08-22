@@ -28,7 +28,7 @@ $value
 	    
             <form action="" method="POST">
               
-              <table>
+              <table id="info">
                 
                 <tr>
                   <td>Name/Login:</td>
