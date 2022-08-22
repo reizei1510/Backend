@@ -131,7 +131,7 @@ else {
                         print '<br>updated';
                         print $p['up_date'];
                     }
-                    print '<div class="log_form"><form action="" method="post"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></form></div>';
+                    print '<div class="log_form"><form action="" method="post"><input value="<?php echo $posts["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></form></div>';
                     print '</div>';
                 }
             }
