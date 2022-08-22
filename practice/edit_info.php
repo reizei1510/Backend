@@ -37,13 +37,13 @@
                       <input type="radio" name="gender" value="Female" <?php if(!empty($user['gender']) && $user['gender'] == "Female"){ print "checked='checked'"; } ?> />Female<br>
                 </tr>
 		
-                  <td>Birthday:</td>
-                  <td><input name="birthday" type="date" value="<?php if (!empty($user['birthday'])) print $user['birthday']; else print ''; ?>" /><br>
+                <td>Birthday:</td>
+                  <td><input name="birthday" type="date" <?php if (!empty($user['birthday'])) echo 'value="'.$user['birthday'].'.; ?>" /><br>
                 </tr>
 		
                 <tr>
                   <td>Biography:</td>
-                  <td><textarea name="bio" class="add_post"><?php if (!empty($user['bio'])) print $user['bio']; else print '';?></textarea><br>
+                  <td><textarea name="bio" class="bio"><?php if (!empty($user['bio'])) print $user['bio']; else print '';?></textarea><br>
                 </tr>
               
               </table><br>
