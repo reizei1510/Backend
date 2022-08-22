@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if (!empty($_POST['edit_post'])) {
         include('edit_post.php');
     }
-    else if ((!empty($_POST['added_post'])) {
+    else if (!empty($_POST['added_post'])) {
         try {
             $stmt = $db->prepare("INSERT INTO posts SET post = ?, date = ?, up_date = ?");
             $stmt->execute(array($_POST['post'], date('Y-m-d'), date('Y-m-d')));
