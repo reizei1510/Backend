@@ -111,12 +111,12 @@ footer {
 }
 
 footer table {
-    width: 500px;
     margin: 0 auto;
 }
 
 footer table th, td {
     text-align: center;
+    width: 500px;
 }
 
 footer a {
