@@ -156,3 +156,8 @@ footer a:visited {
 .log_form {
     text-align:right;
 }
+
+.name {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
