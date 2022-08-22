@@ -50,13 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, bio = ? WHERE usr_id = ?");
             $stmt->execute(array($_POST['login'], $_POST['gender'], $_POST['bio'], $_COOKIE['user_id']));
 	    if ($_POST['pass'] != "") {
-		$stmt = $db->prepare("UPDATE diary_users SET usr_pass = ?");
-                $stmt->execute(array($_POST['pass']));
+		$stmt = $db->prepare("UPDATE diary_users SET usr_pass = ? WHERE usr_id = ?");
+                $stmt->execute(array($_POST['pass'], $_COOKIE['user_id']));
 	    }
-            setcookie('l', $_POST['login'], time()+60*60);
-            setcookie('g', $_POST['gender'],  time()+60*60);
-            setcookie('b', $_POST['bio'],  time()+60*60);
-            setcookie('p', $_POST['pass'],  time()+60*60);
             setcookie('user_id', '', 100000);
 	}
 	catch (PDOException $e) {
