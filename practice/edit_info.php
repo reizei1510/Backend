@@ -43,12 +43,12 @@
 		
                 <tr>
                   <td>Biography:</td>
-                  <td><textarea name="biography"><?php if (!empty($bio)) print $biography; else print '""';?></textarea><br>
+                  <td><textarea name="biography"><?php if (!empty($bio)) print $bio; else print '""';?></textarea><br>
                 </tr>
               
-              </table>
+              </table><br>
 		<form action="" method="POST">
-              		<input value="<?php echo $_SESSION['id'] ?>" name="added_post" type="hidden" /><button id="add_post">OK</button>
+              		<input value="<?php echo $_SESSION['id'] ?>" name="added_post" type="hidden" /><button id="add_post">Submit</button>
 		</form>
            </form>
         
