@@ -1,6 +1,8 @@
 <?php
 
-if (session_start() && empty($_SESSION['login'])) {
+session_start();
+
+if (empty($_SESSION['login'])) {
     header('Location: ./login.php');
 }
 
