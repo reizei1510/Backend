@@ -49,7 +49,9 @@ $allposts = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 $stmt->execute([$user['usr_id']]);
                 $autor = $stmt->fetch(PDO::FETCH_ASSOC);
                     print '<div class="description">';
-                    print $autor['usr_login'];
+                    print '<div class="name">';
+		    print $autor['usr_login'];
+		    print '</div><br>';
                     print $post['date'];
                     if ($post['up_date'] > $post['date']) {
                         print '<br>updated';
