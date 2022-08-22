@@ -27,7 +27,7 @@
       
         <div class="content">
             <div class="description">
-                Naydo Anna\nRussia, Krasnodar, Stavropolskaya street, 149, 350040, KubSU
+                Naydo Anna<br>Russia, Krasnodar, Stavropolskaya street, 149, 350040, KubSU
             </div>
         </div>
     	    
