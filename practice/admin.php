@@ -94,10 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     </div>	  
 	  
     <div class="content">
-      
-      <div class="admin">
 	    
-        <table>
+        <table class="admin">
             <tr>
                 <th>ID</th>
                 <th>Login</th>
@@ -146,8 +144,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         </table>
         
       </div>
-	    
-    </div>
     
   </div>
 	
