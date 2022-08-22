@@ -44,19 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute(array($_POST['post'], date('Y-m-d'), date('Y-m-d')));
 	    header('Location: ./profile.php');
         }
-	      catch (PDOException $e) {
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
     }
     else if (!empty($_POST['update_info'])) {
         try {
-            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, birthday = ?, bio = ?");
-            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio']));
-	      setcookie('ckedn', '', time()+60*60);
+            $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, birthday = ?, bio = ? WHERE usr_id = ?");
+            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['birthday'], $_POST['bio'], $_SESSION['id']));
 	    header('Location: ./profile.php');
         }
-	      catch (PDOException $e) {
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
@@ -67,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute(array($_POST['post'], date('Y-m-d')));
 	    header('Location: ./profile.php');
         }
-	      catch (PDOException $e) {
+	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
             exit();
         }
