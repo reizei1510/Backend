@@ -62,6 +62,9 @@
     </div>
 	  
 	<footer>
+	    <a href="about.php">About</a>
+	    <a href="contacts.php">Contacts</a>
+	    <a href="rules.php">Rules</a>
 	<footer>
     
   </div>
