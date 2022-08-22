@@ -1,3 +1,11 @@
+<?php 
+
+    if(!empty($_SESSION['login'])) {
+        header('Location: /read.php');
+    }
+
+?>
+
 <!DOCTYPE html>
  
 <head>
