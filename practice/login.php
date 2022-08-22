@@ -1,12 +1,13 @@
 <?php
 
 header('Content-Type: text/html; charset=UTF-8');
-
-if (session_start() && !empty($_SESSION['login'])) {
-    header('Location: ./read.php');
-}
 	
 session_start();
+
+if (!empty($_SESSION['login'])) {
+    header('Location: ./read.php');
+}
+
 if (empty($_SESSION['token']))
     $_SESSION['token'] = bin2hex(random_bytes(15));
 
