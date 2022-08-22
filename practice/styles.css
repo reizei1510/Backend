@@ -167,9 +167,13 @@ footer a:visited {
     padding: 20px;
     color: #000000;
     background-color: #FFE4C4;
-    border-color: #F4A460;
+    border-color: #FFF8DC;
     border-width: 3px;
     border-radius: 15px;
     border-style: outset;
     
+}
+
+button {
+    font-size: 16px;
 }
