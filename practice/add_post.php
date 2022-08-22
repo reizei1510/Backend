@@ -19,11 +19,20 @@
     </div>
  
     <div class="content">
+
 	    
             <form action="" method="POST">
               <textarea name="post" class="add_post"></textarea>
               <input value="<?php echo $_SESSION['id'] ?>" name="added_post" type="hidden" /><button id="added_post">Add</button>
-           </form>
+           </form>	
+	    
+	    
+	 <?php
+	if ($count == 0) { ?>
+        <div class="description">
+		Add your first note.
+	</div>
+	<?php } ?>
         
     </div>
     
