@@ -100,12 +100,12 @@ else $count = 0;
                 <div class="info">
                     Gender:<?php print $gender; ?><br>Birthday: <?php print $birthday; ?><br>Biography: <?php print $bio; ?><br><br>
                     Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
-                    <input value="<?php echo $usr['usr_id'] ?>" name="edit_info" type="hidden" /><button id="Edit info">
+                    <input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button>
                 </div>
             </div>
           
             <div class="log_form">
-                <input value="<?php echo $usr['usr_id'] ?>" name="add_note" type="hidden" /><button id="Add note">
+                <input value="<?php echo $_SESSION['id'] ?>" name="add_post" type="hidden" /><button id="add_post">Add note</button>
             </div>
             
             <?php
@@ -126,7 +126,7 @@ else $count = 0;
                         print '<br>updated';
                         print $p['up_date'];
                     }
-                    print '<div class="log_form"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="Edit note"></div>';
+                    print '<div class="log_form"><input value="<?php echo $usr["post_id"] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit note</button></div>';
                     print '</div>';
                 }
             }
