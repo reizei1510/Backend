@@ -1,8 +1,10 @@
 <?php 
 
-    if (session_start() && !empty($_SESSION['login'])) {
-        header('Location: /read.php');
-    }
+session_start();
+
+if (!empty($_SESSION['login'])) {
+    header('Location: /read.php');
+}
 
 ?>
 
