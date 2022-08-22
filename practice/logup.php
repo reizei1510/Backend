@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             print 'You arleady loged up, get enjoy.';
         }
       
-        if (!empty($_COOKIE('logup'))) {
+        if (!empty($_COOKIE['logup'])) {
             print 'You siccesfully loged up, now you can <a href="login.php">Login</a>.';
             setcookie('logup', '', 100000);
         }
