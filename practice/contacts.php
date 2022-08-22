@@ -35,7 +35,7 @@
 	<footer>
 	    <a href="about.php">About</a>
 	    <a href="contacts.php">Contacts</a>
-	    <a href="contacts.php">Rules</a>
+	    <a href="rules.php">Rules</a>
 	    <a href="admin.php">Are you admin?</a>
 	<footer>
 		    
