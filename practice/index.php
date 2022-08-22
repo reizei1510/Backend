@@ -20,8 +20,6 @@
 		</div>
 
 	    </div>
-		
-    </div>
 
 	    <footer>
 		<a href="about.php">About</a>
@@ -29,6 +27,8 @@
 		<a href="contacts.php">Rules</a>
 		<a href="admin.php">Are you admin?</a>
 	    <footer>
+		    
+    </div>
 		    
 </body>
  
