@@ -135,7 +135,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             else $count = 0;
                             print $count; ?></td>
                         <td><form action="" method="POST">
-                            <input value="<?php print $user['usr_id'] ?>" name="posts_user" type="hidden" /><button id="posts_user">All posts</button>
+                            <input value="<?php print $user['usr_id'] ?>" name="posts_user" type="hidden" /><button id="posts_user">All<nobr>posts</button>
                             </form></td>
                         <td><form action="" method="POST">
                             <input value="<?php print $user['usr_id'] ?>" name="edit_user" type="hidden" /><button id="edit_user">Edit</button>
