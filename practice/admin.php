@@ -70,7 +70,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $stmt = $db->query("SELECT * FROM diary_users");
     $allUsers = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}
 ?>	
 	
 <!DOCTYPE html>
@@ -159,3 +158,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 </body>
 
 </html>
+<?php } ?>
