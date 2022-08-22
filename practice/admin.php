@@ -119,13 +119,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             <input value="<?php print $user['usr_id'] ?>" name="edit_user" type="hidden" /><button id="edit_user">Edit</button>
                             </form></td>
                         <td><form action="" method="POST">
-			    <input value="<?php echo $user["usr_id"] ?>" name="delete_user" type="hidden" /><button id="delete_post">Delete note</button>
+			    <input value="<?php echo $user["usr_id"] ?>" name="delete_user" type="hidden" /><button id="delete_post">Delete</button>
 			    </form></td>
                     </tr>
             <?php
                 }
             } else {
-                print "Записи не найдены";
+                print '<tr colspan="8">Записи не найдены</tr>';
             }
             ?>
         </table>
