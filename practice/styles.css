@@ -102,10 +102,17 @@ footer {
     margin: 0 auto;
     margin-top: 30px;
     padding: 10px;
-    column-count: 2;
-    column-width: 200px;
-    column-gap: 40px;
     background-color: #FFB6C1;
+}
+
+footer table {
+    border: collapse;
+    margin: 0 auto;
+    width: 100%;
+}
+
+footer table th, td {
+    text-align: center;
 }
 
 footer a {
