@@ -49,8 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 	    else {
 	       $messages['login'] = 'Login must contain only letters, numbers and "_".';
 	    }
-      else $messages['login'] = '';
    }
+   else $messages['login'] = '';
    if ($errors['pass']) {
        setcookie('pass_error', '', 100000);
 	     if ($errors['pass'] == 'empty') {
