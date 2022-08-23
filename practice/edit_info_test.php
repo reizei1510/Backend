@@ -47,7 +47,7 @@ $errors = [];
 		
                 <tr>
                   <td>Password:</td>
-                  <td><input name="pass" value="" /><br>
+                  <td><input name="pass" type="password" value="" /><br>
                       <div class="error_message"><?php print $messages['pass']; ?></div></td>
                 </tr>
               
