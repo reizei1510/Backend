@@ -1,5 +1,5 @@
 <?php
-$stmt = $db->prepare("SELECT post FROM posts WHERE post_id = ?");
+$stmt = $db->prepare("SELECT * FROM posts WHERE post_id = ?");
 $stmt->execute([$pid]);
 $ps = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -27,7 +27,7 @@ $ps = $stmt->fetch(PDO::FETCH_ASSOC);
     <div class="content">	    
             <form action="" method="POST">
               <textarea name="post" class="add_post"><?php print $ps['post'] ?></textarea><br>
-              <div class="log_form"><input value="<?php echo $_SESSION['id'] ?>" name="update_post" type="hidden" /><button id="update_post">Edit</button></div>
+              <div class="log_form"><input value="<?php print $ps['post_id'] ?>" name="update_post" type="hidden" /><button id="update_post">Edit</button></div>
            </form>
     </div>
 	  
