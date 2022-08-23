@@ -59,8 +59,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, bio = ? WHERE usr_id = ?");
             $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['bio'], $_POST['update_info']));
 	    if ($_POST['pass'] != "") {
-		$stmt = $db->prepare("UPDATE diary_users SET usr_pass = ?");
-                $stmt->execute(array($_POST['pass']));
+		$stmt = $db->prepare("UPDATE diary_users SET usr_pass = ? WHERE usr_id = ?");
+                $stmt->execute(array($_POST['pass'], $_POST['update_info']));
 	    }
 	    header('Location: ./profile.php');
         }
