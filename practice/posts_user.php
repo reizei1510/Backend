@@ -14,6 +14,7 @@ $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(P
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="img/logo.png" type="image/png">
     <title>All Posts</title>
 </head>
 
