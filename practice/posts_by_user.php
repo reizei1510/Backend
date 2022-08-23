@@ -3,9 +3,27 @@ $db_login = 'u16346';
 $db_pass = '34rerfeq5';
 $db = new PDO('mysql:host=localhost;dbname=u16346', $db_login, $db_pass, array(PDO::ATTR_PERSISTENT => true));
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['delete_post'])) {
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['edit_post'])) {
+	$pid = $_POST['edit_post'];
+        include('edit_post_admin.php');
+}
+
+else if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['delete_post'])) {
         $del_posts = $db->prepare("DELETE FROM posts WHERE post_id = ?");
         $del_posts->execute([$_POST['delete_post']]);
+        header('Location: ./posts_by_user.php');
+}
+
+else if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['update_post'])) {
+        try {
+            $stmt = $db->prepare("UPDATE posts SET post = ? WHERE post_id = ?");
+            $stmt->execute(array($_POST['post'], $_POST['update_post']));
+	    header('Location: ./profile.php');
+        }
+	catch (PDOException $e) {
+            print('Error : ' . $e->getMessage());
+            exit();
+        }
         header('Location: ./posts_by_user.php');
 }
 
