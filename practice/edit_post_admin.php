@@ -37,8 +37,8 @@ $ps = $stmt->fetch(PDO::FETCH_ASSOC);
 		               Edit post <?php print $ps['post_id']; ?> by user <?php print $ps['usr_id']; ?>.
 		              </div>
             <form action="" method="POST">
-              <textarea name="post" class="add_post"><?php print $ps['post'] ?></textarea><br>
-              <div class="log_form"><input value="<?php echo $_SESSION['id'] ?>" name="update_post" type="hidden" /><button id="update_post">Edit</button></div>
+              <textarea name="post" class="add_post"><?php print $ps['post']; ?></textarea><br>
+              <div class="log_form"><input value="<?php echo $ps['post_id']; ?>" name="update_post" type="hidden" /><button id="update_post">Edit</button></div>
            </form>
     </div>
 	  
