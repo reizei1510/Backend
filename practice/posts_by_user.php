@@ -71,7 +71,7 @@ else {
     <div class="content">
 	    
 	    <div class="description">
-		    All posts by user <?php print $_POST['posts_user']; ?>.
+		    All posts by user <?php print $_COOKIE['posts_by']; ?>.
 		</div>
 	    
         <table id="admin">
