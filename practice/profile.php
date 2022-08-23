@@ -83,6 +83,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 else {
+	//------------------------------------------------------------------------------------------
+    $errors['login'] = empty($_COOKIE['login_error']) ? false : $_COOKIE['login_error'];
+    $errors['pass'] = empty($_COOKIE['pass_error']) ? false : $_COOKIE['pass_error'];
+	
+    if ($errors['login']) {
+        setcookie('login_error', '', 100000);
+	if ($errors['usr_login'] == 'empty') {
+	    $messages['login'] = 'Input login.';
+	}
+	else if ($errors['usr_login'] == 'exist') {
+	    $messages['login'] = 'Login already registered.';
+	}
+	else if ($errors['usr_login'] == 'long') {
+	    $messages['login'] = 'Login must be 3-10 characters long.';
+	}
+	else {
+	    $messages['login'] = 'Login must contain only letters, numbers and "_".';
+	}
+    else $messages['login'] = '';
+    if ($errors['pass']) {
+        setcookie('pass_error', '', 100000);
+	if ($errors['pass'] == 'empty') {
+	    $messages['pass'] = 'Input password.';
+	}
+	else if ($errors['pass'] == 'long') {
+	    $messages['pass'] = 'Password must be 6-15 characters long.';
+	}
+	else {
+	    $messages['pass'] = 'Password must contain only letters, numbers and "_".';
+	}
+    }
+    else $messages['pass'] = ' ';
+        //------------------------------------------------------------------------------------------
 ?>
 
 <!DOCTYPE html>
@@ -173,4 +206,45 @@ else {
  
 </html>
 	
-	<?php } ?>
+	<?php }
+	
+	
+//-----------------------------------------------------------------------------------------
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+$errors = FALSE;
+    if (empty($_POST['login'])) {
+        setcookie('login_error', 'empty', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
+    else if (!preg_match("/[A-Za-z0-9_]+$/", $_POST['login'])) {
+        setcookie('login_error', 'incorrect', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
+    else if (strlen($_POST['login']) < 3 || strlen($_POST['login']) > 10) {
+        setcookie('login_error', 'long', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
+  
+    if (empty($_POST['pass'])) {
+        setcookie('pass_error', 'empty', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
+    else if (!preg_match("/[A-Za-z0-9_]+$/", $_POST['pass'])) {
+        setcookie('pass_error', 'incorrect', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
+    else if (strlen($_POST['pass']) < 6 || strlen($_POST['pass']) > 15) {
+        setcookie('pass_error', 'long', time() + 24 * 60 * 60);
+	$errors = TRUE;
+    }
+	
+    if ($errors) {
+        header('Location: ./logup.php');
+        exit();
+    }
+}
+	
+	?>
+
+//-----------------------------------------------------------------------------------------
