@@ -42,7 +42,7 @@
 		
                 <tr>
                   <td>Password:</td>
-                  <td><input name="pass" value="" /><br>
+                  <td><input name="pass" type="password" value="" /><br>
                 </tr>
               
               </table><br>
