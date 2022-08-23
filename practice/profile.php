@@ -71,8 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else if (!empty($_POST['update_post'])) {
         try {
-            $stmt = $db->prepare("UPDATE posts SET post = ?, up_date = ?");
-            $stmt->execute(array($_POST['post'], date("Y-m-d H:i:s")));
+            $stmt = $db->prepare("UPDATE posts SET post = ?, up_date = ? WHERE post_id = ?");
+            $stmt->execute(array($_POST['post'], date("Y-m-d H:i:s"), $_POST['update_post']));
 	    header('Location: ./profile.php');
         }
 	catch (PDOException $e) {
