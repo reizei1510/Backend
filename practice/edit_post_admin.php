@@ -1,5 +1,5 @@
 <?php
-$stmt = $db->prepare("SELECT post FROM posts WHERE post_id = ?");
+$stmt = $db->prepare("SELECT * FROM posts WHERE post_id = ?");
 $stmt->execute([$pid]);
 $ps = $stmt->fetch(PDO::FETCH_ASSOC);
 ?>
