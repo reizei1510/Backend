@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
         $values['login'] = $result['usr_login'];
-        $values['pass'] = $result['usr_pass'];
         $values['gender'] = $result['gender'];
         $values['bio'] = $result['bio'];
 
