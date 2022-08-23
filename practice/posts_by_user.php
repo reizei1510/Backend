@@ -12,6 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($_POST['delete_post'])) {
 else if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   setcookie('posts_by', $_POST['posts_by_user'], 100000);
   setcookie('posts_by', $_POST['posts_by_user'], time() + 365 * 24 * 60 * 60);
+  header('Location: ./posts_by_user.php');
 }
 
 else {
