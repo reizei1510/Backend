@@ -130,14 +130,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             else $count = 0;
 			    $uid = $user['usr_id'];
                             print $count; ?></td>
-                        <td><form action="./posts_user.php" method="POST">
-                            <input value="<?php print $uid ?>" name="posts_user" type="hidden" /><button id="posts_user">All<nobr>posts</button>
+                        <td><form action="./posts_by_user.php" method="POST">
+                            <input value="<?php print $uid ?>" name="posts_by_user" type="hidden" /><button id="posts_by_user">Notes</button>
                             </form></td>
                         <td><form action="" method="POST">
                             <input value="<?php print $user['usr_id'] ?>" name="edit_user" type="hidden" /><button id="edit_user">Edit</button>
                             </form></td>
                         <td><form action="" method="POST">
-			    <input value="<?php echo $user["usr_id"] ?>" name="delete_user" type="hidden" /><button id="delete_post">Delete</button>
+			    <input value="<?php echo $user["usr_id"] ?>" name="delete_user" type="hidden" /><button id="delete_user">Delete</button>
 			    </form></td>
                     </tr>
             <?php
