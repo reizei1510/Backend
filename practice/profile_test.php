@@ -202,13 +202,13 @@ $errors = FALSE;
     else if (!empty($_POST['delete_post'])) {
         $stmt = $db->prepare("DELETE FROM posts WHERE post_id = ?");
 	     $stmt->execute([$_POST['delete_post']]);
-	     header('Location: ./profile.php');
+	     header('Location: ./profile_test.php');
     }
     else if (!empty($_POST['added_post'])) {
         try {
             $stmt = $db->prepare("INSERT INTO posts SET usr_id = ?, post = ?, date = ?, up_date = ?");
             $stmt->execute(array($_SESSION['id'], $_POST['post'], date("Y-m-d H:i:s"), date("Y-m-d H:i:s")));
-	          header('Location: ./profile.php');
+	          header('Location: ./profile_test.php');
          }
 	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
@@ -223,7 +223,7 @@ $errors = FALSE;
 		            $stmt = $db->prepare("UPDATE diary_users SET usr_pass = ? WHERE usr_id = ?");
                 $stmt->execute(array($_POST['pass'], $_POST['update_info']));
 	          }
-	          header('Location: ./profile.php');
+	          header('Location: ./profile_test.php');
         }
 	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
@@ -234,7 +234,7 @@ $errors = FALSE;
         try {
             $stmt = $db->prepare("UPDATE posts SET post = ?, up_date = ? WHERE post_id = ?");
             $stmt->execute(array($_POST['post'], date("Y-m-d H:i:s"), $_POST['update_post']));
-	          header('Location: ./profile.php');
+	          header('Location: ./profile_test.php');
         }
 	      catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
