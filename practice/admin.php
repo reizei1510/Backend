@@ -22,6 +22,7 @@ if (empty($admin) || $admin['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
 
 if (session_start() && !empty($_SESSION['login'])) {
     session_destroy();
+    header('Location: ./admin.php');
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
