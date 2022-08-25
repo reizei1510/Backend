@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             </form></td>
                         <td><form action="" method="POST">
 			    <input value="<?php echo $user["usr_id"] ?>" name="delete_user" type="hidden" />
-			        <button id="delete_user" onclick="return confirm('Are you sure?')>Delete</button>
+			        <button id="delete_user" onclick="return confirm('Are you sure?')">Delete</button>
 			    </form></td>
                     </tr>
             <?php
