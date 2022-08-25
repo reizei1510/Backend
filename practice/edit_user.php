@@ -16,11 +16,11 @@
 	    <div class="topnav_right">
 		  <?php
 		  if (empty($_SESSION['login'])) {
-	      print '<a href="login.php">Log In</a>';  
-		    print '<a href="logup.php">Log Up</a>';
+	              print '<a href="login.php">Log In</a>';  
+		      print '<a href="logup.php">Log Up</a>';
 		  }
 		  else {
-		    print '<a href="profile.php">Profile</a>'; 
+		      print '<a href="profile.php">Profile</a>'; 
 		  }
       ?>
 	    </div>
@@ -56,7 +56,7 @@
                 </tr>
               
               </table><br>
-              <input class="button" type="submit" value="Edit" /><br>
+              <input value="<?php print $values['id']; ?>" name="update_user" type="hidden" /><button id="update_user">Edit</button>
       
     </form>
 		  </div>
