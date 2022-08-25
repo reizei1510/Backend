@@ -2,7 +2,7 @@
 
 session_start();
 
-if (!empty($_COOKIE['session_id']) {
+if (!empty($_COOKIE['session_id'])) {
 	$_SESSION['id'] = $_COOKIE['session_id'];
 	$_SESSION['login'] = $_COOKIE['session_login'];
 };
