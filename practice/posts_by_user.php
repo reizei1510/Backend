@@ -72,7 +72,7 @@ else {
     <div class="content">
 	    
 	    <div class="description">
-		    All posts by user <?php print $_COOKIE['posts_by']; ?>.
+		    All notes by user <?php print $_COOKIE['posts_by']; ?>.
 		</div>
 	    
         <table id="admin">
