@@ -33,11 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $del_posts->execute([$_POST['delete_user']]);
         $del_user = $db->prepare("DELETE FROM diary_users WHERE usr_id = ?");
         $del_user->execute([$_POST['delete_user']]);
-	?>
-        <script>
-	elementUpdate('table#admin');
-        </script>
-        <?php
+        header('Location: ./admin.php');
     }
     else if (!empty($_POST['edit_user'])) {
         $stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_id = ?");
@@ -79,7 +75,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
-    <script src="./script.js"></script>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" href="img/logo.png" type="image/png">
     <title>Admin</title>
