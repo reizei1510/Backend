@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else {
         try {
             $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, bio = ? WHERE usr_id = ?");
-            $stmt->execute(array($_POST['login'], $_POST['gender'], $_POST['bio'], $_COOKIE['user_id']));
+            $stmt->execute(array($_POST['login'], $_POST['gender'], $_POST['bio'], $_POST['update_user']));
 	    if ($_POST['pass'] != "") {
 		$stmt = $db->prepare("UPDATE diary_users SET usr_pass = ? WHERE usr_id = ?");
                 $stmt->execute(array($_POST['pass'], $_POST['update_user']));
