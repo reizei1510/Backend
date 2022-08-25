@@ -122,11 +122,11 @@ else {
                 <div class="info">
                     Gender:<?php print $gender; ?><br>Biography: <?php print $bio; ?><br><br>
                     Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
-                    <form action="" method="post"><input value="<?php print $_SESSION['id'] ?>" name="edit_info" type="hidden" />
+                    <form action="" method="POST"><input value="<?php print $_SESSION['id'] ?>" name="edit_info" type="hidden" />
 		        <button id="edit_info">Edit info</button></form><br>
 		    You can delete your profile:<br>
-                    <form action="" method="post"><input value="<?php print $_SESSION['id'] ?>" name="delete_user" type="hidden" />
-		        <button id="delete_user" onclick="return confirm('Are you sure?')>Delete profile</button></form>
+                    <form action="" method="POST"><input value="<?php print $_SESSION['id'] ?>" name="delete_user" type="hidden" />
+		        <button id="delete_user" onclick="return confirm('Are you sure?')">Delete profile</button></form>
                 </div>
             </div>
           
@@ -158,9 +158,9 @@ else {
                     <div class="log_form">
 			<table>
 			    <tr>
-				<td><form action="" method="post"><input value="<?php print $p["post_id"] ?>" name="edit_post" type="hidden" />
+				<td><form action="" method="POST"><input value="<?php print $p["post_id"] ?>" name="edit_post" type="hidden" />
 				    <button id="edit_post">Edit note</button></form></td>
-			        <td><form action="" method="post"><input value="<?php print $p["post_id"] ?>" name="delete_post" type="hidden" />
+			        <td><form action="" method="POST"><input value="<?php print $p["post_id"] ?>" name="delete_post" type="hidden" />
 				    <button id="delete_post" onclick="return confirm('Are you sure?')">Delete note</button></form></td>
 			    </tr>
 			</table>
