@@ -122,14 +122,17 @@ else {
                 <div class="info">
                     Gender:<?php print $gender; ?><br>Biography: <?php print $bio; ?><br><br>
                     Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
-                    <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button></form><br>
+                    <form action="" method="post"><input value="<?php print $_SESSION['id'] ?>" name="edit_info" type="hidden" />
+		        <button id="edit_info">Edit info</button></form><br>
 		    You can delete your profile:<br>
-                    <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="delete_user" type="hidden" /><button id="delete_user">Delete profile</button></form>
+                    <form action="" method="post"><input value="<?php print $_SESSION['id'] ?>" name="delete_user" type="hidden" />
+		        <button id="delete_user" onclick="return confirm('Are you sure?')>Delete profile</button></form>
                 </div>
             </div>
           
             <div class="log_form">
-                <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="add_post" type="hidden" /><button id="add_post">Add note</button></form>
+                <form action="" method="post"><input value="<?php print $_SESSION['id'] ?>" name="add_post" type="hidden" />
+		    <button id="add_post">Add note</button></form>
             </div>
             
             <?php
