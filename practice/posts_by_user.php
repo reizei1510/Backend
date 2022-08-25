@@ -92,11 +92,13 @@ else {
                         <td><?php print $p['post'] ?></td>
                         
                         <td><form action="" method="POST">
-                            <input value="<?php print $p['post_id'] ?>" name="edit_post" type="hidden" /><button id="edit_post">Edit</button>
+                                <input value="<?php print $p['post_id'] ?>" name="edit_post" type="hidden" />
+				    <button id="edit_post">Edit</button>
                             </form></td>
                         <td><form action="" method="POST">
-			                      <input value="<?php print $p['post_id'] ?>" name="delete_post" type="hidden" /><button id="delete_post">Delete</button>
-			                      </form></td>
+			        <input value="<?php print $p['post_id'] ?>" name="delete_post" type="hidden" />
+				    <button id="delete_post" onclick="return confirm('Are you sure?')>Delete</button>
+			    </form></td>
                     </tr>
             <?php
                 }
