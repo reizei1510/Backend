@@ -97,7 +97,7 @@ else {
                             </form></td>
                         <td><form action="" method="POST">
 			        <input value="<?php print $p['post_id'] ?>" name="delete_post" type="hidden" />
-				    <button id="delete_post" onclick="return confirm('Are you sure?')>Delete</button>
+				    <button id="delete_post" onclick="return confirm('Are you sure?')">Delete</button>
 			    </form></td>
                     </tr>
             <?php
