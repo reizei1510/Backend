@@ -33,7 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $del_posts->execute([$_POST['delete_user']]);
         $del_user = $db->prepare("DELETE FROM diary_users WHERE usr_id = ?");
         $del_user->execute([$_POST['delete_user']]);
-	header('Location: ./admin.php');
+	?>
+        <script>
+	elementUpdate('table#admin');
+        </script>
+        <?php
     }
     else if (!empty($_POST['edit_user'])) {
         $stmt = $db->prepare("SELECT * FROM diary_users WHERE usr_id = ?");
