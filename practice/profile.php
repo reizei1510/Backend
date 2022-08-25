@@ -43,6 +43,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$stmt->execute([$_POST['delete_post']]);
 	header('Location: ./profile.php');
     }
+    else if (!empty($_POST['delete_user'])) {
+        $stmt = $db->prepare("DELETE FROM posts WHERE usr_id = ?");
+	$stmt->execute([$_POST['delete_user']]);
+        $stmt = $db->prepare("DELETE FROM diary_users WHERE usr_id = ?");
+	$stmt->execute([$_POST['delete_user']]);
+	header('Location: ./logout.php');
+    }
     else if (!empty($_POST['added_post'])) {
         try {
             $stmt = $db->prepare("INSERT INTO posts SET usr_id = ?, post = ?, date = ?, up_date = ?");
@@ -115,7 +122,9 @@ else {
                 <div class="info">
                     Gender:<?php print $gender; ?><br>Biography: <?php print $bio; ?><br><br>
                     Posts:  <?php print $count; ?><br>Registration date: <?php print $reg_date; ?><br><br>
-                    <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button></form>
+                    <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="edit_info" type="hidden" /><button id="edit_info">Edit info</button></form><br>
+		    You can delete your profile:<br>
+                    <form action="" method="post"><input value="<?php echo $_SESSION['id'] ?>" name="delete_user" type="hidden" /><button id="delete_user">Delete profile</button></form>
                 </div>
             </div>
           
