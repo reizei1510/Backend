@@ -139,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 				<button id="edit_user">Edit</button>
                             </form></td>
                         <td><form action="" method="POST">
-			    <input value="<?php echo $user["usr_id"] ?>" name="delete_user" type="hidden" />
+			    <input value="<?php print $user["usr_id"] ?>" name="delete_user" type="hidden" />
 			        <button id="delete_user" onclick="return confirm('Are you sure?')">Delete</button>
 			    </form></td>
                     </tr>
