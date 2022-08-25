@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if (!empty($_POST['added_post'])) {
         try {
             $stmt = $db->prepare("INSERT INTO posts SET usr_id = ?, post = ?, date = ?, up_date = ?");
-            $stmt->execute(array($_SESSION['id'], $_POST['post'], date("Y-m-d H:i:s"), date("Y-m-d H:i:s")));
+            $stmt->execute(array($_SESSION['id'], nl2br($_POST['post']), date("Y-m-d H:i:s"), date("Y-m-d H:i:s")));
 	    header('Location: ./profile.php');
         }
 	catch (PDOException $e) {
@@ -64,7 +64,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     else if (!empty($_POST['update_info'])) {
         try {
             $stmt = $db->prepare("UPDATE diary_users SET usr_login = ?, gender = ?, bio = ? WHERE usr_id = ?");
-            $stmt->execute(array($_POST['name'], $_POST['gender'], $_POST['bio'], $_POST['update_info']));
+            $stmt->execute(array($_POST['name'], $_POST['gender'], nl2br($_POST['bio']), $_POST['update_info']));
 	    if ($_POST['pass'] != "") {
 		$stmt = $db->prepare("UPDATE diary_users SET usr_pass = ? WHERE usr_id = ?");
                 $stmt->execute(array($_POST['pass'], $_POST['update_info']));
