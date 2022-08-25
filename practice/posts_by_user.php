@@ -101,7 +101,7 @@ else {
             <?php
                 }
             } else {
-                print '<tr><td colspan="5">Записи не найдены</td></tr>';
+                print '<tr><td colspan="5">Records not found.</td></tr>';
             }
             ?>
         </table>
