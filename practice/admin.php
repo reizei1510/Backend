@@ -41,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $values['login'] = $result['usr_login'];
         $values['gender'] = $result['gender'];
         $values['bio'] = $result['bio'];
+	$values['id'] = $_POST['edit_user'];
 
         setcookie('user_id', $_POST['edit_user'], time() + 12 * 30 * 24 * 60 * 60);
         include('edit_user.php');
