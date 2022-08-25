@@ -3,7 +3,7 @@
 if (empty($_SERVER['PHP_AUTH_USER']) || empty($_SERVER['PHP_AUTH_PW'])) {
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
-    print('<h1>401 Требуется авторизация.</h1>');
+    print('<h1>401 Autorization required.</h1>');
     exit();
 }
 
@@ -16,7 +16,7 @@ $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 if (empty($admin) || $admin['adm_pass'] != $_SERVER['PHP_AUTH_PW']) {
     header('HTTP/1.1 401 Unanthorized');
     header('WWW-Authenticate: Basic realm="My site"');
-    print('<h1>401 Неверные данные.</h1>');
+    print('<h1>401 Incorrect data.</h1>');
     exit();
 }
 
@@ -144,7 +144,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <?php
                 }
             } else {
-                print '<tr><td colspan="8">Записи не найдены</td></tr>';
+                print '<tr><td colspan="8">Records not found.</td></tr>';
             }
             ?>
         </table>
