@@ -121,6 +121,7 @@ else {
   
     $_SESSION['login'] = $_POST['usr_login'];
     $_SESSION['id'] = $user['usr_id'];	
+    setcookie('session_id', $_SESSION['id'], time() + 365 * 24 * 60* 60);
 
     header('Location: ./read.php');
 }
