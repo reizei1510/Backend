@@ -43,7 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $values['bio'] = $result['bio'];
 	$values['id'] = $_POST['edit_user'];
 
-        setcookie('user_id', $_POST['edit_user'], time() + 12 * 30 * 24 * 60 * 60);
         include('edit_user.php');
     }
     else {
@@ -52,9 +51,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->execute(array($_POST['login'], $_POST['gender'], $_POST['bio'], $_COOKIE['user_id']));
 	    if ($_POST['pass'] != "") {
 		$stmt = $db->prepare("UPDATE diary_users SET usr_pass = ? WHERE usr_id = ?");
-                $stmt->execute(array($_POST['pass'], $_COOKIE['user_id']));
+                $stmt->execute(array($_POST['pass'], $_POST['update_user']));
 	    }
-            setcookie('user_id', '', 100000);
 	}
 	catch (PDOException $e) {
             print('Error : ' . $e->getMessage());
