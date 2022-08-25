@@ -79,6 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
+    <script src="./script.js"></script>
     <link rel="stylesheet" href="./styles.css" />
     <link rel="icon" href="img/logo.png" type="image/png">
     <title>Admin</title>
